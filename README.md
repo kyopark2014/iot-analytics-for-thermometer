@@ -1,7 +1,7 @@
 # IoT Analytics
 
 
-여기서는 [M5Stack AWS](https://aws.amazon.com/ko/about-aws/whats-new/2020/12/introducing-aws-iot-edukit/)을 이용하여 AWS IoT Core와 Data Analytics을 이용하여 IoT 센서로부터 데이터를 수집하는 과정을 설명합니다.
+여기서는 [AWS Edukit](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/m5stack.md)을 이용하여 AWS IoT Core와 Data Analytics을 이용하여 IoT 센서로부터 데이터를 수집하는 과정을 설명합니다.
 
 ## M5Stack
 

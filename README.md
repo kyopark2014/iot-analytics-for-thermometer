@@ -9,3 +9,6 @@
 - FreeRTOS, Arduino, MicroPython을 지원
 
 - 구매방법: Amazon.com 또는 M5Stack 스토어
+
+[AWS Edukit](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/m5stack.md)에서 상세한 정보 확인이 가능합니다. 
+

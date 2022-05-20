@@ -15,5 +15,7 @@
 
 - 구매방법: Amazon.com 또는 M5Stack 스토어
 
+![image](https://user-images.githubusercontent.com/52392004/169609881-0e615bab-c47d-4a30-852f-ec6d21028545.png)
+
 [AWS Edukit](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/m5stack.md)에서 상세한 정보 확인이 가능합니다. 
 

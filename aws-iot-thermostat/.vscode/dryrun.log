@@ -1,0 +1,9 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/ksdyb/Documents/iot/iot-analytics/aws-iot-thermostat'
+make: Leaving directory `/Users/ksdyb/Documents/iot/iot-analytics/aws-iot-thermostat'
+ 
+Makefile:9: /make/project.mk: No such file or directory
+make: *** No rule to make target `/make/project.mk'.
+make: Failed to remake makefile `/make/project.mk'.
+make: *** No targets specified and no makefile found.  Stop.
+

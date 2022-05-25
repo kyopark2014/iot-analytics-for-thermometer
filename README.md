@@ -25,7 +25,10 @@ $ git clone https://github.com/kyopark2014/iot-analytics
 
 "sdkconfig"에서 "CONFIG_AWS_IOT_MQTT_HOST"의 값을 IoT Core의 Endpoint로 변경합니다.
 
-![noname](https://user-images.githubusercontent.com/52392004/170380969-0f414d12-221d-4bbb-8221-1fed38f9266b.png)
+![noname](https://user-images.githubusercontent.com/52392004/170382445-dd3aec37-cde7-49aa-8b75-a42e66c81471.png)
+
+
+
 
 
 5) [Visual Studio Code에 PlatformIO IDE Extension 설치 및 활용](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/edukit-platformio.md)에 따라 Visual Studio Code에서 M5Stack을 디버깅할 수 있는 환경을 만들고 다운로드 받은 "aws-iot-thermostat" 프로젝트를 오픈 합니다.

@@ -3,5 +3,5 @@
 .vscode/c_cpp_properties.json
 .vscode/launch.json
 .vscode/ipch
-main/certificate.pem.crt
-main/private.pem.key
+main/certs/certificate.pem.crt
+main/certs/private.pem.key

@@ -29,6 +29,8 @@ $ git clone https://github.com/kyopark2014/iot-analytics
 
 또는 아래와 같이 terminal에서 명령어로 진행 할 수 있습니다. 
 
+-  Build
+
 ```c
 $ pio run --environment core2foraws
 ```

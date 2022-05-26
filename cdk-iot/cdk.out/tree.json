@@ -292,6 +292,68 @@
                       "fqn": "aws-cdk-lib.aws_iam.CfnRole",
                       "version": "2.17.0"
                     }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "CdkIotStack/LambdaKinesisStream/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "CdkIotStack/LambdaKinesisStream/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "kinesis:DescribeStreamSummary",
+                                    "kinesis:GetRecords",
+                                    "kinesis:GetShardIterator",
+                                    "kinesis:ListShards",
+                                    "kinesis:SubscribeToShard",
+                                    "kinesis:DescribeStream",
+                                    "kinesis:ListStreams"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": {
+                                    "Fn::GetAtt": [
+                                      "Stream790BDEE4",
+                                      "Arn"
+                                    ]
+                                  }
+                                },
+                                {
+                                  "Action": "kinesis:DescribeStream",
+                                  "Effect": "Allow",
+                                  "Resource": {
+                                    "Fn::GetAtt": [
+                                      "Stream790BDEE4",
+                                      "Arn"
+                                    ]
+                                  }
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "LambdaKinesisStreamServiceRoleDefaultPolicyF267DCB3",
+                            "roles": [
+                              {
+                                "Ref": "LambdaKinesisStreamServiceRole1ED1B3BD"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.17.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.17.0"
+                    }
                   }
                 },
                 "constructInfo": {
@@ -335,7 +397,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "ed6fffc6b11d28df8b97b69cf4d9345c5249070210a3e44e818722f725484176.zip"
+                      "s3Key": "9ae5d216d4fe071dc02a9c3e0690e7e102b766c5c582cc9dd5ee34ffc0d5eefe.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -351,6 +413,40 @@
                 },
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.17.0"
+                }
+              },
+              "KinesisEventSource:CdkIotStackStream9740E320": {
+                "id": "KinesisEventSource:CdkIotStackStream9740E320",
+                "path": "CdkIotStack/LambdaKinesisStream/KinesisEventSource:CdkIotStackStream9740E320",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "CdkIotStack/LambdaKinesisStream/KinesisEventSource:CdkIotStackStream9740E320/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::Lambda::EventSourceMapping",
+                      "aws:cdk:cloudformation:props": {
+                        "functionName": {
+                          "Ref": "LambdaKinesisStream88AE1F2E"
+                        },
+                        "batchSize": 100,
+                        "eventSourceArn": {
+                          "Fn::GetAtt": [
+                            "Stream790BDEE4",
+                            "Arn"
+                          ]
+                        },
+                        "startingPosition": "TRIM_HORIZON"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_lambda.CfnEventSourceMapping",
+                      "version": "2.17.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.EventSourceMapping",
                   "version": "2.17.0"
                 }
               }

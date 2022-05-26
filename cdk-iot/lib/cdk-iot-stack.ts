@@ -17,6 +17,9 @@ import * as logs from 'aws-cdk-lib/aws-logs'
 import * as glue from 'aws-cdk-lib/aws-glue'
 import * as athena from 'aws-cdk-lib/aws-athena'
 
+import * as iot from 'aws-cdk-lib/aws-iot';
+
+
 export class CdkIotStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
@@ -42,8 +45,9 @@ export class CdkIotStack extends Stack {
     });
 
     // kinesis data stream
+    const streamName = 'themometer';
     const stream = new kinesisstream.Stream(this, 'Stream', {
-      streamName: 'themometer',
+      streamName: streamName,
       retentionPeriod: cdk.Duration.hours(48),
       streamMode: kinesisstream.StreamMode.ON_DEMAND
     });
@@ -79,6 +83,47 @@ export class CdkIotStack extends Stack {
       }
     }); 
 
+    // connect lambda for kinesis with kinesis data stream
+    const eventSource = new lambdaEventSources.KinesisEventSource(stream, {
+      startingPosition: lambda.StartingPosition.TRIM_HORIZON,
+    });
+    lambdakinesis.addEventSource(eventSource);  
+
+
+    // 
+  /*  const topicRule = new iot.CfnTopicRule(this, 'TopicRule', {
+      sql: iot.IotSql.fromStringAsVer20160323("SELECT topic(2) as device_id, timestamp() as timestamp FROM 'device/+/data'"),
+    });
+    topicRule.addAction(new actions.LambdaFunctionAction(func)); */
+
+  /*  new iot.CfnTopicRule(this, 'TopicRule', {
+      topicRuleName: 'MyTopicRule', // optional
+      description: 'invokes the lambda function', // optional
+      sql: iot.IotSql.fromStringAsVer20160323("SELECT topic(2) as device_id, timestamp() as timestamp FROM 'device/+/data'"),
+      actions: [new actions.LambdaFunctionAction(func)],
+    }); */
+
+    new iot.CfnTopicRule(this, "TopicRule", {
+      topicRulePayload: {
+        actions: [
+          {
+            kinesis: {
+              streamName: streamName,
+              roleArn: 'arn:aws:iam::677146750822:role/service-role/bus-location-info-insert-rule',   // <------ To-Do
+              partitionKey: '${clientToken}',
+            },
+          },
+        /*  {
+            iotEvents: {}, // Here is where the error occurs
+          }, */
+        ],
+        sql: "SELECT * FROM '$aws/things/0123501CB56E162101/shadow/update'",
+        ruleDisabled: false,
+        // errorAction: new actions.CloudWatchLogsAction(logGroup),
+      },
+      ruleName: "themometer",
+    });
+
     // Lambda - kinesisInfo
 /*    const lambdafirehose = new lambda.Function(this, "LimbdaKinesisFirehose", {
       description: 'update event sources',
@@ -94,11 +139,7 @@ export class CdkIotStack extends Stack {
       description: 'The arn of lambda for kinesis',
     });
 
-    // connect lambda for kinesis with kinesis data stream
-    const eventSource = new lambdaEventSources.KinesisEventSource(stream, {
-      startingPosition: lambda.StartingPosition.TRIM_HORIZON,
-    });
-    lambdakinesis.addEventSource(eventSource);    
+      
 
     // Lambda - Updatethemometer
     const lambdathemometer = new lambda.Function(this, "Lambdathemometer", {
@@ -113,12 +154,6 @@ export class CdkIotStack extends Stack {
     });  
     dataTable.grantReadWriteData(lambdathemometer);
 
-    // cron job - EventBridge
-    const rule = new events.Rule(this, 'Cron', {
-      description: "Schedule a Lambda to save arrival time of buses",
-      schedule: events.Schedule.expression('rate(1 minute)'),
-    }); 
-    rule.addTarget(new targets.LambdaFunction(lambdathemometer));
 
     // generate a table by crawler 
     const crawlerRole = new iam.Role(this, "crawlerRole", {

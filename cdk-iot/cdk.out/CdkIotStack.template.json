@@ -217,6 +217,53 @@
         "aws:cdk:path": "CdkIotStack/LambdaKinesisStream/ServiceRole/Resource"
       }
     },
+    "LambdaKinesisStreamServiceRoleDefaultPolicyF267DCB3": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "kinesis:DescribeStreamSummary",
+                "kinesis:GetRecords",
+                "kinesis:GetShardIterator",
+                "kinesis:ListShards",
+                "kinesis:SubscribeToShard",
+                "kinesis:DescribeStream",
+                "kinesis:ListStreams"
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "Stream790BDEE4",
+                  "Arn"
+                ]
+              }
+            },
+            {
+              "Action": "kinesis:DescribeStream",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "Stream790BDEE4",
+                  "Arn"
+                ]
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "LambdaKinesisStreamServiceRoleDefaultPolicyF267DCB3",
+        "Roles": [
+          {
+            "Ref": "LambdaKinesisStreamServiceRole1ED1B3BD"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "CdkIotStack/LambdaKinesisStream/ServiceRole/DefaultPolicy/Resource"
+      }
+    },
     "LambdaKinesisStream88AE1F2E": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
@@ -224,7 +271,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "ed6fffc6b11d28df8b97b69cf4d9345c5249070210a3e44e818722f725484176.zip"
+          "S3Key": "9ae5d216d4fe071dc02a9c3e0690e7e102b766c5c582cc9dd5ee34ffc0d5eefe.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -238,19 +285,39 @@
         "Timeout": 3
       },
       "DependsOn": [
+        "LambdaKinesisStreamServiceRoleDefaultPolicyF267DCB3",
         "LambdaKinesisStreamServiceRole1ED1B3BD"
       ],
       "Metadata": {
         "aws:cdk:path": "CdkIotStack/LambdaKinesisStream/Resource",
-        "aws:asset:path": "asset.ed6fffc6b11d28df8b97b69cf4d9345c5249070210a3e44e818722f725484176",
+        "aws:asset:path": "asset.9ae5d216d4fe071dc02a9c3e0690e7e102b766c5c582cc9dd5ee34ffc0d5eefe",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
+      }
+    },
+    "LambdaKinesisStreamKinesisEventSourceCdkIotStackStream9740E3205D1EAF24": {
+      "Type": "AWS::Lambda::EventSourceMapping",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "LambdaKinesisStream88AE1F2E"
+        },
+        "BatchSize": 100,
+        "EventSourceArn": {
+          "Fn::GetAtt": [
+            "Stream790BDEE4",
+            "Arn"
+          ]
+        },
+        "StartingPosition": "TRIM_HORIZON"
+      },
+      "Metadata": {
+        "aws:cdk:path": "CdkIotStack/LambdaKinesisStream/KinesisEventSource:CdkIotStackStream9740E320/Resource"
       }
     },
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAA/1VQy47CMAz8lr2n5nWAK1Ta66LyASgkBpk2ySpOQCjKv9MQHuI045mxLXsOsyVMf+SVG6X7ZqADpF2QqhejtE+8gLSJqscg2qN9sgpbN5C6feRnXYuNZMyiJ4tMXCZ6lKZkK8tikOagJaTfaFUgZ4v34lmQNJA6N2CRC2bBi71kxsCwLpBFGzk40yG76FUNvvmXtfXuQhq9eDSOx53Inkr+L4b/+DisdVZTXW2dRjjz5DJbwXT8zJmJGh9tIIPQVbwDWPYj3DUBAAA="
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/2VQQU7DMBB8C3dnaekBrjSCG6JKH1C59lJtE9uR1w5Ckf9ObEetEKeZndldjeYJts+weZDf3CjdNwOdYT4GqXqxSKeZdzDvo+oxiPbLrqzCwQ2kfu7yOtdhLxmT6MkiE+ePHqXJu5UlMUhz1hLm92hVIGezd+NvE9pwdNEr/JDjSPaS7f9qEiQNzJ0bMC8UvMeqLAnenSQzBobXDEm0kYMzHXL5VS5v/I918G4ijV6Uw6WWyxrlM4YxlkpaZzXl0ElYpxGu/DhtX2CzdHplosZHG8ggdBV/AYqY2S9vAQAA"
       },
       "Metadata": {
         "aws:cdk:path": "CdkIotStack/CDKMetadata/Default"

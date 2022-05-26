@@ -23,7 +23,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/5dce6fdf817740164babc538561d539a981bc2a34968cd34e90cff1f53803a41.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/895b367369d4272c9f047b8860ed7e955a166556fd920eb190302a9e56536f6e.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -111,10 +111,22 @@
             "data": "LambdaKinesisStreamServiceRole1ED1B3BD"
           }
         ],
+        "/CdkIotStack/LambdaKinesisStream/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaKinesisStreamServiceRoleDefaultPolicyF267DCB3"
+          }
+        ],
         "/CdkIotStack/LambdaKinesisStream/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "LambdaKinesisStream88AE1F2E"
+          }
+        ],
+        "/CdkIotStack/LambdaKinesisStream/KinesisEventSource:CdkIotStackStream9740E320/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaKinesisStreamKinesisEventSourceCdkIotStackStream9740E3205D1EAF24"
           }
         ],
         "/CdkIotStack/CDKMetadata/Default": [

@@ -183,10 +183,74 @@
         "aws:cdk:path": "CdkIotStack/Stream/Resource"
       }
     },
+    "LambdaKinesisStreamServiceRole1ED1B3BD": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "CdkIotStack/LambdaKinesisStream/ServiceRole/Resource"
+      }
+    },
+    "LambdaKinesisStream88AE1F2E": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+          },
+          "S3Key": "ed6fffc6b11d28df8b97b69cf4d9345c5249070210a3e44e818722f725484176.zip"
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "LambdaKinesisStreamServiceRole1ED1B3BD",
+            "Arn"
+          ]
+        },
+        "Description": "get eventinfo from kinesis data stream",
+        "Handler": "index.handler",
+        "Runtime": "nodejs14.x",
+        "Timeout": 3
+      },
+      "DependsOn": [
+        "LambdaKinesisStreamServiceRole1ED1B3BD"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "CdkIotStack/LambdaKinesisStream/Resource",
+        "aws:asset:path": "asset.ed6fffc6b11d28df8b97b69cf4d9345c5249070210a3e44e818722f725484176",
+        "aws:asset:is-bundled": false,
+        "aws:asset:property": "Code"
+      }
+    },
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAA/1VPQQ7CIBB8i3eKrR70qn2ATX2AqbA2W1owLNQYwt8tYtJ4mtmZyWZmx6sDLzfdiwohVTHinYer64Rii3QLtOfh7IUCx+qH/rEMjRlRvFc535Ep1EBI6Y2FbkqBzGJktSdnphbIeCsgWSv/sxprZpRg2YkI3FKoR92n/MW7p/+WqY2W6NDoyLSRwAfaztWRl8uagRAL67XDCXib8QPzJkX46QAAAA=="
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/1VQy47CMAz8lr2n5nWAK1Ta66LyASgkBpk2ySpOQCjKv9MQHuI045mxLXsOsyVMf+SVG6X7ZqADpF2QqhejtE+8gLSJqscg2qN9sgpbN5C6feRnXYuNZMyiJ4tMXCZ6lKZkK8tikOagJaTfaFUgZ4v34lmQNJA6N2CRC2bBi71kxsCwLpBFGzk40yG76FUNvvmXtfXuQhq9eDSOx53Inkr+L4b/+DisdVZTXW2dRjjz5DJbwXT8zJmJGh9tIIPQVbwDWPYj3DUBAAA="
       },
       "Metadata": {
         "aws:cdk:path": "CdkIotStack/CDKMetadata/Default"

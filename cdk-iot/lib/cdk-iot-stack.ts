@@ -68,11 +68,11 @@ export class CdkIotStack extends Stack {
         kinesisStream: stream,
     }); */
 
-/*    // Lambda - kinesisInfo
+    // Lambda - kinesisInfo for test (debug)
     const lambdakinesis = new lambda.Function(this, "LambdaKinesisStream", {
       description: 'get eventinfo from kinesis data stream',
       runtime: lambda.Runtime.NODEJS_14_X, 
-      code: lambda.Code.fromAsset("repositories/lambda-kinesis-stream"), 
+      code: lambda.Code.fromAsset("../lambda-kinesis-stream"), 
       handler: "index.handler", 
       timeout: cdk.Duration.seconds(3),
       environment: {

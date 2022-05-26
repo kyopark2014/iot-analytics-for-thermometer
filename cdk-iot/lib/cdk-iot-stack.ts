@@ -22,7 +22,7 @@ export class CdkIotStack extends Stack {
     super(scope, id, props);
 
     // S3
-    const s3Bucket = new s3.Bucket(this, "cdk-businfo",{
+    const s3Bucket = new s3.Bucket(this, "cdk-themometer",{
       removalPolicy: cdk.RemovalPolicy.DESTROY,
       autoDeleteObjects: true,
       publicReadAccess: false,
@@ -43,7 +43,7 @@ export class CdkIotStack extends Stack {
 
     // kinesis data stream
     const stream = new kinesisstream.Stream(this, 'Stream', {
-      streamName: 'businfo',
+      streamName: 'themometer',
       retentionPeriod: cdk.Duration.hours(48),
       streamMode: kinesisstream.StreamMode.ON_DEMAND
     });
@@ -56,9 +56,9 @@ export class CdkIotStack extends Stack {
     stream.metricGetRecordsSuccess();
     stream.metricPutRecordSuccess();
 
-    // DynamoDB
-    const tableName = 'dynamodb-businfo';
-    const dataTable = new dynamodb.Table(this, 'dynamodb-businfo', {
+  /*  // DynamoDB
+    const tableName = 'dynamodb-themometer';
+    const dataTable = new dynamodb.Table(this, 'dynamodb-themometer', {
         tableName: tableName,
         partitionKey: { name: 'RouteId', type: dynamodb.AttributeType.STRING },
         sortKey: { name: 'Timestamp', type: dynamodb.AttributeType.STRING },
@@ -66,9 +66,9 @@ export class CdkIotStack extends Stack {
         removalPolicy: cdk.RemovalPolicy.DESTROY,
         //timeToLiveAttribute: 'ttl',
         kinesisStream: stream,
-    });
+    }); */
 
-    // Lambda - kinesisInfo
+/*    // Lambda - kinesisInfo
     const lambdakinesis = new lambda.Function(this, "LambdaKinesisStream", {
       description: 'get eventinfo from kinesis data stream',
       runtime: lambda.Runtime.NODEJS_14_X, 
@@ -80,7 +80,7 @@ export class CdkIotStack extends Stack {
     }); 
 
     // Lambda - kinesisInfo
-    const lambdafirehose = new lambda.Function(this, "LimbdaKinesisFirehose", {
+/*    const lambdafirehose = new lambda.Function(this, "LimbdaKinesisFirehose", {
       description: 'update event sources',
       runtime: lambda.Runtime.NODEJS_14_X, 
       code: lambda.Code.fromAsset("repositories/lambda-kinesis-firehose"), 
@@ -100,25 +100,25 @@ export class CdkIotStack extends Stack {
     });
     lambdakinesis.addEventSource(eventSource);    
 
-    // Lambda - UpdateBusInfo
-    const lambdaBusInfo = new lambda.Function(this, "LambdaBusInfo", {
-      description: 'Lambda for businfo',
+    // Lambda - Updatethemometer
+    const lambdathemometer = new lambda.Function(this, "Lambdathemometer", {
+      description: 'Lambda for themometer',
       runtime: lambda.Runtime.NODEJS_14_X, 
-      code: lambda.Code.fromAsset("repositories/lambda-businfo"), 
+      code: lambda.Code.fromAsset("repositories/lambda-themometer"), 
       handler: "index.handler", 
       timeout: cdk.Duration.seconds(10),
       environment: {
         tableName: tableName,
       }
     });  
-    dataTable.grantReadWriteData(lambdaBusInfo);
+    dataTable.grantReadWriteData(lambdathemometer);
 
     // cron job - EventBridge
     const rule = new events.Rule(this, 'Cron', {
       description: "Schedule a Lambda to save arrival time of buses",
       schedule: events.Schedule.expression('rate(1 minute)'),
     }); 
-    rule.addTarget(new targets.LambdaFunction(lambdaBusInfo));
+    rule.addTarget(new targets.LambdaFunction(lambdathemometer));
 
     // generate a table by crawler 
     const crawlerRole = new iam.Role(this, "crawlerRole", {
@@ -149,13 +149,13 @@ export class CdkIotStack extends Stack {
     });
     
     // crawler 
-    const glueDatabaseName = "businfo";
+    const glueDatabaseName = "themometer";
     const crawler = new glue.CfnCrawler(this, "TranslateToParquetGlueCrawler", {
       name: "translate-parquet-crawler",
       role: crawlerRole.roleArn,
       targets: {
           s3Targets: [
-              {path: 's3://'+s3Bucket.bucketName+'/businfo'}, 
+              {path: 's3://'+s3Bucket.bucketName+'/themometer'}, 
           ]
       },
       databaseName: glueDatabaseName,
@@ -230,7 +230,7 @@ export class CdkIotStack extends Stack {
         encryptionConfiguration: {
           noEncryptionConfig: "NoEncryption"
         },
-        prefix: "businfo/",
+        prefix: "themometer/",
         errorOutputPrefix: 'eror/',
         roleArn: translationRole.roleArn,
         processingConfiguration: {
@@ -248,21 +248,20 @@ export class CdkIotStack extends Stack {
           schemaConfiguration: {
             databaseName: glueDatabaseName, // Target Glue database name
             roleArn: translationRole.roleArn,
-            tableName: 'businfo' // Target Glue table name
+            tableName: 'themometer' // Target Glue table name
           }, 
         }, 
       }
-    });      
+    });      */
 
     // athena workgroup
   /*  new athena.CfnWorkGroup(this, 'analytics-athena-workgroup', {
-      name: `businfo-workgroup`,
+      name: `themometer-workgroup`,
       workGroupConfiguration: {
         resultConfiguration: {
           outputLocation: `s3://${s3Bucket.bucketName}`,
         },
       },
     }) */
-  }
   }
 }

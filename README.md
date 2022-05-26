@@ -26,7 +26,7 @@ Thermometer based on AWS Edukit에 따라 Edukit에서 온도를 측정하는 Th
 }
 ```
 
-## 온도데이터를 분석하기 위한 시스템 준비 
+## 온도 데이터를 분석하기 위한 시스템 준비 
 
 아래와 같이 AWS CDK를 이용하여 [M5Stack에서 전달된 온도 데이터](https://github.com/kyopark2014/iot-analytics/tree/main/aws-iot-thermometer)를 저장하고 분석하는 intfra structure를 생성합니다. 
 

@@ -11,7 +11,7 @@ Makefile:9: /make/project.mk: No such file or directory
 make: *** No rule to make target `/make/project.mk'.  Stop.
 
 
-# Make data base, printed on Thu May 26 00:52:12 2022
+# Make data base, printed on Thu May 26 07:36:11 2022
 
 # Variables
 
@@ -46,7 +46,7 @@ PROJECT_VER := 1.3.1
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/4m/611jh1c17vqckzxmy00tjpt80000gr/T/vscode-ipc-98af5afb-1cfe-4453-90ac-d662ca1a7c2c.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/4m/611jh1c17vqckzxmy00tjpt80000gr/T/vscode-ipc-b41e0661-395f-4569-a6ba-446e44ec78de.sock
 # environment
 VSCODE_CWD = /
 # environment
@@ -228,6 +228,6 @@ Makefile:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4070 / max = 4070 / min = 4070 / avg = 4070
 
-# Finished Make data base on Thu May 26 00:52:12 2022
+# Finished Make data base on Thu May 26 07:36:11 2022
 
  

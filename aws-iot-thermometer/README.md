@@ -1,3 +1,51 @@
-# AWS IoT EduKit — Smart Thermometer
+# Thermometer based on AWS Edukit
 
-This is the corresponding code for AWS IoT EduKit's [Smart Thermostat](https://edukit.workshop.aws/en/smart-thermostat.html) tutorial. This code is made to work exclusively with the M5Stack Core2 ESP32 IoT Development Kit for AWS IoT EduKit available on [Amazon.com](https://www.amazon.com/dp/B08VGRZYJR) or on the [M5Stack store](https://m5stack.com/products/m5stack-core2-esp32-iot-development-kit-for-aws-iot-edukit).
+여기서는 AWS IoT EduKit을 이용하여 온도 데이터를 json으로 AWS IoT Core로 전송합니다.
+
+## AWS Edukit(M5Stack)에서 온도 측정 및 MQTT 전송
+
+1) 아래와 같이 git을 다운로드 합니다. 
+
+```c
+$ git clone https://github.com/kyopark2014/iot-analytics
+```
+
+2) [Device 인증서 생성](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/certification.md)을 참조하여 M5Stack을 위한 인증서를 생성합니다. 이 과정을 진행하면, "M5Stack.cert.pem", "M5Stack.private.key", "M5Stack.public.key", "AmazonRootCA1.cer"가 생성됩니다.
+
+3) 아래와 같이 "main/certs" 폴더에 "aws-root-ca.pem", "certificate.pem.crt", "private.pem.key"을 생성합니다. 이때, "aws-root-ca.pem"은 "AmazonRootCA1.cer", "certificate.pem.crt"은 "M5Stack.cert.pem", "private.pem.key"은 "M5Stack.private.key"와 동일한 파일이므로, 파일을 열어서 동일하게 복사하여 줍니다.
+
+![noname](https://user-images.githubusercontent.com/52392004/170308677-41474fe7-935c-40c0-ac0d-1b8051000751.png)
+
+4) [IoT Core Endpoint](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/endpoint.md)을 참조하여 접속할 IoT Core의 Endpoint를 확인합니다.
+
+"sdkconfig"에서 "CONFIG_AWS_IOT_MQTT_HOST"의 값을 IoT Core의 Endpoint로 변경합니다.
+
+![noname](https://user-images.githubusercontent.com/52392004/170382445-dd3aec37-cde7-49aa-8b75-a42e66c81471.png)
+
+
+5) [Visual Studio Code에 PlatformIO IDE Extension 설치 및 활용](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/edukit-platformio.md)에 따라 Visual Studio Code에서 M5Stack을 디버깅할 수 있는 환경을 만들고 다운로드 받은 "aws-iot-thermostat" 프로젝트를 오픈 합니다.
+
+6) 아래와 같이 [PlatformIO]를 선택하여 [PROJECT TASKS]에서 [Build]와 [Update and Monitor]를 순차적으로 진행합니다. 
+
+![noname](https://user-images.githubusercontent.com/52392004/170312397-c3d7a1f8-5823-4668-acb9-ceedb26376c9.png)
+
+또는 아래와 같이 terminal에서 명령어로 진행 할 수 있습니다. 
+
+-  Build
+
+```c
+$ pio run --environment core2foraws
+```
+
+
+- Flash the Firmware and Monitor
+
+```c
+$ pio run --environment core2foraws --target upload --target monitor 
+```
+
+- Monitoring the device
+
+```c
+$ pio run --environment core2foraws --target monitor
+```

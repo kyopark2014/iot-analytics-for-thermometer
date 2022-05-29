@@ -32,3 +32,9 @@ $ cd cdk-iot
 $ cdk synth
 $ cdk deploy
 ```
+
+## Athena에서 조회한 결과
+
+<img width="975" alt="image" src="https://user-images.githubusercontent.com/52392004/170881634-c026bf72-8b4d-4c1a-af11-a87af5bf3025.png">
+
+```c

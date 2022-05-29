@@ -11,43 +11,31 @@ exports.handler = async (event) => {
         let body = JSON.parse(data);
         console.log('body: %j', body);
 
-        if(body['state'] && !body['metadata']) {
-            let temperature = body['state']['reported']['temperature'];
-            console.log('temperature: '+temperature);
+        let temperature = body['state']['reported']['temperature'];
+        console.log('temperature: '+temperature);
     
-            let timestamp = records[i]['approximateArrivalTimestamp'];
-            console.log('timestamp: '+timestamp);
+        let timestamp = records[i]['approximateArrivalTimestamp'];
+        console.log('timestamp: '+timestamp);
     
-            let clientToken = body['clientToken'];        
-            let pos = clientToken.indexOf('-');
-            let deviceId = clientToken.substr(0, pos);
-            console.log('deviceId: '+deviceId);
+        let clientToken = body['clientToken'];
+        let deviceId = clientToken.substr(0, clientToken.indexOf('-'));
+        console.log('deviceId: '+deviceId);
                     
-            const converted = {
-                deviceId: deviceId,
-                timestamp: timestamp,
-                temperature: temperature,
-            };
-            console.log('event: %j',converted);
+        const converted = {
+            deviceId: deviceId,
+            timestamp: timestamp,
+            temperature: temperature,
+        };
+        console.log('event: %j',converted);
     
-            let binary = Buffer.from(JSON.stringify(converted), 'utf8').toString('base64');
+        let binary = Buffer.from(JSON.stringify(converted), 'utf8').toString('base64');
             
-            const outRecord = {
-                recordId: recordId,
-                result: 'Ok',
-                data: binary
-            }
-            outRecords.push(outRecord); 
+        const outRecord = {
+            recordId: recordId,
+            result: 'Ok',
+            data: binary
         }
-        else {
-            console.log('ignore it.');
-            const outRecord = {
-                recordId: recordId,
-                result: 'Dropped',
-                data: ''
-            }
-            outRecords.push(outRecord); 
-        }
+        outRecords.push(outRecord); 
     }; 
     console.log('body: %j', {'records': outRecords});
     

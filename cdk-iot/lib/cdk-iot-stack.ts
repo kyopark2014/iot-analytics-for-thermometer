@@ -76,19 +76,8 @@ export class CdkIotStack extends Stack {
     });
     lambdakinesis.addEventSource(eventSource);  
 
-  /*  const topicRule = new iot.CfnTopicRule(this, 'TopicRule', {
-      sql: iot.IotSql.fromStringAsVer20160323("SELECT topic(2) as device_id, timestamp() as timestamp FROM 'device/+/data'"),
-    });
-    topicRule.addAction(new actions.LambdaFunctionAction(func)); */
-
-  /*  new iot.CfnTopicRule(this, 'TopicRule', {
-      topicRuleName: 'MyTopicRule', // optional
-      description: 'invokes the lambda function', // optional
-      sql: iot.IotSql.fromStringAsVer20160323("SELECT topic(2) as device_id, timestamp() as timestamp FROM 'device/+/data'"),
-      actions: [new actions.LambdaFunctionAction(func)],
-    }); */
-
- /*   new iot.CfnTopicRule(this, "TopicRule", {
+   
+    new iot.CfnTopicRule(this, "TopicRule", {
       topicRulePayload: {
         actions: [
           {
@@ -102,12 +91,12 @@ export class CdkIotStack extends Stack {
         //    iotEvents: {}, // Here is where the error occurs
         //  }, 
         ],
-        sql: "SELECT * FROM '$aws/things/0123501CB56E162101/shadow/update'",
+        sql: "SELECT * from '$aws/things/+/shadow/update'",
         ruleDisabled: false,
         // errorAction: new actions.CloudWatchLogsAction(logGroup),
       },
-      ruleName: "themometer",
-    }); */
+      ruleName: "test-themometer",
+    }); 
 
     // Lambda - kinesisInfo
     const lambdafirehose = new lambda.Function(this, "LimbdaKinesisFirehose", {

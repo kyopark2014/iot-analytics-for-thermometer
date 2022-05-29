@@ -23,7 +23,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/6188ff8b2fd9f762ab97a8041483f0bcdb2aad1c5ed9875a3433d7646df7b545.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/7a5dd3947ca5c9e4924130d77e4c6b8629b69b475455f42ee0b76bcfa25f1f47.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -39,22 +39,22 @@
         "CdkIotStack.assets"
       ],
       "metadata": {
-        "/CdkIotStack/cdk-themometer/Resource": [
+        "/CdkIotStack/themometer/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "cdkthemometer83F2D6F9"
+            "data": "themometerCCBBC1EC"
           }
         ],
-        "/CdkIotStack/cdk-themometer/Policy/Resource": [
+        "/CdkIotStack/themometer/Policy/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "cdkthemometerPolicy28307B2E"
+            "data": "themometerPolicy1CBD7141"
           }
         ],
-        "/CdkIotStack/cdk-themometer/AutoDeleteObjectsCustomResource/Default": [
+        "/CdkIotStack/themometer/AutoDeleteObjectsCustomResource/Default": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "cdkthemometerAutoDeleteObjectsCustomResource7352B1D9"
+            "data": "themometerAutoDeleteObjectsCustomResource02F3352A"
           }
         ],
         "/CdkIotStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Role": [
@@ -121,6 +121,30 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "LambdaKinesisStreamKinesisEventSourceCdkIotStackStream9740E3205D1EAF24"
+          }
+        ],
+        "/CdkIotStack/ruleRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ruleRole5807C10C"
+          }
+        ],
+        "/CdkIotStack/ruleRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ruleRoleDefaultPolicy18B4CD88"
+          }
+        ],
+        "/CdkIotStack/RuleRoleArn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RuleRoleArn"
+          }
+        ],
+        "/CdkIotStack/TopicRule": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "TopicRule"
           }
         ],
         "/CdkIotStack/LimbdaKinesisFirehose/ServiceRole/Resource": [

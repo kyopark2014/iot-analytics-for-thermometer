@@ -16,13 +16,13 @@
         "id": "CdkIotStack",
         "path": "CdkIotStack",
         "children": {
-          "cdk-themometer": {
-            "id": "cdk-themometer",
-            "path": "CdkIotStack/cdk-themometer",
+          "themometer": {
+            "id": "themometer",
+            "path": "CdkIotStack/themometer",
             "children": {
               "Resource": {
                 "id": "Resource",
-                "path": "CdkIotStack/cdk-themometer/Resource",
+                "path": "CdkIotStack/themometer/Resource",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::S3::Bucket",
                   "aws:cdk:cloudformation:props": {
@@ -41,16 +41,16 @@
               },
               "Policy": {
                 "id": "Policy",
-                "path": "CdkIotStack/cdk-themometer/Policy",
+                "path": "CdkIotStack/themometer/Policy",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "CdkIotStack/cdk-themometer/Policy/Resource",
+                    "path": "CdkIotStack/themometer/Policy/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::S3::BucketPolicy",
                       "aws:cdk:cloudformation:props": {
                         "bucket": {
-                          "Ref": "cdkthemometer83F2D6F9"
+                          "Ref": "themometerCCBBC1EC"
                         },
                         "policyDocument": {
                           "Statement": [
@@ -72,7 +72,7 @@
                               "Resource": [
                                 {
                                   "Fn::GetAtt": [
-                                    "cdkthemometer83F2D6F9",
+                                    "themometerCCBBC1EC",
                                     "Arn"
                                   ]
                                 },
@@ -82,7 +82,7 @@
                                     [
                                       {
                                         "Fn::GetAtt": [
-                                          "cdkthemometer83F2D6F9",
+                                          "themometerCCBBC1EC",
                                           "Arn"
                                         ]
                                       },
@@ -110,11 +110,11 @@
               },
               "AutoDeleteObjectsCustomResource": {
                 "id": "AutoDeleteObjectsCustomResource",
-                "path": "CdkIotStack/cdk-themometer/AutoDeleteObjectsCustomResource",
+                "path": "CdkIotStack/themometer/AutoDeleteObjectsCustomResource",
                 "children": {
                   "Default": {
                     "id": "Default",
-                    "path": "CdkIotStack/cdk-themometer/AutoDeleteObjectsCustomResource/Default",
+                    "path": "CdkIotStack/themometer/AutoDeleteObjectsCustomResource/Default",
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.CfnResource",
                       "version": "2.17.0"
@@ -377,7 +377,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "d98f48c0d4b1cc2397e5dd58b09b092735cbbff422624bfa34879ea31291ab63.zip"
+                      "s3Key": "9ae5d216d4fe071dc02a9c3e0690e7e102b766c5c582cc9dd5ee34ffc0d5eefe.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -433,6 +433,126 @@
             },
             "constructInfo": {
               "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.17.0"
+            }
+          },
+          "ruleRole": {
+            "id": "ruleRole",
+            "path": "CdkIotStack/ruleRole",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "CdkIotStack/ruleRole/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                  "aws:cdk:cloudformation:props": {
+                    "assumeRolePolicyDocument": {
+                      "Statement": [
+                        {
+                          "Action": "sts:AssumeRole",
+                          "Effect": "Allow",
+                          "Principal": {
+                            "Service": "iot.amazonaws.com"
+                          }
+                        }
+                      ],
+                      "Version": "2012-10-17"
+                    },
+                    "description": "Role of Rule for IoT"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                  "version": "2.17.0"
+                }
+              },
+              "DefaultPolicy": {
+                "id": "DefaultPolicy",
+                "path": "CdkIotStack/ruleRole/DefaultPolicy",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "CdkIotStack/ruleRole/DefaultPolicy/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                      "aws:cdk:cloudformation:props": {
+                        "policyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "kinesis:PutRecord",
+                              "Effect": "Allow",
+                              "Resource": {
+                                "Fn::GetAtt": [
+                                  "Stream790BDEE4",
+                                  "Arn"
+                                ]
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "policyName": "ruleRoleDefaultPolicy18B4CD88",
+                        "roles": [
+                          {
+                            "Ref": "ruleRole5807C10C"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                      "version": "2.17.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Policy",
+                  "version": "2.17.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_iam.Role",
+              "version": "2.17.0"
+            }
+          },
+          "RuleRoleArn": {
+            "id": "RuleRoleArn",
+            "path": "CdkIotStack/RuleRoleArn",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
+              "version": "2.17.0"
+            }
+          },
+          "TopicRule": {
+            "id": "TopicRule",
+            "path": "CdkIotStack/TopicRule",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::IoT::TopicRule",
+              "aws:cdk:cloudformation:props": {
+                "topicRulePayload": {
+                  "actions": [
+                    {
+                      "kinesis": {
+                        "streamName": "themometer",
+                        "roleArn": {
+                          "Fn::GetAtt": [
+                            "ruleRole5807C10C",
+                            "Arn"
+                          ]
+                        },
+                        "partitionKey": "${clientToken}"
+                      }
+                    }
+                  ],
+                  "sql": "SELECT * FROM '$aws/things/+/shadow/update'",
+                  "ruleDisabled": false
+                },
+                "ruleName": "themometer"
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_iot.CfnTopicRule",
               "version": "2.17.0"
             }
           },
@@ -525,7 +645,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "a647df9c1970bf38e0b92b73b681d610772039da261f01f0963ff06e80478a62.zip"
+                      "s3Key": "8a13b3f36b866eaa5a86999e0885de251a672c3858d2333514ff399054525624.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -616,7 +736,7 @@
                               "Resource": [
                                 {
                                   "Fn::GetAtt": [
-                                    "cdkthemometer83F2D6F9",
+                                    "themometerCCBBC1EC",
                                     "Arn"
                                   ]
                                 },
@@ -626,7 +746,7 @@
                                     [
                                       {
                                         "Fn::GetAtt": [
-                                          "cdkthemometer83F2D6F9",
+                                          "themometerCCBBC1EC",
                                           "Arn"
                                         ]
                                       },
@@ -693,7 +813,7 @@
                           [
                             "s3://",
                             {
-                              "Ref": "cdkthemometer83F2D6F9"
+                              "Ref": "themometerCCBBC1EC"
                             },
                             "/themometer"
                           ]
@@ -774,7 +894,7 @@
                               "Resource": [
                                 {
                                   "Fn::GetAtt": [
-                                    "cdkthemometer83F2D6F9",
+                                    "themometerCCBBC1EC",
                                     "Arn"
                                   ]
                                 },
@@ -784,7 +904,7 @@
                                     [
                                       {
                                         "Fn::GetAtt": [
-                                          "cdkthemometer83F2D6F9",
+                                          "themometerCCBBC1EC",
                                           "Arn"
                                         ]
                                       },
@@ -870,7 +990,7 @@
                 "extendedS3DestinationConfiguration": {
                   "bucketArn": {
                     "Fn::GetAtt": [
-                      "cdkthemometer83F2D6F9",
+                      "themometerCCBBC1EC",
                       "Arn"
                     ]
                   },
@@ -959,7 +1079,7 @@
                         [
                           "s3://",
                           {
-                            "Ref": "cdkthemometer83F2D6F9"
+                            "Ref": "themometerCCBBC1EC"
                           }
                         ]
                       ]

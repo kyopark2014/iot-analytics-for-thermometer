@@ -11,13 +11,11 @@ import * as kinesisfirehose from 'aws-cdk-lib/aws-kinesisfirehose';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as lambdaEventSources from 'aws-cdk-lib/aws-lambda-event-sources';
 import * as cfn from 'aws-cdk-lib/aws-cloudformation';
-import * as logs from 'aws-cdk-lib/aws-logs'
-
+import * as logs from 'aws-cdk-lib/aws-logs';
 import * as glue from 'aws-cdk-lib/aws-glue'
 import * as athena from 'aws-cdk-lib/aws-athena'
 
 import * as iot from 'aws-cdk-lib/aws-iot';
-
 
 export class CdkIotStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -76,26 +74,40 @@ export class CdkIotStack extends Stack {
     });
     lambdakinesis.addEventSource(eventSource);  
 
-   
+    // generate a table by crawler 
+    const ruleRole = new iam.Role(this, "ruleRole", {
+      assumedBy: new iam.ServicePrincipal("iot.amazonaws.com"),
+      description: "Role of Rule for IoT",
+    });
+    ruleRole.addToPolicy(new iam.PolicyStatement({
+      effect: iam.Effect.ALLOW,
+      actions: [
+        "kinesis:PutRecord",
+      ],
+      resources: [
+        stream.streamArn,
+      ],
+    }));
+    new cdk.CfnOutput(this, 'RuleRoleArn', {
+      value: ruleRole.roleArn,
+      description: 'The arn of RuleRole for IoT',
+    });
+
     new iot.CfnTopicRule(this, "TopicRule", {
       topicRulePayload: {
         actions: [
           {
             kinesis: {
               streamName: streamName,
-              roleArn: 'arn:aws:iam::677146750822:role/service-role/bus-location-info-insert-rule',   // <------ To-Do
+              roleArn: ruleRole.roleArn,   
               partitionKey: '${clientToken}',
             },
           },
-        //  {
-        //    iotEvents: {}, // Here is where the error occurs
-        //  }, 
         ],
-        sql: "SELECT * from '$aws/things/+/shadow/update'",
+        sql: "SELECT * FROM '$aws/things/+/shadow/update'",
         ruleDisabled: false,
-        // errorAction: new actions.CloudWatchLogsAction(logGroup),
       },
-      ruleName: "test-themometer",
+      ruleName: "themometer",
     }); 
 
     // Lambda - kinesisInfo

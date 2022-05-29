@@ -3,8 +3,8 @@
 # project subdirectory.
 #
 
-PROJECT_NAME := AWS_IoT_EduKit-Smart-Thermostat
-PROJECT_VER := 1.3.1
+PROJECT_NAME := AWS_IoT_Anlytics-for-Thermometer
+PROJECT_VER := 1.0.0
 
 include $(IDF_PATH)/make/project.mk
 

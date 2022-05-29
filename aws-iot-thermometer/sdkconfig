@@ -1545,7 +1545,7 @@ CONFIG_LV_USE_WIN=y
 #
 # Amazon Web Services IoT Platform
 #
-CONFIG_AWS_IOT_MQTT_HOST="sample4rul5-ats.iot.ap-northeast-2.amazonaws.com"
+CONFIG_AWS_IOT_MQTT_HOST="anr3wll34rul5-ats.iot.ap-northeast-2.amazonaws.com"
 CONFIG_AWS_IOT_MQTT_PORT=8883
 CONFIG_AWS_IOT_MQTT_TX_BUF_LEN=512
 CONFIG_AWS_IOT_MQTT_RX_BUF_LEN=512

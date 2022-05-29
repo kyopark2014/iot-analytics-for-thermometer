@@ -14,15 +14,12 @@ Thermometer based on AWS Edukit에 따라 Edukit에서 온도를 측정하는 Th
 
 ```java
 {
-  "state": {
-    "reported": {
-      "temperature": 17.820343,
-      "sound": 8,
-      "roomOccupancy": false,
-      "hvacStatus": "STANDBY"
-    }
-  },
-  "clientToken": "0123501CB56E162101-77"
+    "state": {
+        "reported": {
+            "temperature": 20.182835
+        }
+    },
+    "clientToken": "0123501CB56E162101-3"
 }
 ```
 

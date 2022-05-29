@@ -10,7 +10,7 @@
 2) 아래와 같이 [M5Stack](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/m5stack.md)로 Thermometer로 동작시키기 위한 git 소스를 다운로드 합니다. 
 
 ```c
-$ git clone https://github.com/kyopark2014/iot-analytics
+$ git clone https://github.com/kyopark2014/iot-analytics-for-thermometer
 ```
 
 3) 아래와 같이 "main/certs" 폴더에 "aws-root-ca.pem", "certificate.pem.crt", "private.pem.key"을 생성합니다. 이때, "aws-root-ca.pem"은 "AmazonRootCA1.cer", "certificate.pem.crt"은 "M5Stack.cert.pem", "private.pem.key"은 "M5Stack.private.key"와 동일한 파일이므로, 파일을 열어서 동일하게 복사하여 줍니다.

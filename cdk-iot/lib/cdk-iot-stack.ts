@@ -3,7 +3,6 @@ import { Construct } from 'constructs';
 
 import * as cdk from 'aws-cdk-lib';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
-import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import * as events from 'aws-cdk-lib/aws-events';
 import * as targets from 'aws-cdk-lib/aws-events-targets';
@@ -25,7 +24,7 @@ export class CdkIotStack extends Stack {
     super(scope, id, props);
 
     // S3
-    const s3Bucket = new s3.Bucket(this, "cdk-themometer",{
+    const s3Bucket = new s3.Bucket(this, "themometer",{
       removalPolicy: cdk.RemovalPolicy.DESTROY,
       autoDeleteObjects: true,
       publicReadAccess: false,
@@ -49,30 +48,18 @@ export class CdkIotStack extends Stack {
     const stream = new kinesisstream.Stream(this, 'Stream', {
       streamName: streamName,
       retentionPeriod: cdk.Duration.hours(48),
+      encryption: kinesisstream.StreamEncryption.UNENCRYPTED, 
       streamMode: kinesisstream.StreamMode.ON_DEMAND
     });
     new cdk.CfnOutput(this, 'StreamARN', {
       value: stream.streamArn,
       description: 'The arn of kinesis stream',
     });
-
     // using pre-defined metric method
     stream.metricGetRecordsSuccess();
     stream.metricPutRecordSuccess();
 
-  /*  // DynamoDB
-    const tableName = 'dynamodb-themometer';
-    const dataTable = new dynamodb.Table(this, 'dynamodb-themometer', {
-        tableName: tableName,
-        partitionKey: { name: 'RouteId', type: dynamodb.AttributeType.STRING },
-        sortKey: { name: 'Timestamp', type: dynamodb.AttributeType.STRING },
-        billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
-        removalPolicy: cdk.RemovalPolicy.DESTROY,
-        //timeToLiveAttribute: 'ttl',
-        kinesisStream: stream,
-    }); */
-
-    // Lambda - kinesisInfo for test (debug)
+    // Lambda - kinesisInfo for test (debug)/drskur/video-search/blob/main/stack/demo-app-stack.ts
     const lambdakinesis = new lambda.Function(this, "LambdaKinesisStream", {
       description: 'get eventinfo from kinesis data stream',
       runtime: lambda.Runtime.NODEJS_14_X, 
@@ -89,8 +76,6 @@ export class CdkIotStack extends Stack {
     });
     lambdakinesis.addEventSource(eventSource);  
 
-
-    // 
   /*  const topicRule = new iot.CfnTopicRule(this, 'TopicRule', {
       sql: iot.IotSql.fromStringAsVer20160323("SELECT topic(2) as device_id, timestamp() as timestamp FROM 'device/+/data'"),
     });
@@ -103,7 +88,7 @@ export class CdkIotStack extends Stack {
       actions: [new actions.LambdaFunctionAction(func)],
     }); */
 
-    new iot.CfnTopicRule(this, "TopicRule", {
+ /*   new iot.CfnTopicRule(this, "TopicRule", {
       topicRulePayload: {
         actions: [
           {
@@ -113,22 +98,22 @@ export class CdkIotStack extends Stack {
               partitionKey: '${clientToken}',
             },
           },
-        /*  {
-            iotEvents: {}, // Here is where the error occurs
-          }, */
+        //  {
+        //    iotEvents: {}, // Here is where the error occurs
+        //  }, 
         ],
         sql: "SELECT * FROM '$aws/things/0123501CB56E162101/shadow/update'",
         ruleDisabled: false,
         // errorAction: new actions.CloudWatchLogsAction(logGroup),
       },
       ruleName: "themometer",
-    });
+    }); */
 
     // Lambda - kinesisInfo
-/*    const lambdafirehose = new lambda.Function(this, "LimbdaKinesisFirehose", {
+    const lambdafirehose = new lambda.Function(this, "LimbdaKinesisFirehose", {
       description: 'update event sources',
       runtime: lambda.Runtime.NODEJS_14_X, 
-      code: lambda.Code.fromAsset("repositories/lambda-kinesis-firehose"), 
+      code: lambda.Code.fromAsset("../lambda-kinesis-firehose"), 
       handler: "index.handler", 
       timeout: cdk.Duration.seconds(3),
       environment: {
@@ -138,22 +123,6 @@ export class CdkIotStack extends Stack {
       value: lambdafirehose.functionArn,
       description: 'The arn of lambda for kinesis',
     });
-
-      
-
-    // Lambda - Updatethemometer
-    const lambdathemometer = new lambda.Function(this, "Lambdathemometer", {
-      description: 'Lambda for themometer',
-      runtime: lambda.Runtime.NODEJS_14_X, 
-      code: lambda.Code.fromAsset("repositories/lambda-themometer"), 
-      handler: "index.handler", 
-      timeout: cdk.Duration.seconds(10),
-      environment: {
-        tableName: tableName,
-      }
-    });  
-    dataTable.grantReadWriteData(lambdathemometer);
-
 
     // generate a table by crawler 
     const crawlerRole = new iam.Role(this, "crawlerRole", {
@@ -287,16 +256,16 @@ export class CdkIotStack extends Stack {
           }, 
         }, 
       }
-    });      */
+    });      
 
     // athena workgroup
-  /*  new athena.CfnWorkGroup(this, 'analytics-athena-workgroup', {
+    new athena.CfnWorkGroup(this, 'analytics-athena-workgroup', {
       name: `themometer-workgroup`,
       workGroupConfiguration: {
         resultConfiguration: {
           outputLocation: `s3://${s3Bucket.bucketName}`,
         },
       },
-    }) */
+    }) 
   }
 }

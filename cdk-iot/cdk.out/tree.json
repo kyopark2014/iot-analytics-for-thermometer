@@ -202,18 +202,6 @@
                   "aws:cdk:cloudformation:props": {
                     "name": "themometer",
                     "retentionPeriodHours": 48,
-                    "streamEncryption": {
-                      "Fn::If": [
-                        "AwsCdkKinesisEncryptedStreamsUnsupportedRegions",
-                        {
-                          "Ref": "AWS::NoValue"
-                        },
-                        {
-                          "EncryptionType": "KMS",
-                          "KeyId": "alias/aws/kinesis"
-                        }
-                      ]
-                    },
                     "streamModeDetails": {
                       "streamMode": "ON_DEMAND"
                     }
@@ -227,14 +215,6 @@
             },
             "constructInfo": {
               "fqn": "aws-cdk-lib.aws_kinesis.Stream",
-              "version": "2.17.0"
-            }
-          },
-          "AwsCdkKinesisEncryptedStreamsUnsupportedRegions": {
-            "id": "AwsCdkKinesisEncryptedStreamsUnsupportedRegions",
-            "path": "CdkIotStack/AwsCdkKinesisEncryptedStreamsUnsupportedRegions",
-            "constructInfo": {
-              "fqn": "aws-cdk-lib.CfnCondition",
               "version": "2.17.0"
             }
           },
@@ -397,7 +377,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "9ae5d216d4fe071dc02a9c3e0690e7e102b766c5c582cc9dd5ee34ffc0d5eefe.zip"
+                      "s3Key": "d98f48c0d4b1cc2397e5dd58b09b092735cbbff422624bfa34879ea31291ab63.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -453,6 +433,543 @@
             },
             "constructInfo": {
               "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.17.0"
+            }
+          },
+          "LimbdaKinesisFirehose": {
+            "id": "LimbdaKinesisFirehose",
+            "path": "CdkIotStack/LimbdaKinesisFirehose",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "CdkIotStack/LimbdaKinesisFirehose/ServiceRole",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "CdkIotStack/LimbdaKinesisFirehose/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.17.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.17.0"
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "CdkIotStack/LimbdaKinesisFirehose/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "CdkIotStack/LimbdaKinesisFirehose/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.17.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "CdkIotStack/LimbdaKinesisFirehose/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.17.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.17.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "CdkIotStack/LimbdaKinesisFirehose/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                      },
+                      "s3Key": "a647df9c1970bf38e0b92b73b681d610772039da261f01f0963ff06e80478a62.zip"
+                    },
+                    "role": {
+                      "Fn::GetAtt": [
+                        "LimbdaKinesisFirehoseServiceRoleA091BE7E",
+                        "Arn"
+                      ]
+                    },
+                    "description": "update event sources",
+                    "handler": "index.handler",
+                    "runtime": "nodejs14.x",
+                    "timeout": 3
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.17.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.17.0"
+            }
+          },
+          "LambdaKinesisARN": {
+            "id": "LambdaKinesisARN",
+            "path": "CdkIotStack/LambdaKinesisARN",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
+              "version": "2.17.0"
+            }
+          },
+          "crawlerRole": {
+            "id": "crawlerRole",
+            "path": "CdkIotStack/crawlerRole",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "CdkIotStack/crawlerRole/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                  "aws:cdk:cloudformation:props": {
+                    "assumeRolePolicyDocument": {
+                      "Statement": [
+                        {
+                          "Action": "sts:AssumeRole",
+                          "Effect": "Allow",
+                          "Principal": {
+                            "Service": "glue.amazonaws.com"
+                          }
+                        }
+                      ],
+                      "Version": "2012-10-17"
+                    },
+                    "description": "Role for parquet translation",
+                    "managedPolicyArns": [
+                      "arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole"
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                  "version": "2.17.0"
+                }
+              },
+              "DefaultPolicy": {
+                "id": "DefaultPolicy",
+                "path": "CdkIotStack/crawlerRole/DefaultPolicy",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "CdkIotStack/crawlerRole/DefaultPolicy/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                      "aws:cdk:cloudformation:props": {
+                        "policyDocument": {
+                          "Statement": [
+                            {
+                              "Action": [
+                                "s3:AbortMultipartUpload",
+                                "s3:GetBucketLocation",
+                                "s3:GetObject",
+                                "s3:ListBucket",
+                                "s3:ListBucketMultipartUploads",
+                                "s3:PutObject"
+                              ],
+                              "Effect": "Allow",
+                              "Resource": [
+                                {
+                                  "Fn::GetAtt": [
+                                    "cdkthemometer83F2D6F9",
+                                    "Arn"
+                                  ]
+                                },
+                                {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      {
+                                        "Fn::GetAtt": [
+                                          "cdkthemometer83F2D6F9",
+                                          "Arn"
+                                        ]
+                                      },
+                                      "/*"
+                                    ]
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "policyName": "crawlerRoleDefaultPolicy7109B2A3",
+                        "roles": [
+                          {
+                            "Ref": "crawlerRoleCB71E89D"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                      "version": "2.17.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Policy",
+                  "version": "2.17.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_iam.Role",
+              "version": "2.17.0"
+            }
+          },
+          "crawlerRoleArn": {
+            "id": "crawlerRoleArn",
+            "path": "CdkIotStack/crawlerRoleArn",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
+              "version": "2.17.0"
+            }
+          },
+          "TranslateToParquetGlueCrawler": {
+            "id": "TranslateToParquetGlueCrawler",
+            "path": "CdkIotStack/TranslateToParquetGlueCrawler",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::Glue::Crawler",
+              "aws:cdk:cloudformation:props": {
+                "role": {
+                  "Fn::GetAtt": [
+                    "crawlerRoleCB71E89D",
+                    "Arn"
+                  ]
+                },
+                "targets": {
+                  "s3Targets": [
+                    {
+                      "path": {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "s3://",
+                            {
+                              "Ref": "cdkthemometer83F2D6F9"
+                            },
+                            "/themometer"
+                          ]
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "databaseName": "themometer",
+                "name": "translate-parquet-crawler",
+                "schemaChangePolicy": {
+                  "deleteBehavior": "DELETE_FROM_DATABASE"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_glue.CfnCrawler",
+              "version": "2.17.0"
+            }
+          },
+          "TranslationRole": {
+            "id": "TranslationRole",
+            "path": "CdkIotStack/TranslationRole",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "CdkIotStack/TranslationRole/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                  "aws:cdk:cloudformation:props": {
+                    "assumeRolePolicyDocument": {
+                      "Statement": [
+                        {
+                          "Action": "sts:AssumeRole",
+                          "Effect": "Allow",
+                          "Principal": {
+                            "Service": "firehose.amazonaws.com"
+                          }
+                        }
+                      ],
+                      "Version": "2012-10-17"
+                    },
+                    "description": "TraslationRole",
+                    "managedPolicyArns": [
+                      "arn:aws:iam::aws:policy/AWSLambdaExecute",
+                      "arn:aws:iam::aws:policy/service-role/AWSLambdaKinesisExecutionRole",
+                      "arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole"
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                  "version": "2.17.0"
+                }
+              },
+              "DefaultPolicy": {
+                "id": "DefaultPolicy",
+                "path": "CdkIotStack/TranslationRole/DefaultPolicy",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "CdkIotStack/TranslationRole/DefaultPolicy/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                      "aws:cdk:cloudformation:props": {
+                        "policyDocument": {
+                          "Statement": [
+                            {
+                              "Action": [
+                                "s3:AbortMultipartUpload",
+                                "s3:GetBucketLocation",
+                                "s3:GetObject",
+                                "s3:ListBucket",
+                                "s3:ListBucketMultipartUploads",
+                                "s3:PutObject"
+                              ],
+                              "Effect": "Allow",
+                              "Resource": [
+                                {
+                                  "Fn::GetAtt": [
+                                    "cdkthemometer83F2D6F9",
+                                    "Arn"
+                                  ]
+                                },
+                                {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      {
+                                        "Fn::GetAtt": [
+                                          "cdkthemometer83F2D6F9",
+                                          "Arn"
+                                        ]
+                                      },
+                                      "/*"
+                                    ]
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "Action": [
+                                "lambda:InvokeFunction",
+                                "lambda:GetFunctionConfiguration"
+                              ],
+                              "Effect": "Allow",
+                              "Resource": [
+                                {
+                                  "Fn::GetAtt": [
+                                    "LimbdaKinesisFirehose925A14CE",
+                                    "Arn"
+                                  ]
+                                },
+                                {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      {
+                                        "Fn::GetAtt": [
+                                          "LimbdaKinesisFirehose925A14CE",
+                                          "Arn"
+                                        ]
+                                      },
+                                      ":*"
+                                    ]
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "Action": [
+                                "glue:GetTable",
+                                "glue:GetTableVersion",
+                                "glue:GetTableVersions"
+                              ],
+                              "Effect": "Allow",
+                              "Resource": "*"
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "policyName": "TranslationRoleDefaultPolicyE90E301D",
+                        "roles": [
+                          {
+                            "Ref": "TranslationRole574EADCA"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                      "version": "2.17.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Policy",
+                  "version": "2.17.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_iam.Role",
+              "version": "2.17.0"
+            }
+          },
+          "FirehoseDeliveryStream": {
+            "id": "FirehoseDeliveryStream",
+            "path": "CdkIotStack/FirehoseDeliveryStream",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::KinesisFirehose::DeliveryStream",
+              "aws:cdk:cloudformation:props": {
+                "deliveryStreamType": "KinesisStreamAsSource",
+                "extendedS3DestinationConfiguration": {
+                  "bucketArn": {
+                    "Fn::GetAtt": [
+                      "cdkthemometer83F2D6F9",
+                      "Arn"
+                    ]
+                  },
+                  "bufferingHints": {
+                    "intervalInSeconds": 60,
+                    "sizeInMBs": 128
+                  },
+                  "compressionFormat": "UNCOMPRESSED",
+                  "encryptionConfiguration": {
+                    "noEncryptionConfig": "NoEncryption"
+                  },
+                  "prefix": "themometer/",
+                  "errorOutputPrefix": "eror/",
+                  "roleArn": {
+                    "Fn::GetAtt": [
+                      "TranslationRole574EADCA",
+                      "Arn"
+                    ]
+                  },
+                  "processingConfiguration": {
+                    "enabled": true,
+                    "processors": [
+                      {
+                        "type": "Lambda",
+                        "parameters": [
+                          {
+                            "parameterName": "LambdaArn",
+                            "parameterValue": {
+                              "Fn::GetAtt": [
+                                "LimbdaKinesisFirehose925A14CE",
+                                "Arn"
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "dataFormatConversionConfiguration": {
+                    "enabled": false,
+                    "schemaConfiguration": {
+                      "databaseName": "themometer",
+                      "roleArn": {
+                        "Fn::GetAtt": [
+                          "TranslationRole574EADCA",
+                          "Arn"
+                        ]
+                      },
+                      "tableName": "themometer"
+                    }
+                  }
+                },
+                "kinesisStreamSourceConfiguration": {
+                  "kinesisStreamArn": {
+                    "Fn::GetAtt": [
+                      "Stream790BDEE4",
+                      "Arn"
+                    ]
+                  },
+                  "roleArn": {
+                    "Fn::GetAtt": [
+                      "TranslationRole574EADCA",
+                      "Arn"
+                    ]
+                  }
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_kinesisfirehose.CfnDeliveryStream",
+              "version": "2.17.0"
+            }
+          },
+          "analytics-athena-workgroup": {
+            "id": "analytics-athena-workgroup",
+            "path": "CdkIotStack/analytics-athena-workgroup",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::Athena::WorkGroup",
+              "aws:cdk:cloudformation:props": {
+                "name": "themometer-workgroup",
+                "workGroupConfiguration": {
+                  "resultConfiguration": {
+                    "outputLocation": {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "s3://",
+                          {
+                            "Ref": "cdkthemometer83F2D6F9"
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_athena.CfnWorkGroup",
               "version": "2.17.0"
             }
           },

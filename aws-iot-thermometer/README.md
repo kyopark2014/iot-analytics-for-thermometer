@@ -1,18 +1,18 @@
-#  AWS Edukit(M5Stack) Upgreade 
+#  AWS Edukit(M5Stack)에서 측정한 Temperature를 IoT Core로 전송
 
-여기서는 AWS IoT EduKit(M5stack)을 이용하여 Thermometer(온도계)용 펌웨어로 업그레이드하고, AWS IoT Core로 json 형태로된 Temperature 데이터가 수신되는지 확인하는 방법을 설명합니다. 
+여기서는 AWS IoT EduKit(M5stack)에 Thermometer(온도계)용 펌웨어를 설치하고, AWS IoT Core로 Temperature 데이터가 정상적으로 수신되는지 확인하는 방법을 설명합니다. 
 
 ## Thermometer용 펌웨어로 Upgrade
  
 1) [Device 인증서 생성](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/certification.md)을 참조하여 M5Stack을 위한 인증서를 생성합니다. 이 과정을 진행하면, "M5Stack.cert.pem", "M5Stack.private.key", "M5Stack.public.key", "AmazonRootCA1.cer"가 생성됩니다.
 
-2) 아래와 같이 [M5Stack](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/m5stack.md)로 Thermometer로 동작시키기 위한 git 소스를 다운로드 합니다. 
+2) 아래와 같이 [M5Stack](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/m5stack.md)로 Thermometer로 동작시키기 위한 [git 소스](https://github.com/kyopark2014/iot-analytics-for-thermometer)를 다운로드 합니다. 
 
 ```c
 $ git clone https://github.com/kyopark2014/iot-analytics-for-thermometer
 ```
 
-3) 아래와 같이 "main/certs" 폴더에 "aws-root-ca.pem", "certificate.pem.crt", "private.pem.key"을 생성합니다. 이때, "aws-root-ca.pem"은 "AmazonRootCA1.cer", "certificate.pem.crt"은 "M5Stack.cert.pem", "private.pem.key"은 "M5Stack.private.key"와 동일한 파일이므로, 파일을 열어서 동일하게 복사하여 줍니다.
+3) 아래와 같이 "main/certs" 폴더에 "aws-root-ca.pem", "certificate.pem.crt", "private.pem.key"을 생성합니다. 이때, "aws-root-ca.pem"은 앞에서 생성된 "AmazonRootCA1.cer"과 동일한 파일입니다. 마찬가지로 "certificate.pem.crt"은 "M5Stack.cert.pem", "private.pem.key"은 "M5Stack.private.key"와 동일한 파일이므로, 파일을 복사 한 후에 이름을 변경하거나, Visual Studio Code에서 파일을 신규로 생성한후, 텍스트를 복사하여 붙여넣기를 해줍니다. 
 
 ![noname](https://user-images.githubusercontent.com/52392004/170308677-41474fe7-935c-40c0-ac0d-1b8051000751.png)
 
@@ -54,7 +54,8 @@ $ pio run --environment core2foraws --target monitor
 
 펌웨어가 정상적으로 설치가 되면, M5Stack의 UI는 아래와 같이 우측 상단에 WiFi Icon이 표시가되고, Device device Id와 Connection state가 텍스트로 표시 됩니다.
 
-![image](https://user-images.githubusercontent.com/52392004/171017625-c789d13b-3bb4-431e-8e6d-ea4a506caba1.png)
+![image](https://user-images.githubusercontent.com/52392004/171019447-2e9ceed9-4191-4416-8574-203fd18094c6.png)
+
 
 이제, 아래와 같이 IoT Core에서 정상적으로 메시지 수신이 가능한지 확인 합니다. 
 

@@ -29,15 +29,15 @@ Kinesis Data Stream을 아래와 같이 구성합니다. retentionPeriod를 정�
     });
 ```
 
-## Lambda for Kinesis
+## Lambda for Stream
 
 "Lambda for Kinesis"는 Kinesis Data Streams의 fanout으로 Iot Core로 인입된 데이터를 수집합니다. 아래와 같이 lambdaEventSource로 Kinesis Event Source를 stream으로 받게 됩니다. 
 
 ```java
-    const lambdakinesis = new lambda.Function(this, "LambdaKinesisStream", {
+    const lambdaStream = new lambda.Function(this, "LambdaKinesisStream", {
       description: 'get eventinfo from kinesis data stream',
       runtime: lambda.Runtime.NODEJS_14_X, 
-      code: lambda.Code.fromAsset("../lambda-kinesis-stream"), 
+      code: lambda.Code.fromAsset("../lambda-for-stream"), 
       handler: "index.handler", 
       timeout: cdk.Duration.seconds(3),
       environment: {
@@ -48,5 +48,5 @@ Kinesis Data Stream을 아래와 같이 구성합니다. retentionPeriod를 정�
     const eventSource = new lambdaEventSources.KinesisEventSource(stream, {
       startingPosition: lambda.StartingPosition.TRIM_HORIZON,
     });
-    lambdakinesis.addEventSource(eventSource);  
+    lambdaStream.addEventSource(eventSource);  
 ```

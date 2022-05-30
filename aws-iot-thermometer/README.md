@@ -56,6 +56,10 @@ Thermometer 펌웨어가 정상적으로 설치가 되면, M5Stack의 UI는 아�
 
 ![image](https://user-images.githubusercontent.com/52392004/171019447-2e9ceed9-4191-4416-8574-203fd18094c6.png)
 
+![noname](https://user-images.githubusercontent.com/52392004/171020765-75e9b485-97d2-4804-8221-0a08fafe1f31.png)
+
+
+
 
 이제, 아래와 같이 IoT Core에서 정상적으로 메시지 수신이 가능한지 확인 합니다. 
 

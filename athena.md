@@ -11,6 +11,6 @@
 
 ![noname](https://user-images.githubusercontent.com/52392004/171033042-ab085370-21e9-47e9-98a9-b93b968f636d.png)
 
-3) 이때, Athena에서 조회한 결과는 아래와 같습니다. 
+3) 이때, Athena에서 조회한 결과는 아래와 같습니다. 데이터는 "deviceid", "timestampt", "temperature"로 표시되며, partion으로 표시되는 필드는 S3의 폴더 이름입니다. 
 
 <img width="975" alt="image" src="https://user-images.githubusercontent.com/52392004/170881634-c026bf72-8b4d-4c1a-af11-a87af5bf3025.png">

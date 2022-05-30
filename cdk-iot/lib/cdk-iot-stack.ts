@@ -57,11 +57,11 @@ export class CdkIotStack extends Stack {
     stream.metricGetRecordsSuccess();
     stream.metricPutRecordSuccess();
 
-    // Lambda for kinesis
-    const lambdakinesis = new lambda.Function(this, "LambdaKinesisStream", {
+    // Lambda for stream 
+    const lambdaStream = new lambda.Function(this, "LambdaKinesisStream", {
       description: 'get eventinfo from kinesis data stream',
       runtime: lambda.Runtime.NODEJS_14_X, 
-      code: lambda.Code.fromAsset("../lambda-kinesis-stream"), 
+      code: lambda.Code.fromAsset("../lambda-for-stream"), 
       handler: "index.handler", 
       timeout: cdk.Duration.seconds(3),
       environment: {
@@ -72,9 +72,9 @@ export class CdkIotStack extends Stack {
     const eventSource = new lambdaEventSources.KinesisEventSource(stream, {
       startingPosition: lambda.StartingPosition.TRIM_HORIZON,
     });
-    lambdakinesis.addEventSource(eventSource);  
+    lambdaStream.addEventSource(eventSource);  
 
-    // generate a table by crawler 
+    // Rule Role for IoT
     const ruleRole = new iam.Role(this, "ruleRole", {
       assumedBy: new iam.ServicePrincipal("iot.amazonaws.com"),
       description: "Role of Rule for IoT",
@@ -110,22 +110,22 @@ export class CdkIotStack extends Stack {
       ruleName: "themometer",
     }); 
 
-    // Lambda - kinesisInfo
-    const lambdafirehose = new lambda.Function(this, "LimbdaKinesisFirehose", {
+    // Lambda for firehose 
+    const lambdaFirehose = new lambda.Function(this, "LimbdaKinesisFirehose", {
       description: 'update event sources',
       runtime: lambda.Runtime.NODEJS_14_X, 
-      code: lambda.Code.fromAsset("../lambda-kinesis-firehose"), 
+      code: lambda.Code.fromAsset("../lambda-for-firehose"), 
       handler: "index.handler", 
       timeout: cdk.Duration.seconds(3),
       environment: {
       }
     }); 
     new cdk.CfnOutput(this, 'LambdaKinesisARN', {
-      value: lambdafirehose.functionArn,
+      value: lambdaFirehose.functionArn,
       description: 'The arn of lambda for kinesis',
     });
 
-    // generate a table by crawler 
+    // crawler role 
     const crawlerRole = new iam.Role(this, "crawlerRole", {
       assumedBy: new iam.ServicePrincipal("glue.amazonaws.com"),
       description: "Role for parquet translation",
@@ -153,10 +153,10 @@ export class CdkIotStack extends Stack {
       description: 'The arn of crawlerRole',
     });
     
-    // crawler 
+    // crawler to generate a table
     const glueDatabaseName = "themometer";
-    const crawler = new glue.CfnCrawler(this, "TranslateToParquetGlueCrawler", {
-      name: "translate-parquet-crawler",
+    new glue.CfnCrawler(this, "TranslateRecords", {
+      name: "translate-records",
       role: crawlerRole.roleArn,
       targets: {
           s3Targets: [
@@ -206,8 +206,8 @@ export class CdkIotStack extends Stack {
         "lambda:GetFunctionConfiguration", 
       ],
       resources: [
-        lambdafirehose.functionArn, 
-        lambdafirehose.functionArn+':*'],
+        lambdaFirehose.functionArn, 
+        lambdaFirehose.functionArn+':*'],
     }));
     translationRole.addToPolicy(new iam.PolicyStatement({
       effect: iam.Effect.ALLOW,
@@ -219,7 +219,7 @@ export class CdkIotStack extends Stack {
       resources: ['*'],
     }));
 
-    const firehose = new kinesisfirehose.CfnDeliveryStream(this, 'FirehoseDeliveryStream', {
+    new kinesisfirehose.CfnDeliveryStream(this, 'FirehoseDeliveryStream', {
       deliveryStreamType: 'KinesisStreamAsSource',
       kinesisStreamSourceConfiguration: {
         kinesisStreamArn: stream.streamArn,
@@ -244,7 +244,7 @@ export class CdkIotStack extends Stack {
             type: 'Lambda',
               parameters: [{
               parameterName: 'LambdaArn',
-              parameterValue: lambdafirehose.functionArn
+              parameterValue: lambdaFirehose.functionArn
             }]
           }]
         }, 

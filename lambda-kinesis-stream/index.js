@@ -11,7 +11,6 @@ exports.handler = async (event) => {
 
     console.log('eventInfo: %j', eventInfo);
     
-    // TODO implement
     const response = {
         statusCode: 200,
         body: JSON.stringify(eventInfo),

@@ -45,12 +45,10 @@ $ cdk synth
 $ cdk deploy
 ```
 
-2) AWS Glue에서 Table 생성을 참조하여 AWS Glue Data catalogd의 Crawler를 이용하여 Table을 생성합니다. 
+2) [AWS Glue에서 Table 생성](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/crawler.md)에 따라 AWS Glue Data catalogd의 Crawler를 이용하여 Table을 생성합니다. 
+
+3) [Athena로 IoT 데이터 조회](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/athena.md)에 따라 Athena로 IoT device에서 생성되고, AWS Anlytics를 통해 수집된 데이터를 확인 합니다.
 
 
 
-## Athena에서 조회한 결과
 
-<img width="975" alt="image" src="https://user-images.githubusercontent.com/52392004/170881634-c026bf72-8b4d-4c1a-af11-a87af5bf3025.png">
-
-```c

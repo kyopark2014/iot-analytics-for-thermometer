@@ -49,3 +49,18 @@ $ pio run --environment core2foraws --target upload --target monitor
 ```c
 $ pio run --environment core2foraws --target monitor
 ```
+
+## 전송된 데이터의 형태 
+
+[M5Stack에서 전송되는 데이터의 형태](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/edukit-thermostat.md)는 아래와 같습니다. 
+
+```java
+{
+    "state": {
+        "reported": {
+            "temperature": 20.182835
+        }
+    },
+    "clientToken": "0123501CB56E162101-3"
+}
+```

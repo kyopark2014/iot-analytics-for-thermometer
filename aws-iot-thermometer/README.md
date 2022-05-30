@@ -60,8 +60,7 @@ Thermometer 펌웨어가 정상적으로 설치가 되면, M5Stack의 UI는 아�
 
 
 
-이제, 아래와 같이 IoT Core에서 정상적으로 메시지 수신이 가능한지 확인 합니다. 
-
+이제, 아래와 같이 IoT Core로 수신된 메시지를 확인합니다.
 
 1) [AWS IoT] - [MQTT test client]로 진입합니다. 
 
@@ -71,14 +70,14 @@ https://ap-northeast-2.console.aws.amazon.com/iot/home?region=ap-northeast-2#/te
 
 ![noname](https://user-images.githubusercontent.com/52392004/171020452-0e664fb4-2ec4-44b2-a54c-c4139bebaff7.png)
 
-3) 정상적으로 펌웨어 업그레이드가 되었다면, 아래그림처럼 1분 간격으로 Subscriptions에 새로운 Record가 들어옵니다.
+3) 정상적으로 펌웨어 업그레이드가 되었다면, 아래 그림처럼 1분 간격으로 Subscriptions에 새로운 Record가 들어옵니다.
 
 ![noname](https://user-images.githubusercontent.com/52392004/171017429-afe154c0-3d24-4ca5-b387-50bedaeea259.png)
 
 
 ## 수신된 데이터의 형태 
 
-[M5Stack에서 전송되는 데이터의 형태](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/edukit-thermostat.md)는 아래와 같습니다. 결과는 json 포맷으로 전달되며, "state" / "reported"의 "temperature"항목에 실수형으로 섭씨 온도가 제공되며, IoT device가 구동되는 동안에는 "clientToken"으로 동일데이터인지 확인 할 수 있습니다. 
+M5Stack를 통해 수집되는 데이터의 형태는 아래와 같습니다. 데이터는 json 포맷으로 전달되며, "state" / "reported"의 "temperature"항목에 실수형으로 섭씨 온도가 제공되며, IoT device가 구동되는 동안에는 "clientToken"으로 동일데이터인지 확인 할 수 있습니다. 
 
 ```java
 {

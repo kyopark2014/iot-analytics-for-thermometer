@@ -29,22 +29,11 @@
 <img width="976" alt="image" src="https://user-images.githubusercontent.com/52392004/170957665-bd1d136b-dacf-4a4f-b52f-3cc52d781969.png">
 
 
-## AWS Edukit(M5Stack)에서 측정한 Temperature를 IoT Core로 전송
+## 1) AWS Edukit(M5Stack)에서 측정한 Temperature를 IoT Core로 전송
 
 [AWS Edukit(M5Stack) Upgreade](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/aws-iot-thermometer/README.md)에 따라 themometer용 M5Stack용 Binary를 설치합니다.  M5Stack의 Temperature sensor를 이용하여 온도를 측정한 후, MQTT를 이용해 AWS IoT Core로 온도 데이터를 JSON 포멧으로 전달하게 됩니다. 
 
-[M5Stack에서 전송되는 데이터의 형태](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/edukit-thermostat.md)는 아래와 같습니다. 
 
-```java
-{
-    "state": {
-        "reported": {
-            "temperature": 20.182835
-        }
-    },
-    "clientToken": "0123501CB56E162101-3"
-}
-```
 
 ## 온도 데이터를 분석하기 위한 시스템 설치 
 

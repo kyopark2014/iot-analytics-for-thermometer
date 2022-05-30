@@ -57,7 +57,7 @@ export class CdkIotStack extends Stack {
     stream.metricGetRecordsSuccess();
     stream.metricPutRecordSuccess();
 
-    // Lambda - kinesisInfo for test (debug)/drskur/video-search/blob/main/stack/demo-app-stack.ts
+    // Lambda for kinesis
     const lambdakinesis = new lambda.Function(this, "LambdaKinesisStream", {
       description: 'get eventinfo from kinesis data stream',
       runtime: lambda.Runtime.NODEJS_14_X, 

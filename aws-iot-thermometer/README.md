@@ -3,14 +3,15 @@
 여기서는 AWS IoT EduKit(M5stack)에 Thermometer(온도계)용 펌웨어를 설치하고, AWS IoT Core로 Temperature 데이터가 정상적으로 수신되는지 확인하고자 합니다.
 
 ## Thermometer용 펌웨어로 Upgrade
- 
-1) [Device 인증서 생성](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/certification.md)을 참조하여 M5Stack을 위한 인증서를 생성합니다. 이 과정을 진행하면, "M5Stack.cert.pem", "M5Stack.private.key", "M5Stack.public.key", "AmazonRootCA1.cer"가 생성됩니다.
 
-2) 아래와 같이 [M5Stack](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/m5stack.md)로 Thermometer로 동작시키기 위한 [git 소스](https://github.com/kyopark2014/iot-analytics-for-thermometer)를 다운로드 합니다. 
+1) 아래와 같이 [M5Stack](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/m5stack.md)을 Thermometer로 동작시키기 위한 [git 소스](https://github.com/kyopark2014/iot-analytics-for-thermometer)를 다운로드 합니다. 
 
 ```c
 $ git clone https://github.com/kyopark2014/iot-analytics-for-thermometer
 ```
+
+2) [Device 인증서 생성](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/certification.md)을 참조하여 M5Stack을 위한 인증서를 생성합니다. 이 과정을 진행하면, "M5Stack.cert.pem", "M5Stack.private.key", "M5Stack.public.key", "AmazonRootCA1.cer"가 생성됩니다.
+
 
 3) 아래와 같이 "main/certs" 폴더에 "aws-root-ca.pem", "certificate.pem.crt", "private.pem.key"을 생성합니다. 이때, "aws-root-ca.pem"은 앞에서 생성된 "AmazonRootCA1.cer"과 동일한 파일입니다. 마찬가지로 "certificate.pem.crt"은 "M5Stack.cert.pem", "private.pem.key"은 "M5Stack.private.key"와 동일한 파일이므로, [Device 인증서 생성](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/certification.md)에서 생성된 파일들을 "main/certs"로 복사 한 후에 이름을 변경하거나, Visual Studio Code에서 파일을 신규로 생성 한 후, 텍스트를 복사하여 붙여넣기를 해줍니다. 
 

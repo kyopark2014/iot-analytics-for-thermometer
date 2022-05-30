@@ -1,6 +1,6 @@
 # AWS Glue에서 Table 생성
 
-여기에서는 AWS Glue Data catalog의 Crawler를 이용하여 Json 포맷을 위한 정규화 Table을 생성하고자 합니다. 
+여기에서는 AWS Glue Data catalog의 Crawler를 이용하여 Json 포맷의 Schema 분석을 위한 정규화 Table을 생성하고자 합니다. 
 
 1) [AWS Glue] - [Data catalog] - [Crawlers]로 이동합니다. 
 

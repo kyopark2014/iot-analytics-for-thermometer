@@ -6,7 +6,7 @@
 
 https://ap-northeast-2.console.aws.amazon.com/glue/home?region=ap-northeast-2#catalog:tab=crawlers
 
-2) CDK로 인프라 생성시, 아래와 같이 "traslate-records"라는 파일이 생성되어 있습니다. 여기에는 Glue Database로 "themometer"를 이용하고, Glue에서 사용할 S3 bucket 정보 및 IAM Role에 대한 정보가 포함되어 있습니다.
+2) CDK로 인프라 생성시, 아래와 같이 "traslate-records"라는 파일이 생성되어 있습니다. 여기에는 Glue Database로 "themometer"를 이용하고, Glue에서 사용할 S3 bucket 및 IAM Role에 대한 정보가 포함되어 있습니다.
 
 아래 그림과 같이 "translate-records"를 선택 후에, [Run crawler]를 선택합니다. 
 

@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "aws-iot-thermometer",
+			"path": "aws-iot-thermometer"
+		}
+	],
+	"settings": {}
+}

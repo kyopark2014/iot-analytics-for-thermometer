@@ -4,7 +4,7 @@
 
 ## Thermometer용 펌웨어로 Upgrade
 
-1) 아래와 같이 [M5Stack](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/m5stack.md)을 Thermometer로 동작시키기 위한 [git 소스](https://github.com/kyopark2014/iot-analytics-for-thermometer)를 다운로드 합니다. 
+1) 아래와 같이 [M5Stack](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/m5stack.md)을 Thermometer로 동작시키기 위한 [git 소스](https://github.com/kyopark2014/iot-analytics-for-thermometer/tree/main/aws-iot-thermometer)를 다운로드 합니다. 
 
 ```c
 $ git clone https://github.com/kyopark2014/iot-analytics-for-thermometer

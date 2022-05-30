@@ -52,7 +52,12 @@ $ pio run --environment core2foraws --target monitor
 
 ## 동작 확인
 
-펌웨어 업그레이드후 정상적으로 동작하는 지 확인 합니다.
+펌웨어가 정상적으로 설치가 되면, M5Stack의 UI는 아래와 같이 우측 상단에 WiFi Icon이 표시가되고, Device device Id와 Connection state가 텍스트로 표시 됩니다.
+
+![image](https://user-images.githubusercontent.com/52392004/171017625-c789d13b-3bb4-431e-8e6d-ea4a506caba1.png)
+
+이제, 아래와 같이 IoT Core에서 정상적으로 메시지 수신이 가능한지 확인 합니다. 
+
 
 1) [AWS IoT] - [MQTT test client]로 진입합니다. 
 
@@ -62,7 +67,7 @@ https://ap-northeast-2.console.aws.amazon.com/iot/home?region=ap-northeast-2#/te
 
 3) 정상적으로 펌웨어 업그레이드가 되었다면, 아래그림처럼 1분 간격으로 Subscriptions에 새로운 Record가 들어옵니다.
 
-![image](https://user-images.githubusercontent.com/52392004/171016688-85ac7fc7-e6c6-4b45-a256-63b1cb222cf2.png)
+![noname](https://user-images.githubusercontent.com/52392004/171017429-afe154c0-3d24-4ca5-b387-50bedaeea259.png)
 
 
 ## 수신된 데이터의 형태 

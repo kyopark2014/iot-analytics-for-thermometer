@@ -26,8 +26,7 @@
 
 - 사용자가 IoT device의 Temperature data를 조회하고자 하는 경우에 Amazon CloudFront를 통해 Webpage를 열고, API Gateway와 Lambda for athena를 통해 Amazon Athena로 센서 데이터를 조회 합니다. 
 
-<img width="972" alt="image" src="https://user-images.githubusercontent.com/52392004/170955395-6f3b1333-8d3c-4c94-9b8a-81175d13fe9d.png">
-
+<img width="976" alt="image" src="https://user-images.githubusercontent.com/52392004/170957665-bd1d136b-dacf-4a4f-b52f-3cc52d781969.png">
 
 
 ## AWS Edukit(M5Stack)을 이용한 온도 측정 및 IoT Core로 전송

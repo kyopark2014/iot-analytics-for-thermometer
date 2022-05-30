@@ -1,6 +1,6 @@
 #  AWS Edukit(M5Stack) Upgreade 
 
-여기서는 AWS IoT EduKit을 이용하여 Thermometer(온도계)용 펌웨어로 업그레이드하고, AWS IoT Core로 json 형태로된 Temperature 데이터가 수신되는지 확인하는 방법을 설명합니다. 
+여기서는 AWS IoT EduKit(M5stack)을 이용하여 Thermometer(온도계)용 펌웨어로 업그레이드하고, AWS IoT Core로 json 형태로된 Temperature 데이터가 수신되는지 확인하는 방법을 설명합니다. 
 
 ## Thermometer용 펌웨어로 Upgrade
  

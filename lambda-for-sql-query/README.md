@@ -97,7 +97,7 @@ Athena 조회시 결과는 아래와 같은 포맷으로 전달 됩니다.
  }
  ```
  
- 이를 사용하기 쉽게 timestamp와 temperature만 뽑아서 전달하면 아래와 같습니다. 
+ 이를 사용하기 쉽게 timestamp와 temperature만 뽑아서 output으로 전달하면 아래와 같습니다. 
  
  ```java
  [

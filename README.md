@@ -26,7 +26,7 @@
 
 - 사용자가 IoT device의 Temperature data를 조회하고자 하는 경우에 Amazon CloudFront를 통해 Webpage를 열고, API Gateway와 Lambda for athena를 통해 Amazon Athena로 센서 데이터를 조회 합니다. 
 
-<img width="978" alt="image" src="https://user-images.githubusercontent.com/52392004/170953006-29825eb7-5a46-4848-8d93-d36827eaca16.png">
+<img width="972" alt="image" src="https://user-images.githubusercontent.com/52392004/170955395-6f3b1333-8d3c-4c94-9b8a-81175d13fe9d.png">
 
 
 

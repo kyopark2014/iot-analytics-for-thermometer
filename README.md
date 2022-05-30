@@ -14,7 +14,7 @@
 
 전체적인 Architecture는 아래와 같습니다. 
 
-- AWS Edukit은 M5Stack의 AWS 버전으로 온도센서를 비롯한 다양한 센서를 가지고 있습니다. 여기에서는 M5Stack에 WiFi, Temperature, MQTT를 활성화 해서, Temperature변화를 MQTT 프로토콜을 이용해 AWS IoT Core로 전송합니다. 
+- AWS Edukit은 M5Stack의 AWS 버전으로 온도센서를 비롯한 다양한 센서를 가지고 있습니다. 여기에서는 M5Stack에 WiFi, Temperature, MQTT를 활성화 해서, Temperature변화를 [MQTT](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/mqtt.md) 프로토콜을 이용해 AWS IoT Core로 전송합니다. 
 
 - MQTT로 전달되는 온도 데이터는 Amazon Kinesis Data Streams을 통해 수집됩니다. 이러한 구조는 다수의 Temperature 센서들로부터 수많은 트래픽을 효과적으로 처리해야 하는 경우에 유용합니다. 
 
@@ -31,7 +31,7 @@
 
 ## 1) AWS Edukit(M5Stack)에서 측정한 Temperature를 IoT Core로 전송
 
-[AWS Edukit(M5Stack) Upgreade](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/aws-iot-thermometer/README.md)를 따라서 themometer용 M5Stack용 Binary를 설치합니다.  [M5Stack](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/m5stack.md)의 Temperature sensor를 이용하여 온도를 측정한 후, MQTT를 이용해 AWS IoT Core로 온도 데이터를 JSON 포멧으로 전달하게 됩니다. 
+[AWS Edukit(M5Stack) Upgreade](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/aws-iot-thermometer/README.md)를 따라서 themometer용 M5Stack용 Binary를 설치합니다.  [M5Stack](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/m5stack.md)의 Temperature sensor를 이용하여 온도를 측정한 후, [MQTT](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/mqtt.md)를 이용해 AWS IoT Core로 온도 데이터를 JSON 포멧으로 전달하게 됩니다. 
 
 
 

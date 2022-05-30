@@ -1,6 +1,6 @@
 #  AWS Edukit(M5Stack)에서 측정한 Temperature를 IoT Core로 전송
 
-여기서는 AWS IoT EduKit(M5stack)에 Thermometer(온도계)용 펌웨어를 설치하고, AWS IoT Core로 Temperature 데이터가 정상적으로 수신되는지 확인하는 방법을 설명합니다. 
+여기서는 AWS IoT EduKit(M5stack)에 Thermometer(온도계)용 펌웨어를 설치하고, AWS IoT Core로 Temperature 데이터가 정상적으로 수신되는지 확인하고자 합니다.
 
 ## Thermometer용 펌웨어로 Upgrade
  

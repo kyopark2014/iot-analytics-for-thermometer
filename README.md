@@ -29,13 +29,13 @@
 <img width="976" alt="image" src="https://user-images.githubusercontent.com/52392004/170957665-bd1d136b-dacf-4a4f-b52f-3cc52d781969.png">
 
 
-## 1. AWS Edukit(M5Stack)에서 측정한 Temperature를 IoT Core로 전송
+## 1) AWS Edukit(M5Stack)에서 측정한 Temperature를 IoT Core로 전송
 
 [AWS Edukit(M5Stack) Upgreade](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/aws-iot-thermometer/README.md)를 따라서 themometer용 M5Stack용 Binary를 설치합니다.  [M5Stack](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/m5stack.md)의 Temperature sensor를 이용하여 온도를 측정한 후, [MQTT](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/mqtt.md)를 이용해 AWS IoT Core로 온도 데이터를 JSON 포멧으로 전달하게 됩니다. 
 
 
 
-## 2. AWS CDK를 이용한 인프라 생성  
+## 2) AWS CDK를 이용한 인프라 생성  
 
 1) 아래와 같이 [AWS CDK](https://github.com/kyopark2014/technical-summary/blob/main/cdk-introduction.md)를 이용하여 [M5Stack에서 전달된 온도 데이터](https://github.com/kyopark2014/iot-analytics/tree/main/aws-iot-thermometer)를 저장하고 분석하는 infra structure를 생성합니다. 
 

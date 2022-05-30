@@ -2,7 +2,7 @@
 
 여기서는 AWS IoT EduKit을 이용하여 온도 데이터를 json으로 AWS IoT Core로 전송합니다.
 
-## AWS Edukit(M5Stack)에서 온도 측정 및 MQTT 전송
+## AWS Edukit(M5Stack) 업그레이드
 
 
 1) [Device 인증서 생성](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/certification.md)을 참조하여 M5Stack을 위한 인증서를 생성합니다. 이 과정을 진행하면, "M5Stack.cert.pem", "M5Stack.private.key", "M5Stack.public.key", "AmazonRootCA1.cer"가 생성됩니다.

@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "athena-client": "^2.5.1"
+  }
+}

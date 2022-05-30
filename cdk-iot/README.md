@@ -29,7 +29,7 @@ Kinesis Data Stream을 아래와 같이 구성합니다. retentionPeriod를 정�
     });
 ```
 
-## Lambda for Kinesis
+## Lambda for Stream
 
 "Lambda for Kinesis"는 Kinesis Data Streams의 fanout으로 Iot Core로 인입된 데이터를 수집합니다. 아래와 같이 lambdaEventSource로 Kinesis Event Source를 stream으로 받게 됩니다. 
 

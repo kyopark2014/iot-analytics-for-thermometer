@@ -54,7 +54,6 @@ $ pio run --environment core2foraws --target monitor
 
 Thermometer 펌웨어가 정상적으로 설치가 되면, M5Stack의 UI는 아래와 같이 우측 상단에 WiFi Icon이 표시가되고, Device device Id와 Connection state가 텍스트로 표시 됩니다.
 
-![image](https://user-images.githubusercontent.com/52392004/171019447-2e9ceed9-4191-4416-8574-203fd18094c6.png)
 
 ![noname](https://user-images.githubusercontent.com/52392004/171020765-75e9b485-97d2-4804-8221-0a08fafe1f31.png)
 

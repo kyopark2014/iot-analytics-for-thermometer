@@ -59,6 +59,69 @@ var awsConfig = {
     }
 ```
 
+## Permission
+
+아래와 같은 퍼미션 설정이 필요합니다. 
+
+```java
+        {
+            "Effect": "Allow",
+            "Action": [
+                "athena:StartQueryExecution",
+                "athena:BatchGetQueryExecution",
+                "athena:GetQueryExecution",
+                "athena:GetQueryResults",
+                "athena:GetQueryResultsStream",
+                "athena:ListQueryExecutions",
+                "athena:StartQueryExecution",
+                "athena:StopQueryExecution",
+                "athena:ListWorkGroups",
+                "athena:ListEngineVersions",
+                "athena:GetWorkGroup",
+                "athena:GetDataCatalog",
+                "athena:GetDatabase",
+                "athena:GetTableMetadata",
+                "athena:ListDataCatalogs",
+                "athena:ListDatabases",
+                "athena:ListTableMetadata"
+            ],
+            "Resource": [
+                "arn:aws:athena:ap-northeast-2:123456789012:workgroup/primary",
+                "arn:aws:athena:ap-northeast-2:123456789012:workgroup/themometer-workgroup"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "glue:GetTable",
+                "glue:GetDatabase",
+                "glue:GetPartitions"
+            ],
+            "Resource": [
+                "*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetBucketLocation",
+                "s3:GetObject",
+                "s3:GetBucketLocation",
+                "s3:ListBucket",
+                "s3:ListBucketMultipartUploads",
+                "s3:ListMultipartUploadParts",
+                "s3:AbortMultipartUpload",
+                "s3:CreateBucket",
+                "s3:PutObject",
+                "s3:PutBucketPublicAccessBlock"
+            ],
+            "Resource": [
+                "arn:aws:s3:::*"
+            ]
+        }
+```        
+
+
 ## 실행 결과 
 
 Athena 조회시 결과는 아래와 같은 포맷으로 전달 됩니다. 

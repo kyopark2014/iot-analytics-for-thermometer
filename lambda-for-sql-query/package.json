@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "async.queue": "^0.5.2",
+    "lodash": "^4.17.21"
+  }
+}

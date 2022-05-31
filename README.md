@@ -16,7 +16,7 @@
 
 - [AWS Edukit](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/m5stack.md)은 M5Stack의 AWS 버전으로 온도센서를 비롯한 다양한 센서를 가지고 있습니다. 여기에서는 M5Stack에 WiFi, Temperature, MQTT를 활성화 해서, Temperature변화를 [MQTT](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/mqtt.md) 프로토콜을 이용해 AWS IoT Core로 전송합니다. 
 
-- MQTT로 전달되는 온도 데이터는 Amazon Kinesis Data Streams을 통해 수집됩니다. 이러한 구조는 다수의 Temperature 센서들로부터 수많은 트래픽을 효과적으로 처리해야 하는 경우에 유용합니다. 
+- [MQTT](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/mqtt.md)로 전달되는 온도 데이터는 Amazon Kinesis Data Streams을 통해 수집됩니다. 이러한 구조는 다수의 Temperature 센서들로부터 수많은 트래픽을 효과적으로 처리해야 하는 경우에 유용합니다. 
 
 - Amazon Kinesis Data Streams로 수집된 온도 데이터는 Amazon Kinesis Data Firehose를 통해 S3에 저장되는데, 이때 Lambda를 통해 적절한 형태로 포맷을 변경합니다. 여기서는 [Lambda for firehose](https://github.com/kyopark2014/iot-analytics-for-thermometer/tree/main/lambda-for-firehose)를 이용해 Stream으로 들어오는 데이터의 변환 작업을 수행합니다. 
 

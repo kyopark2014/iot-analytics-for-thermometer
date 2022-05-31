@@ -16,6 +16,7 @@ var athena = require("athena-client");
 var client = athena.createClient(clientConfig, awsConfig);
 
 exports.handler = async (event) => {
+    console.log('## ENVIRONMENT VARIABLES: ' + JSON.stringify(process.env))
     console.log('event: '+JSON.stringify((event)));
     let isCompleted = false;
 

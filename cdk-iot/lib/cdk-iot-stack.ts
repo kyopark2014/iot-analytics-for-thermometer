@@ -1,4 +1,4 @@
-import { Stack, StackProps } from 'aws-cdk-lib';
+import { Arn, Stack, StackProps } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 
 import * as cdk from 'aws-cdk-lib';
@@ -14,7 +14,6 @@ import * as cfn from 'aws-cdk-lib/aws-cloudformation';
 import * as logs from 'aws-cdk-lib/aws-logs';
 import * as glue from 'aws-cdk-lib/aws-glue'
 import * as athena from 'aws-cdk-lib/aws-athena'
-
 import * as iot from 'aws-cdk-lib/aws-iot';
 
 export class CdkIotStack extends Stack {
@@ -68,7 +67,7 @@ export class CdkIotStack extends Stack {
       }
     }); 
 
-    // connect lambda for kinesis with kinesis data stream
+    // "lambda for stream" is connected with kinesis event source
     const eventSource = new lambdaEventSources.KinesisEventSource(stream, {
       startingPosition: lambda.StartingPosition.TRIM_HORIZON,
     });
@@ -76,6 +75,7 @@ export class CdkIotStack extends Stack {
 
     // Rule Role for IoT
     const ruleRole = new iam.Role(this, "ruleRole", {
+      roleName: 'RuleRole',
       assumedBy: new iam.ServicePrincipal("iot.amazonaws.com"),
       description: "Role of Rule for IoT",
     });
@@ -93,6 +93,7 @@ export class CdkIotStack extends Stack {
       description: 'The arn of RuleRole for IoT',
     });
 
+    // defile Rule for IoT
     new iot.CfnTopicRule(this, "TopicRule", {
       topicRulePayload: {
         actions: [
@@ -111,7 +112,7 @@ export class CdkIotStack extends Stack {
     }); 
 
     // Lambda for firehose 
-    const lambdaFirehose = new lambda.Function(this, "LimbdaKinesisFirehose", {
+    const lambdaFirehose = new lambda.Function(this, "LambdaKinesisFirehose", {
       description: 'update event sources',
       runtime: lambda.Runtime.NODEJS_14_X, 
       code: lambda.Code.fromAsset("../lambda-for-firehose"), 
@@ -127,8 +128,9 @@ export class CdkIotStack extends Stack {
 
     // crawler role 
     const crawlerRole = new iam.Role(this, "crawlerRole", {
+      roleName: 'CrawlerRole',
       assumedBy: new iam.ServicePrincipal("glue.amazonaws.com"),
-      description: "Role for parquet translation",
+      description: "Role for crawler",
     });
     crawlerRole.addManagedPolicy({
       managedPolicyArn: 'arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole',
@@ -154,7 +156,7 @@ export class CdkIotStack extends Stack {
     });
     
     // crawler to generate a table
-    const glueDatabaseName = "themometer";
+    const glueDatabaseName = "themometerDb";
     new glue.CfnCrawler(this, "TranslateRecords", {
       name: "translate-records",
       role: crawlerRole.roleArn,
@@ -171,8 +173,8 @@ export class CdkIotStack extends Stack {
 
     // Traslation Role
     const translationRole = new iam.Role(this, 'TranslationRole', {
+      roleName: 'TranslationRole',
       assumedBy: new iam.ServicePrincipal("firehose.amazonaws.com"),
-      
       description: 'TraslationRole',
     });
     translationRole.addManagedPolicy({
@@ -219,6 +221,7 @@ export class CdkIotStack extends Stack {
       resources: ['*'],
     }));
 
+    // firhose
     new kinesisfirehose.CfnDeliveryStream(this, 'FirehoseDeliveryStream', {
       deliveryStreamType: 'KinesisStreamAsSource',
       kinesisStreamSourceConfiguration: {
@@ -251,22 +254,134 @@ export class CdkIotStack extends Stack {
         dataFormatConversionConfiguration: {          
           enabled: false, 
           schemaConfiguration: {
-            databaseName: glueDatabaseName, // Target Glue database name
+            databaseName: glueDatabaseName, // Glue database name
             roleArn: translationRole.roleArn,
-            tableName: 'themometer' // Target Glue table name
+            tableName: 'themometer' // Glue table name
           }, 
         }, 
       }
-    });      
+    });    
 
     // athena workgroup
-    new athena.CfnWorkGroup(this, 'analytics-athena-workgroup', {
-      name: `themometer-workgroup`,
+    let workGroupName = 'themometer-workgroup';
+    const workgroup = new athena.CfnWorkGroup(this, 'analytics-athena-workgroup', {
+      name: workGroupName,
+      description: 'athena working group',
+      recursiveDeleteOption: true,
+      state: 'ENABLED',
       workGroupConfiguration: {
         resultConfiguration: {
           outputLocation: `s3://${s3Bucket.bucketName}`,
         },
       },
     }) 
+    new cdk.CfnOutput(this, 'workgroupArn', { 
+      value: `arn:aws:athena:${cdk.Aws.REGION}:${cdk.Aws.ACCOUNT_ID}:workgroup/${workGroupName}`,
+      description: 'The arn of workgroup',
+    });
+      
+    // Athena Role to query 
+    const athenaRole = new iam.Role(this, "athenaRole", {
+      roleName: 'AthenaRole',
+      assumedBy: new iam.ServicePrincipal("lambda.amazonaws.com"),
+      description: "Athena Role",
+    });
+    athenaRole.addToPolicy(new iam.PolicyStatement({
+      effect: iam.Effect.ALLOW,
+      actions: [
+        "athena:StartQueryExecution",
+        "athena:BatchGetQueryExecution",
+        "athena:GetQueryExecution",
+        "athena:GetQueryResults",
+        "athena:GetQueryResultsStream",
+        "athena:ListQueryExecutions",
+        "athena:StopQueryExecution",
+        "athena:ListWorkGroups",
+        "athena:ListEngineVersions",
+        "athena:GetWorkGroup",
+        "athena:GetDataCatalog",
+        "athena:GetDatabase",
+        "athena:GetTableMetadata",
+        "athena:ListDataCatalogs",
+        "athena:ListDatabases",
+        "athena:ListTableMetadata"
+      ],
+      resources: [
+        `arn:aws:athena:${cdk.Aws.REGION}:${cdk.Aws.ACCOUNT_ID}:workgroup/primary`,
+        `arn:aws:athena:${cdk.Aws.REGION}:${cdk.Aws.ACCOUNT_ID}:workgroup/${workGroupName}`
+      ],
+    }));
+    athenaRole.addToPolicy(new iam.PolicyStatement({
+      effect: iam.Effect.ALLOW,
+      actions: [
+        "glue:GetTable",
+        "glue:GetDatabase",
+        "glue:GetPartitions"
+      ],
+      resources: ['*'],
+    }));
+    athenaRole.addToPolicy(new iam.PolicyStatement({
+      effect: iam.Effect.ALLOW,
+      actions: [
+        "s3:GetBucketLocation",
+        "s3:GetObject",
+        "s3:GetBucketLocation",
+        "s3:ListBucket",
+        "s3:ListBucketMultipartUploads",
+        "s3:ListMultipartUploadParts",
+        "s3:AbortMultipartUpload",
+        "s3:CreateBucket",
+        "s3:PutObject",
+        "s3:PutBucketPublicAccessBlock"
+      ],
+      resources: [
+        s3Bucket.bucketArn,
+        s3Bucket.bucketArn + "/*"
+      ],
+    }));
+    athenaRole.addToPolicy(new iam.PolicyStatement({
+      effect: iam.Effect.ALLOW,
+      actions: [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      resources: [
+        `arn:aws:logs:${cdk.Aws.REGION}:${cdk.Aws.ACCOUNT_ID}:*`
+      ],
+    }));
+    athenaRole.addToPolicy(new iam.PolicyStatement({
+      effect: iam.Effect.ALLOW,
+      actions: [
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      resources: [
+        `arn:aws:logs:${cdk.Aws.REGION}:${cdk.Aws.ACCOUNT_ID}:*`
+      ],
+    }));
+    new cdk.CfnOutput(this, 'AthenaRoleArn', {
+      value: athenaRole.roleArn,
+      description: 'The arn of AthenaRole',
+    });
+    
+    // Lambda for athena 
+    const lambdaAthena = new lambda.Function(this, "LambdaAthena", {
+      description: 'query athena',
+      runtime: lambda.Runtime.NODEJS_14_X, 
+      code: lambda.Code.fromAsset("../lambda-for-athena"), 
+      role: athenaRole,
+      handler: "index.handler", 
+      timeout: cdk.Duration.seconds(20),
+      environment: {
+        athenaBucket: s3Bucket.bucketArn,
+        dbName: glueDatabaseName,
+        workGroup: workGroupName
+      }
+    }); 
+    new cdk.CfnOutput(this, 'LambdaAthenaARN', {
+      value: lambdaAthena.functionArn,
+      description: 'The arn of lambda for athena',
+    });
   }
 }

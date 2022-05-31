@@ -259,7 +259,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "9ae5d216d4fe071dc02a9c3e0690e7e102b766c5c582cc9dd5ee34ffc0d5eefe.zip"
+          "S3Key": "1f237f8bdc1f8621b653c2bc69442cb55d3ca433fabc7b6eee1dada665967e82.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -278,7 +278,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "CdkIotStack/LambdaKinesisStream/Resource",
-        "aws:asset:path": "asset.9ae5d216d4fe071dc02a9c3e0690e7e102b766c5c582cc9dd5ee34ffc0d5eefe",
+        "aws:asset:path": "asset.1f237f8bdc1f8621b653c2bc69442cb55d3ca433fabc7b6eee1dada665967e82",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -317,7 +317,8 @@
           ],
           "Version": "2012-10-17"
         },
-        "Description": "Role of Rule for IoT"
+        "Description": "Role of Rule for IoT",
+        "RoleName": "RuleRole"
       },
       "Metadata": {
         "aws:cdk:path": "CdkIotStack/ruleRole/Resource"
@@ -379,7 +380,7 @@
         "aws:cdk:path": "CdkIotStack/TopicRule"
       }
     },
-    "LimbdaKinesisFirehoseServiceRoleA091BE7E": {
+    "LambdaKinesisFirehoseServiceRoleA0A46308": {
       "Type": "AWS::IAM::Role",
       "Properties": {
         "AssumeRolePolicyDocument": {
@@ -410,21 +411,21 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "CdkIotStack/LimbdaKinesisFirehose/ServiceRole/Resource"
+        "aws:cdk:path": "CdkIotStack/LambdaKinesisFirehose/ServiceRole/Resource"
       }
     },
-    "LimbdaKinesisFirehose925A14CE": {
+    "LambdaKinesisFirehoseE096B30B": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
         "Code": {
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "8a13b3f36b866eaa5a86999e0885de251a672c3858d2333514ff399054525624.zip"
+          "S3Key": "f5041f2882fb03cc46765bb1f56c90eb20c389ad2c6f99e7bf1a9dc020c67344.zip"
         },
         "Role": {
           "Fn::GetAtt": [
-            "LimbdaKinesisFirehoseServiceRoleA091BE7E",
+            "LambdaKinesisFirehoseServiceRoleA0A46308",
             "Arn"
           ]
         },
@@ -434,11 +435,11 @@
         "Timeout": 3
       },
       "DependsOn": [
-        "LimbdaKinesisFirehoseServiceRoleA091BE7E"
+        "LambdaKinesisFirehoseServiceRoleA0A46308"
       ],
       "Metadata": {
-        "aws:cdk:path": "CdkIotStack/LimbdaKinesisFirehose/Resource",
-        "aws:asset:path": "asset.8a13b3f36b866eaa5a86999e0885de251a672c3858d2333514ff399054525624",
+        "aws:cdk:path": "CdkIotStack/LambdaKinesisFirehose/Resource",
+        "aws:asset:path": "asset.f5041f2882fb03cc46765bb1f56c90eb20c389ad2c6f99e7bf1a9dc020c67344",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -458,10 +459,11 @@
           ],
           "Version": "2012-10-17"
         },
-        "Description": "Role for parquet translation",
+        "Description": "Role for crawler",
         "ManagedPolicyArns": [
           "arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole"
-        ]
+        ],
+        "RoleName": "CrawlerRole"
       },
       "Metadata": {
         "aws:cdk:path": "CdkIotStack/crawlerRole/Resource"
@@ -519,7 +521,7 @@
         "aws:cdk:path": "CdkIotStack/crawlerRole/DefaultPolicy/Resource"
       }
     },
-    "TranslateToParquetGlueCrawler": {
+    "TranslateRecords": {
       "Type": "AWS::Glue::Crawler",
       "Properties": {
         "Role": {
@@ -546,14 +548,14 @@
             }
           ]
         },
-        "DatabaseName": "themometer",
-        "Name": "translate-parquet-crawler",
+        "DatabaseName": "themometerDb",
+        "Name": "translate-records",
         "SchemaChangePolicy": {
           "DeleteBehavior": "DELETE_FROM_DATABASE"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "CdkIotStack/TranslateToParquetGlueCrawler"
+        "aws:cdk:path": "CdkIotStack/TranslateRecords"
       }
     },
     "TranslationRole574EADCA": {
@@ -576,7 +578,8 @@
           "arn:aws:iam::aws:policy/AWSLambdaExecute",
           "arn:aws:iam::aws:policy/service-role/AWSLambdaKinesisExecutionRole",
           "arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole"
-        ]
+        ],
+        "RoleName": "TranslationRole"
       },
       "Metadata": {
         "aws:cdk:path": "CdkIotStack/TranslationRole/Resource"
@@ -629,7 +632,7 @@
               "Resource": [
                 {
                   "Fn::GetAtt": [
-                    "LimbdaKinesisFirehose925A14CE",
+                    "LambdaKinesisFirehoseE096B30B",
                     "Arn"
                   ]
                 },
@@ -639,7 +642,7 @@
                     [
                       {
                         "Fn::GetAtt": [
-                          "LimbdaKinesisFirehose925A14CE",
+                          "LambdaKinesisFirehoseE096B30B",
                           "Arn"
                         ]
                       },
@@ -691,7 +694,7 @@
           "DataFormatConversionConfiguration": {
             "Enabled": false,
             "SchemaConfiguration": {
-              "DatabaseName": "themometer",
+              "DatabaseName": "themometerDb",
               "RoleARN": {
                 "Fn::GetAtt": [
                   "TranslationRole574EADCA",
@@ -715,7 +718,7 @@
                     "ParameterName": "LambdaArn",
                     "ParameterValue": {
                       "Fn::GetAtt": [
-                        "LimbdaKinesisFirehose925A14CE",
+                        "LambdaKinesisFirehoseE096B30B",
                         "Arn"
                       ]
                     }
@@ -755,6 +758,9 @@
       "Type": "AWS::Athena::WorkGroup",
       "Properties": {
         "Name": "themometer-workgroup",
+        "Description": "athena working group",
+        "RecursiveDeleteOption": true,
+        "State": "ENABLED",
         "WorkGroupConfiguration": {
           "ResultConfiguration": {
             "OutputLocation": {
@@ -773,6 +779,237 @@
       },
       "Metadata": {
         "aws:cdk:path": "CdkIotStack/analytics-athena-workgroup"
+      }
+    },
+    "athenaRoleC02D81FF": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "Description": "Athena Role",
+        "RoleName": "AthenaRole"
+      },
+      "Metadata": {
+        "aws:cdk:path": "CdkIotStack/athenaRole/Resource"
+      }
+    },
+    "athenaRoleDefaultPolicy7218C7E2": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "athena:StartQueryExecution",
+                "athena:BatchGetQueryExecution",
+                "athena:GetQueryExecution",
+                "athena:GetQueryResults",
+                "athena:GetQueryResultsStream",
+                "athena:ListQueryExecutions",
+                "athena:StopQueryExecution",
+                "athena:ListWorkGroups",
+                "athena:ListEngineVersions",
+                "athena:GetWorkGroup",
+                "athena:GetDataCatalog",
+                "athena:GetDatabase",
+                "athena:GetTableMetadata",
+                "athena:ListDataCatalogs",
+                "athena:ListDatabases",
+                "athena:ListTableMetadata"
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:athena:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":workgroup/primary"
+                    ]
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:athena:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":workgroup/themometer-workgroup"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Action": [
+                "glue:GetTable",
+                "glue:GetDatabase",
+                "glue:GetPartitions"
+              ],
+              "Effect": "Allow",
+              "Resource": "*"
+            },
+            {
+              "Action": [
+                "s3:GetBucketLocation",
+                "s3:GetObject",
+                "s3:ListBucket",
+                "s3:ListBucketMultipartUploads",
+                "s3:ListMultipartUploadParts",
+                "s3:AbortMultipartUpload",
+                "s3:CreateBucket",
+                "s3:PutObject",
+                "s3:PutBucketPublicAccessBlock"
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "themometerCCBBC1EC",
+                    "Arn"
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "themometerCCBBC1EC",
+                          "Arn"
+                        ]
+                      },
+                      "/*"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:aws:logs:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":*"
+                  ]
+                ]
+              }
+            },
+            {
+              "Action": [
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:aws:logs:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":*"
+                  ]
+                ]
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "athenaRoleDefaultPolicy7218C7E2",
+        "Roles": [
+          {
+            "Ref": "athenaRoleC02D81FF"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "CdkIotStack/athenaRole/DefaultPolicy/Resource"
+      }
+    },
+    "LambdaAthenaB5D0C109": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+          },
+          "S3Key": "bc2507feea207e126a8e8603098cdcb459910cb7e1ef634bf66625ce8986b067.zip"
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "athenaRoleC02D81FF",
+            "Arn"
+          ]
+        },
+        "Description": "query athena",
+        "Environment": {
+          "Variables": {
+            "athenaBucket": {
+              "Fn::GetAtt": [
+                "themometerCCBBC1EC",
+                "Arn"
+              ]
+            },
+            "dbName": "themometerDb",
+            "workGroup": "themometer-workgroup"
+          }
+        },
+        "Handler": "index.handler",
+        "Runtime": "nodejs14.x",
+        "Timeout": 20
+      },
+      "DependsOn": [
+        "athenaRoleDefaultPolicy7218C7E2",
+        "athenaRoleC02D81FF"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "CdkIotStack/LambdaAthena/Resource",
+        "aws:asset:path": "asset.bc2507feea207e126a8e8603098cdcb459910cb7e1ef634bf66625ce8986b067",
+        "aws:asset:is-bundled": false,
+        "aws:asset:property": "Code"
       }
     },
     "CDKMetadata": {
@@ -838,7 +1075,7 @@
       "Description": "The arn of lambda for kinesis",
       "Value": {
         "Fn::GetAtt": [
-          "LimbdaKinesisFirehose925A14CE",
+          "LambdaKinesisFirehoseE096B30B",
           "Arn"
         ]
       }
@@ -848,6 +1085,43 @@
       "Value": {
         "Fn::GetAtt": [
           "crawlerRoleCB71E89D",
+          "Arn"
+        ]
+      }
+    },
+    "workgroupArn": {
+      "Description": "The arn of workgroup",
+      "Value": {
+        "Fn::Join": [
+          "",
+          [
+            "arn:aws:athena:",
+            {
+              "Ref": "AWS::Region"
+            },
+            ":",
+            {
+              "Ref": "AWS::AccountId"
+            },
+            ":workgroup/themometer-workgroup"
+          ]
+        ]
+      }
+    },
+    "AthenaRoleArn": {
+      "Description": "The arn of AthenaRole",
+      "Value": {
+        "Fn::GetAtt": [
+          "athenaRoleC02D81FF",
+          "Arn"
+        ]
+      }
+    },
+    "LambdaAthenaARN": {
+      "Description": "The arn of lambda for athena",
+      "Value": {
+        "Fn::GetAtt": [
+          "LambdaAthenaB5D0C109",
           "Arn"
         ]
       }

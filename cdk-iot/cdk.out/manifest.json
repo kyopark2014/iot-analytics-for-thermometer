@@ -23,7 +23,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/7a5dd3947ca5c9e4924130d77e4c6b8629b69b475455f42ee0b76bcfa25f1f47.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/31ede8262eb5dfdd2c97bd2ab0935ce40fe34d9e6fa5989ad74107756b53ac96.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -147,16 +147,16 @@
             "data": "TopicRule"
           }
         ],
-        "/CdkIotStack/LimbdaKinesisFirehose/ServiceRole/Resource": [
+        "/CdkIotStack/LambdaKinesisFirehose/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "LimbdaKinesisFirehoseServiceRoleA091BE7E"
+            "data": "LambdaKinesisFirehoseServiceRoleA0A46308"
           }
         ],
-        "/CdkIotStack/LimbdaKinesisFirehose/Resource": [
+        "/CdkIotStack/LambdaKinesisFirehose/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "LimbdaKinesisFirehose925A14CE"
+            "data": "LambdaKinesisFirehoseE096B30B"
           }
         ],
         "/CdkIotStack/LambdaKinesisARN": [
@@ -183,10 +183,10 @@
             "data": "crawlerRoleArn"
           }
         ],
-        "/CdkIotStack/TranslateToParquetGlueCrawler": [
+        "/CdkIotStack/TranslateRecords": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "TranslateToParquetGlueCrawler"
+            "data": "TranslateRecords"
           }
         ],
         "/CdkIotStack/TranslationRole/Resource": [
@@ -211,6 +211,42 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "analyticsathenaworkgroup"
+          }
+        ],
+        "/CdkIotStack/workgroupArn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "workgroupArn"
+          }
+        ],
+        "/CdkIotStack/athenaRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "athenaRoleC02D81FF"
+          }
+        ],
+        "/CdkIotStack/athenaRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "athenaRoleDefaultPolicy7218C7E2"
+          }
+        ],
+        "/CdkIotStack/AthenaRoleArn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AthenaRoleArn"
+          }
+        ],
+        "/CdkIotStack/LambdaAthena/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaAthenaB5D0C109"
+          }
+        ],
+        "/CdkIotStack/LambdaAthenaARN": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaAthenaARN"
           }
         ],
         "/CdkIotStack/CDKMetadata/Default": [

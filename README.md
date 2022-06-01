@@ -28,6 +28,8 @@
 
 <img width="967" alt="image" src="https://user-images.githubusercontent.com/52392004/171308428-f990535e-c953-4839-ab49-bc0e1f7c9735.png">
 
+![image](https://user-images.githubusercontent.com/52392004/171510640-c8ce6721-665a-4b69-8f1b-cfe13147b26b.png)
+
 
 ## 1) AWS Edukit(M5Stack)에서 측정한 Temperature를 IoT Core로 전송
 

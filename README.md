@@ -31,7 +31,7 @@
 
 ## 1) AWS Edukit(M5Stack)에서 측정한 Temperature를 IoT Core로 전송
 
-[AWS Edukit(M5Stack)에서 측정한 Temperature를 IoT Core로 전송](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/aws-iot-thermometer/README.md)을 따라서 themometer용 M5Stack용 Binary를 설치합니다.  [M5Stack](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/m5stack.md)은 Temperature sensor를 이용하여 온도를 측정한 후, [MQTT](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/mqtt.md)를 이용해 AWS IoT Core에 온도 데이터를 JSON 포멧으로 전달합니다. 
+[AWS Edukit(M5Stack)에서 측정한 Temperature를 IoT Core로 전송](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/aws-iot-thermometer/README.md)을 따라서 themometer용 M5Stack용 Binary를 설치합니다.  [M5Stack](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/m5stack.md)은 Temperature sensor를 이용하여 주기적으로 온도를 측정한 후, [MQTT](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/mqtt.md)를 이용해 AWS IoT Core에 온도 데이터를 JSON 포멧으로 전달합니다. 현재 전송주기의 기본 설정값은 1분으로 용도에 맞게 변경 할 수 있습니다.
 
 
 

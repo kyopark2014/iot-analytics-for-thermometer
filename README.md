@@ -47,7 +47,7 @@ $ cdk deploy
 
 2) [AWS Glue에서 Table 생성](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/crawler.md)에 따라 AWS Glue Data catalogd의 Crawler를 이용하여 Table을 생성합니다. 
 
-3) [Athena로 IoT 데이터 조회](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/athena.md)에 따라 Athena로 IoT device에서 생성되고, AWS Anlytics를 통해 수집된 데이터를 확인 합니다.
+3) [Athena로 IoT 데이터 조회](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/athena.md)처럼 IoT device를 통해 들어오는 온도데이터를 AWS Anlytics를 통해 수집해서 Athena를 통화 조회 할 수 있습니다. 
 
 
 

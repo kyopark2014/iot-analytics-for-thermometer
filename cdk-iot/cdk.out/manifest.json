@@ -1,5 +1,5 @@
 {
-  "version": "16.0.0",
+  "version": "20.0.0",
   "artifacts": {
     "Tree": {
       "type": "cdk:tree",
@@ -23,7 +23,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/31ede8262eb5dfdd2c97bd2ab0935ce40fe34d9e6fa5989ad74107756b53ac96.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/1d6e1d5d1abacd0c0f8db74e99f236bb4655b857696c230e3d4e6a683b0b94e9.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -39,22 +39,22 @@
         "CdkIotStack.assets"
       ],
       "metadata": {
-        "/CdkIotStack/themometer/Resource": [
+        "/CdkIotStack/thermometer-storage/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "themometerCCBBC1EC"
+            "data": "thermometerstorageA03733C7"
           }
         ],
-        "/CdkIotStack/themometer/Policy/Resource": [
+        "/CdkIotStack/thermometer-storage/Policy/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "themometerPolicy1CBD7141"
+            "data": "thermometerstoragePolicy7263EBBF"
           }
         ],
-        "/CdkIotStack/themometer/AutoDeleteObjectsCustomResource/Default": [
+        "/CdkIotStack/thermometer-storage/AutoDeleteObjectsCustomResource/Default": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "themometerAutoDeleteObjectsCustomResource02F3352A"
+            "data": "thermometerstorageAutoDeleteObjectsCustomResourceC9E7A8A1"
           }
         ],
         "/CdkIotStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Role": [
@@ -69,10 +69,10 @@
             "data": "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F"
           }
         ],
-        "/CdkIotStack/bucketName": [
+        "/CdkIotStack/StorageBucketName": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "bucketName"
+            "data": "StorageBucketName"
           }
         ],
         "/CdkIotStack/s3Arn": [
@@ -87,6 +87,60 @@
             "data": "s3Path"
           }
         ],
+        "/CdkIotStack/themometer-web/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "themometerwebA10CBA95"
+          }
+        ],
+        "/CdkIotStack/themometer-web/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "themometerwebPolicy50F5E315"
+          }
+        ],
+        "/CdkIotStack/themometer-web/AutoDeleteObjectsCustomResource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "themometerwebAutoDeleteObjectsCustomResource2BF84AFC"
+          }
+        ],
+        "/CdkIotStack/WebBucketName": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WebBucketName"
+          }
+        ],
+        "/CdkIotStack/DeployReactApp/AwsCliLayer/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeployReactAppAwsCliLayer6C83B54F"
+          }
+        ],
+        "/CdkIotStack/DeployReactApp/CustomResource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeployReactAppCustomResourceFEAA9FB4"
+          }
+        ],
+        "/CdkIotStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265"
+          }
+        ],
+        "/CdkIotStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF"
+          }
+        ],
+        "/CdkIotStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536"
+          }
+        ],
         "/CdkIotStack/Stream/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -97,6 +151,24 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "StreamARN"
+          }
+        ],
+        "/CdkIotStack/sns-iot/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "snsiot647BE6CE"
+          }
+        ],
+        "/CdkIotStack/sns-iot/storytimebot21@gmail.com/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "snsiotstorytimebot21gmailcom2076197D"
+          }
+        ],
+        "/CdkIotStack/snsTopicArn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "snsTopicArn"
           }
         ],
         "/CdkIotStack/LambdaKinesisStream/ServiceRole/Resource": [
@@ -121,6 +193,30 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "LambdaKinesisStreamKinesisEventSourceCdkIotStackStream9740E3205D1EAF24"
+          }
+        ],
+        "/CdkIotStack/LambdaSlack/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaSlackServiceRole519A82E6"
+          }
+        ],
+        "/CdkIotStack/LambdaSlack/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaSlackA1FFF73E"
+          }
+        ],
+        "/CdkIotStack/LambdaSlack/AllowInvoke:CdkIotStacksnsiot7350D5FB": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaSlackAllowInvokeCdkIotStacksnsiot7350D5FB7F172C32"
+          }
+        ],
+        "/CdkIotStack/LambdaSlack/sns-iot/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaSlacksnsiotA206DBCA"
           }
         ],
         "/CdkIotStack/ruleRole/Resource": [
@@ -243,10 +339,130 @@
             "data": "LambdaAthenaB5D0C109"
           }
         ],
+        "/CdkIotStack/LambdaAthena/InvokeFcyXBRX02EWa52GlF+ECQiCzDt0fdRUDi4mo4foC5aU=": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaAthenaInvokeFcyXBRX02EWa52GlFECQiCzDt0fdRUDi4mo4foC5aU5EFA156A"
+          }
+        ],
         "/CdkIotStack/LambdaAthenaARN": [
           {
             "type": "aws:cdk:logicalId",
             "data": "LambdaAthenaARN"
+          }
+        ],
+        "/CdkIotStack/AccessLogs/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AccessLogs8B620ECA"
+          }
+        ],
+        "/CdkIotStack/AccessLogs/Policy/ResourcePolicy": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AccessLogsPolicyResourcePolicyA1E3EF94"
+          }
+        ],
+        "/CdkIotStack/api-role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "apirole22477616"
+          }
+        ],
+        "/CdkIotStack/api-role/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "apiroleDefaultPolicy160A02CD"
+          }
+        ],
+        "/CdkIotStack/api-thermometer/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "apithermometer527A2812"
+          }
+        ],
+        "/CdkIotStack/api-thermometer/CloudWatchRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "apithermometerCloudWatchRoleD43FB1D8"
+          }
+        ],
+        "/CdkIotStack/api-thermometer/Account": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "apithermometerAccount473ADE2F"
+          }
+        ],
+        "/CdkIotStack/api-thermometer/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "apithermometerDeploymentCAEACC8C0a28eede64f77af3c5fcd9dcb41834e1"
+          }
+        ],
+        "/CdkIotStack/api-thermometer/DeploymentStage.dev/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "apithermometerDeploymentStagedevF8B8FDAF"
+          }
+        ],
+        "/CdkIotStack/api-thermometer/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "apithermometerEndpoint270F7E09"
+          }
+        ],
+        "/CdkIotStack/api-thermometer/Default/status/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "apithermometerstatus9A4FEE8E"
+          }
+        ],
+        "/CdkIotStack/api-thermometer/Default/status/GET/ApiPermission.CdkIotStackapithermometer186F9691.GET..status": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "apithermometerstatusGETApiPermissionCdkIotStackapithermometer186F9691GETstatusD64102B0"
+          }
+        ],
+        "/CdkIotStack/api-thermometer/Default/status/GET/ApiPermission.Test.CdkIotStackapithermometer186F9691.GET..status": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "apithermometerstatusGETApiPermissionTestCdkIotStackapithermometer186F9691GETstatus38927CE7"
+          }
+        ],
+        "/CdkIotStack/api-thermometer/Default/status/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "apithermometerstatusGET6028E375"
+          }
+        ],
+        "/CdkIotStack/api-thermometer/Default/status/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "apithermometerstatusOPTIONS3EF8E05E"
+          }
+        ],
+        "/CdkIotStack/apiUrl": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "apiUrl"
+          }
+        ],
+        "/CdkIotStack/cloudfront/Origin1/S3Origin/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "cloudfrontOrigin1S3Origin57D92FB4"
+          }
+        ],
+        "/CdkIotStack/cloudfront/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "cloudfrontB139FFFD"
+          }
+        ],
+        "/CdkIotStack/distributionDomainName": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "distributionDomainName"
           }
         ],
         "/CdkIotStack/CDKMetadata/Default": [

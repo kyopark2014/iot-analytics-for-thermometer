@@ -9,23 +9,30 @@
         "path": "Tree",
         "constructInfo": {
           "fqn": "constructs.Construct",
-          "version": "10.1.18"
+          "version": "10.1.24"
         }
       },
       "CdkIotStack": {
         "id": "CdkIotStack",
         "path": "CdkIotStack",
         "children": {
-          "themometer": {
-            "id": "themometer",
-            "path": "CdkIotStack/themometer",
+          "thermometer-storage": {
+            "id": "thermometer-storage",
+            "path": "CdkIotStack/thermometer-storage",
             "children": {
               "Resource": {
                 "id": "Resource",
-                "path": "CdkIotStack/themometer/Resource",
+                "path": "CdkIotStack/thermometer-storage/Resource",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::S3::Bucket",
                   "aws:cdk:cloudformation:props": {
+                    "bucketName": "s3-themometer-storage",
+                    "publicAccessBlockConfiguration": {
+                      "blockPublicAcls": true,
+                      "blockPublicPolicy": true,
+                      "ignorePublicAcls": true,
+                      "restrictPublicBuckets": true
+                    },
                     "tags": [
                       {
                         "key": "aws-cdk:auto-delete-objects",
@@ -36,29 +43,29 @@
                 },
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.aws_s3.CfnBucket",
-                  "version": "2.17.0"
+                  "version": "2.26.0"
                 }
               },
               "Policy": {
                 "id": "Policy",
-                "path": "CdkIotStack/themometer/Policy",
+                "path": "CdkIotStack/thermometer-storage/Policy",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "CdkIotStack/themometer/Policy/Resource",
+                    "path": "CdkIotStack/thermometer-storage/Policy/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::S3::BucketPolicy",
                       "aws:cdk:cloudformation:props": {
                         "bucket": {
-                          "Ref": "themometerCCBBC1EC"
+                          "Ref": "thermometerstorageA03733C7"
                         },
                         "policyDocument": {
                           "Statement": [
                             {
                               "Action": [
+                                "s3:DeleteObject*",
                                 "s3:GetBucket*",
-                                "s3:List*",
-                                "s3:DeleteObject*"
+                                "s3:List*"
                               ],
                               "Effect": "Allow",
                               "Principal": {
@@ -72,7 +79,7 @@
                               "Resource": [
                                 {
                                   "Fn::GetAtt": [
-                                    "themometerCCBBC1EC",
+                                    "thermometerstorageA03733C7",
                                     "Arn"
                                   ]
                                 },
@@ -82,7 +89,7 @@
                                     [
                                       {
                                         "Fn::GetAtt": [
-                                          "themometerCCBBC1EC",
+                                          "thermometerstorageA03733C7",
                                           "Arn"
                                         ]
                                       },
@@ -99,37 +106,37 @@
                     },
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.aws_s3.CfnBucketPolicy",
-                      "version": "2.17.0"
+                      "version": "2.26.0"
                     }
                   }
                 },
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.aws_s3.BucketPolicy",
-                  "version": "2.17.0"
+                  "version": "2.26.0"
                 }
               },
               "AutoDeleteObjectsCustomResource": {
                 "id": "AutoDeleteObjectsCustomResource",
-                "path": "CdkIotStack/themometer/AutoDeleteObjectsCustomResource",
+                "path": "CdkIotStack/thermometer-storage/AutoDeleteObjectsCustomResource",
                 "children": {
                   "Default": {
                     "id": "Default",
-                    "path": "CdkIotStack/themometer/AutoDeleteObjectsCustomResource/Default",
+                    "path": "CdkIotStack/thermometer-storage/AutoDeleteObjectsCustomResource/Default",
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.CfnResource",
-                      "version": "2.17.0"
+                      "version": "2.26.0"
                     }
                   }
                 },
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.CustomResource",
-                  "version": "2.17.0"
+                  "version": "2.26.0"
                 }
               }
             },
             "constructInfo": {
               "fqn": "aws-cdk-lib.aws_s3.Bucket",
-              "version": "2.17.0"
+              "version": "2.26.0"
             }
           },
           "Custom::S3AutoDeleteObjectsCustomResourceProvider": {
@@ -141,7 +148,7 @@
                 "path": "CdkIotStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Staging",
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.AssetStaging",
-                  "version": "2.17.0"
+                  "version": "2.26.0"
                 }
               },
               "Role": {
@@ -149,7 +156,7 @@
                 "path": "CdkIotStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Role",
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.CfnResource",
-                  "version": "2.17.0"
+                  "version": "2.26.0"
                 }
               },
               "Handler": {
@@ -157,21 +164,21 @@
                 "path": "CdkIotStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Handler",
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.CfnResource",
-                  "version": "2.17.0"
+                  "version": "2.26.0"
                 }
               }
             },
             "constructInfo": {
               "fqn": "aws-cdk-lib.CustomResourceProvider",
-              "version": "2.17.0"
+              "version": "2.26.0"
             }
           },
-          "bucketName": {
-            "id": "bucketName",
-            "path": "CdkIotStack/bucketName",
+          "StorageBucketName": {
+            "id": "StorageBucketName",
+            "path": "CdkIotStack/StorageBucketName",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnOutput",
-              "version": "2.17.0"
+              "version": "2.26.0"
             }
           },
           "s3Arn": {
@@ -179,7 +186,7 @@
             "path": "CdkIotStack/s3Arn",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnOutput",
-              "version": "2.17.0"
+              "version": "2.26.0"
             }
           },
           "s3Path": {
@@ -187,7 +194,516 @@
             "path": "CdkIotStack/s3Path",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnOutput",
-              "version": "2.17.0"
+              "version": "2.26.0"
+            }
+          },
+          "themometer-web": {
+            "id": "themometer-web",
+            "path": "CdkIotStack/themometer-web",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "CdkIotStack/themometer-web/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::S3::Bucket",
+                  "aws:cdk:cloudformation:props": {
+                    "bucketName": "s3-themometer-web",
+                    "publicAccessBlockConfiguration": {
+                      "blockPublicAcls": true,
+                      "blockPublicPolicy": true,
+                      "ignorePublicAcls": true,
+                      "restrictPublicBuckets": true
+                    },
+                    "tags": [
+                      {
+                        "key": "aws-cdk:auto-delete-objects",
+                        "value": "true"
+                      },
+                      {
+                        "key": "aws-cdk:cr-owned:dcebfb66",
+                        "value": "true"
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3.CfnBucket",
+                  "version": "2.26.0"
+                }
+              },
+              "Policy": {
+                "id": "Policy",
+                "path": "CdkIotStack/themometer-web/Policy",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "CdkIotStack/themometer-web/Policy/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::S3::BucketPolicy",
+                      "aws:cdk:cloudformation:props": {
+                        "bucket": {
+                          "Ref": "themometerwebA10CBA95"
+                        },
+                        "policyDocument": {
+                          "Statement": [
+                            {
+                              "Action": [
+                                "s3:DeleteObject*",
+                                "s3:GetBucket*",
+                                "s3:List*"
+                              ],
+                              "Effect": "Allow",
+                              "Principal": {
+                                "AWS": {
+                                  "Fn::GetAtt": [
+                                    "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+                                    "Arn"
+                                  ]
+                                }
+                              },
+                              "Resource": [
+                                {
+                                  "Fn::GetAtt": [
+                                    "themometerwebA10CBA95",
+                                    "Arn"
+                                  ]
+                                },
+                                {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      {
+                                        "Fn::GetAtt": [
+                                          "themometerwebA10CBA95",
+                                          "Arn"
+                                        ]
+                                      },
+                                      "/*"
+                                    ]
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "Action": "s3:GetObject",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "CanonicalUser": {
+                                  "Fn::GetAtt": [
+                                    "cloudfrontOrigin1S3Origin57D92FB4",
+                                    "S3CanonicalUserId"
+                                  ]
+                                }
+                              },
+                              "Resource": {
+                                "Fn::Join": [
+                                  "",
+                                  [
+                                    {
+                                      "Fn::GetAtt": [
+                                        "themometerwebA10CBA95",
+                                        "Arn"
+                                      ]
+                                    },
+                                    "/*"
+                                  ]
+                                ]
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.CfnBucketPolicy",
+                      "version": "2.26.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3.BucketPolicy",
+                  "version": "2.26.0"
+                }
+              },
+              "AutoDeleteObjectsCustomResource": {
+                "id": "AutoDeleteObjectsCustomResource",
+                "path": "CdkIotStack/themometer-web/AutoDeleteObjectsCustomResource",
+                "children": {
+                  "Default": {
+                    "id": "Default",
+                    "path": "CdkIotStack/themometer-web/AutoDeleteObjectsCustomResource/Default",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.CfnResource",
+                      "version": "2.26.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CustomResource",
+                  "version": "2.26.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_s3.Bucket",
+              "version": "2.26.0"
+            }
+          },
+          "WebBucketName": {
+            "id": "WebBucketName",
+            "path": "CdkIotStack/WebBucketName",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
+              "version": "2.26.0"
+            }
+          },
+          "DeployReactApp": {
+            "id": "DeployReactApp",
+            "path": "CdkIotStack/DeployReactApp",
+            "children": {
+              "AwsCliLayer": {
+                "id": "AwsCliLayer",
+                "path": "CdkIotStack/DeployReactApp/AwsCliLayer",
+                "children": {
+                  "Code": {
+                    "id": "Code",
+                    "path": "CdkIotStack/DeployReactApp/AwsCliLayer/Code",
+                    "children": {
+                      "Stage": {
+                        "id": "Stage",
+                        "path": "CdkIotStack/DeployReactApp/AwsCliLayer/Code/Stage",
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.AssetStaging",
+                          "version": "2.26.0"
+                        }
+                      },
+                      "AssetBucket": {
+                        "id": "AssetBucket",
+                        "path": "CdkIotStack/DeployReactApp/AwsCliLayer/Code/AssetBucket",
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                          "version": "2.26.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                      "version": "2.26.0"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "CdkIotStack/DeployReactApp/AwsCliLayer/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::Lambda::LayerVersion",
+                      "aws:cdk:cloudformation:props": {
+                        "content": {
+                          "s3Bucket": {
+                            "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                          },
+                          "s3Key": "8ad7bbf8be94e05d569da95ddb82511dcc959f25054825394cbb86028ccd1b6a.zip"
+                        },
+                        "description": "/opt/awscli/aws"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_lambda.CfnLayerVersion",
+                      "version": "2.26.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.lambda_layer_awscli.AwsCliLayer",
+                  "version": "2.26.0"
+                }
+              },
+              "CustomResourceHandler": {
+                "id": "CustomResourceHandler",
+                "path": "CdkIotStack/DeployReactApp/CustomResourceHandler",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.SingletonFunction",
+                  "version": "2.26.0"
+                }
+              },
+              "Asset1": {
+                "id": "Asset1",
+                "path": "CdkIotStack/DeployReactApp/Asset1",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "CdkIotStack/DeployReactApp/Asset1/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.26.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "CdkIotStack/DeployReactApp/Asset1/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.26.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.26.0"
+                }
+              },
+              "CustomResource": {
+                "id": "CustomResource",
+                "path": "CdkIotStack/DeployReactApp/CustomResource",
+                "children": {
+                  "Default": {
+                    "id": "Default",
+                    "path": "CdkIotStack/DeployReactApp/CustomResource/Default",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.CfnResource",
+                      "version": "2.26.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CustomResource",
+                  "version": "2.26.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_s3_deployment.BucketDeployment",
+              "version": "2.26.0"
+            }
+          },
+          "Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C": {
+            "id": "Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C",
+            "path": "CdkIotStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "CdkIotStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "CdkIotStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.26.0"
+                    }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "CdkIotStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "CdkIotStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "s3:GetBucket*",
+                                    "s3:GetObject*",
+                                    "s3:List*"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": [
+                                    {
+                                      "Fn::Join": [
+                                        "",
+                                        [
+                                          "arn:",
+                                          {
+                                            "Ref": "AWS::Partition"
+                                          },
+                                          ":s3:::",
+                                          {
+                                            "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                                          },
+                                          "/*"
+                                        ]
+                                      ]
+                                    },
+                                    {
+                                      "Fn::Join": [
+                                        "",
+                                        [
+                                          "arn:",
+                                          {
+                                            "Ref": "AWS::Partition"
+                                          },
+                                          ":s3:::",
+                                          {
+                                            "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                                          }
+                                        ]
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "Action": [
+                                    "s3:Abort*",
+                                    "s3:DeleteObject*",
+                                    "s3:GetBucket*",
+                                    "s3:GetObject*",
+                                    "s3:List*",
+                                    "s3:PutObject",
+                                    "s3:PutObjectLegalHold",
+                                    "s3:PutObjectRetention",
+                                    "s3:PutObjectTagging",
+                                    "s3:PutObjectVersionTagging"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": [
+                                    {
+                                      "Fn::GetAtt": [
+                                        "themometerwebA10CBA95",
+                                        "Arn"
+                                      ]
+                                    },
+                                    {
+                                      "Fn::Join": [
+                                        "",
+                                        [
+                                          {
+                                            "Fn::GetAtt": [
+                                              "themometerwebA10CBA95",
+                                              "Arn"
+                                            ]
+                                          },
+                                          "/*"
+                                        ]
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
+                            "roles": [
+                              {
+                                "Ref": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.26.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.26.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.26.0"
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "CdkIotStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "CdkIotStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.26.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "CdkIotStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.26.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.26.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "CdkIotStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                      },
+                      "s3Key": "f98b78092dcdd31f5e6d47489beb5f804d4835ef86a8085d0a2053cb9ae711da.zip"
+                    },
+                    "role": {
+                      "Fn::GetAtt": [
+                        "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
+                        "Arn"
+                      ]
+                    },
+                    "handler": "index.handler",
+                    "layers": [
+                      {
+                        "Ref": "DeployReactAppAwsCliLayer6C83B54F"
+                      }
+                    ],
+                    "runtime": "python3.7",
+                    "timeout": 900
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.26.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.26.0"
             }
           },
           "Stream": {
@@ -209,13 +725,13 @@
                 },
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.aws_kinesis.CfnStream",
-                  "version": "2.17.0"
+                  "version": "2.26.0"
                 }
               }
             },
             "constructInfo": {
               "fqn": "aws-cdk-lib.aws_kinesis.Stream",
-              "version": "2.17.0"
+              "version": "2.26.0"
             }
           },
           "StreamARN": {
@@ -223,7 +739,67 @@
             "path": "CdkIotStack/StreamARN",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnOutput",
-              "version": "2.17.0"
+              "version": "2.26.0"
+            }
+          },
+          "sns-iot": {
+            "id": "sns-iot",
+            "path": "CdkIotStack/sns-iot",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "CdkIotStack/sns-iot/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::SNS::Topic",
+                  "aws:cdk:cloudformation:props": {
+                    "topicName": "sns-iot"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_sns.CfnTopic",
+                  "version": "2.26.0"
+                }
+              },
+              "storytimebot21@gmail.com": {
+                "id": "storytimebot21@gmail.com",
+                "path": "CdkIotStack/sns-iot/storytimebot21@gmail.com",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "CdkIotStack/sns-iot/storytimebot21@gmail.com/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::SNS::Subscription",
+                      "aws:cdk:cloudformation:props": {
+                        "protocol": "email",
+                        "topicArn": {
+                          "Ref": "snsiot647BE6CE"
+                        },
+                        "endpoint": "storytimebot21@gmail.com"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_sns.CfnSubscription",
+                      "version": "2.26.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_sns.Subscription",
+                  "version": "2.26.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_sns.Topic",
+              "version": "2.26.0"
+            }
+          },
+          "snsTopicArn": {
+            "id": "snsTopicArn",
+            "path": "CdkIotStack/snsTopicArn",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
+              "version": "2.26.0"
             }
           },
           "LambdaKinesisStream": {
@@ -270,7 +846,7 @@
                     },
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.aws_iam.CfnRole",
-                      "version": "2.17.0"
+                      "version": "2.26.0"
                     }
                   },
                   "DefaultPolicy": {
@@ -287,24 +863,14 @@
                               "Statement": [
                                 {
                                   "Action": [
+                                    "kinesis:DescribeStream",
                                     "kinesis:DescribeStreamSummary",
                                     "kinesis:GetRecords",
                                     "kinesis:GetShardIterator",
                                     "kinesis:ListShards",
-                                    "kinesis:SubscribeToShard",
-                                    "kinesis:DescribeStream",
-                                    "kinesis:ListStreams"
+                                    "kinesis:ListStreams",
+                                    "kinesis:SubscribeToShard"
                                   ],
-                                  "Effect": "Allow",
-                                  "Resource": {
-                                    "Fn::GetAtt": [
-                                      "Stream790BDEE4",
-                                      "Arn"
-                                    ]
-                                  }
-                                },
-                                {
-                                  "Action": "kinesis:DescribeStream",
                                   "Effect": "Allow",
                                   "Resource": {
                                     "Fn::GetAtt": [
@@ -326,19 +892,19 @@
                         },
                         "constructInfo": {
                           "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
-                          "version": "2.17.0"
+                          "version": "2.26.0"
                         }
                       }
                     },
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.aws_iam.Policy",
-                      "version": "2.17.0"
+                      "version": "2.26.0"
                     }
                   }
                 },
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.aws_iam.Role",
-                  "version": "2.17.0"
+                  "version": "2.26.0"
                 }
               },
               "Code": {
@@ -350,7 +916,7 @@
                     "path": "CdkIotStack/LambdaKinesisStream/Code/Stage",
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.AssetStaging",
-                      "version": "2.17.0"
+                      "version": "2.26.0"
                     }
                   },
                   "AssetBucket": {
@@ -358,13 +924,13 @@
                     "path": "CdkIotStack/LambdaKinesisStream/Code/AssetBucket",
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.aws_s3.BucketBase",
-                      "version": "2.17.0"
+                      "version": "2.26.0"
                     }
                   }
                 },
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
-                  "version": "2.17.0"
+                  "version": "2.26.0"
                 }
               },
               "Resource": {
@@ -386,6 +952,13 @@
                       ]
                     },
                     "description": "get eventinfo from kinesis data stream",
+                    "environment": {
+                      "variables": {
+                        "topicArn": {
+                          "Ref": "snsiot647BE6CE"
+                        }
+                      }
+                    },
                     "handler": "index.handler",
                     "runtime": "nodejs14.x",
                     "timeout": 3
@@ -393,7 +966,7 @@
                 },
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
-                  "version": "2.17.0"
+                  "version": "2.26.0"
                 }
               },
               "KinesisEventSource:CdkIotStackStream9740E320": {
@@ -421,19 +994,194 @@
                     },
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.aws_lambda.CfnEventSourceMapping",
-                      "version": "2.17.0"
+                      "version": "2.26.0"
                     }
                   }
                 },
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.aws_lambda.EventSourceMapping",
-                  "version": "2.17.0"
+                  "version": "2.26.0"
                 }
               }
             },
             "constructInfo": {
               "fqn": "aws-cdk-lib.aws_lambda.Function",
-              "version": "2.17.0"
+              "version": "2.26.0"
+            }
+          },
+          "LambdaSlack": {
+            "id": "LambdaSlack",
+            "path": "CdkIotStack/LambdaSlack",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "CdkIotStack/LambdaSlack/ServiceRole",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "CdkIotStack/LambdaSlack/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.26.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.26.0"
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "CdkIotStack/LambdaSlack/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "CdkIotStack/LambdaSlack/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.26.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "CdkIotStack/LambdaSlack/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.26.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.26.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "CdkIotStack/LambdaSlack/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                      },
+                      "s3Key": "93d1e254d55666854a1de90fd23697cfb9ef716a73c87bcc084acea6dbada78d.zip"
+                    },
+                    "role": {
+                      "Fn::GetAtt": [
+                        "LambdaSlackServiceRole519A82E6",
+                        "Arn"
+                      ]
+                    },
+                    "environment": {
+                      "variables": {
+                        "token": "sample-3205298473938-3233090599600-5Kr8k7W8dieUwoL5d7GekmpJ"
+                      }
+                    },
+                    "handler": "index.handler",
+                    "runtime": "nodejs14.x",
+                    "timeout": 10
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.26.0"
+                }
+              },
+              "AllowInvoke:CdkIotStacksnsiot7350D5FB": {
+                "id": "AllowInvoke:CdkIotStacksnsiot7350D5FB",
+                "path": "CdkIotStack/LambdaSlack/AllowInvoke:CdkIotStacksnsiot7350D5FB",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                  "aws:cdk:cloudformation:props": {
+                    "action": "lambda:InvokeFunction",
+                    "functionName": {
+                      "Fn::GetAtt": [
+                        "LambdaSlackA1FFF73E",
+                        "Arn"
+                      ]
+                    },
+                    "principal": "sns.amazonaws.com",
+                    "sourceArn": {
+                      "Ref": "snsiot647BE6CE"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                  "version": "2.26.0"
+                }
+              },
+              "sns-iot": {
+                "id": "sns-iot",
+                "path": "CdkIotStack/LambdaSlack/sns-iot",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "CdkIotStack/LambdaSlack/sns-iot/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::SNS::Subscription",
+                      "aws:cdk:cloudformation:props": {
+                        "protocol": "lambda",
+                        "topicArn": {
+                          "Ref": "snsiot647BE6CE"
+                        },
+                        "endpoint": {
+                          "Fn::GetAtt": [
+                            "LambdaSlackA1FFF73E",
+                            "Arn"
+                          ]
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_sns.CfnSubscription",
+                      "version": "2.26.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_sns.Subscription",
+                  "version": "2.26.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.26.0"
             }
           },
           "ruleRole": {
@@ -464,7 +1212,7 @@
                 },
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.aws_iam.CfnRole",
-                  "version": "2.17.0"
+                  "version": "2.26.0"
                 }
               },
               "DefaultPolicy": {
@@ -502,19 +1250,19 @@
                     },
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
-                      "version": "2.17.0"
+                      "version": "2.26.0"
                     }
                   }
                 },
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.aws_iam.Policy",
-                  "version": "2.17.0"
+                  "version": "2.26.0"
                 }
               }
             },
             "constructInfo": {
               "fqn": "aws-cdk-lib.aws_iam.Role",
-              "version": "2.17.0"
+              "version": "2.26.0"
             }
           },
           "RuleRoleArn": {
@@ -522,7 +1270,7 @@
             "path": "CdkIotStack/RuleRoleArn",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnOutput",
-              "version": "2.17.0"
+              "version": "2.26.0"
             }
           },
           "TopicRule": {
@@ -554,7 +1302,7 @@
             },
             "constructInfo": {
               "fqn": "aws-cdk-lib.aws_iot.CfnTopicRule",
-              "version": "2.17.0"
+              "version": "2.26.0"
             }
           },
           "LambdaKinesisFirehose": {
@@ -601,13 +1349,13 @@
                     },
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.aws_iam.CfnRole",
-                      "version": "2.17.0"
+                      "version": "2.26.0"
                     }
                   }
                 },
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.aws_iam.Role",
-                  "version": "2.17.0"
+                  "version": "2.26.0"
                 }
               },
               "Code": {
@@ -619,7 +1367,7 @@
                     "path": "CdkIotStack/LambdaKinesisFirehose/Code/Stage",
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.AssetStaging",
-                      "version": "2.17.0"
+                      "version": "2.26.0"
                     }
                   },
                   "AssetBucket": {
@@ -627,13 +1375,13 @@
                     "path": "CdkIotStack/LambdaKinesisFirehose/Code/AssetBucket",
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.aws_s3.BucketBase",
-                      "version": "2.17.0"
+                      "version": "2.26.0"
                     }
                   }
                 },
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
-                  "version": "2.17.0"
+                  "version": "2.26.0"
                 }
               },
               "Resource": {
@@ -662,13 +1410,13 @@
                 },
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
-                  "version": "2.17.0"
+                  "version": "2.26.0"
                 }
               }
             },
             "constructInfo": {
               "fqn": "aws-cdk-lib.aws_lambda.Function",
-              "version": "2.17.0"
+              "version": "2.26.0"
             }
           },
           "LambdaKinesisARN": {
@@ -676,7 +1424,7 @@
             "path": "CdkIotStack/LambdaKinesisARN",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnOutput",
-              "version": "2.17.0"
+              "version": "2.26.0"
             }
           },
           "crawlerRole": {
@@ -710,7 +1458,7 @@
                 },
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.aws_iam.CfnRole",
-                  "version": "2.17.0"
+                  "version": "2.26.0"
                 }
               },
               "DefaultPolicy": {
@@ -738,7 +1486,7 @@
                               "Resource": [
                                 {
                                   "Fn::GetAtt": [
-                                    "themometerCCBBC1EC",
+                                    "thermometerstorageA03733C7",
                                     "Arn"
                                   ]
                                 },
@@ -748,7 +1496,7 @@
                                     [
                                       {
                                         "Fn::GetAtt": [
-                                          "themometerCCBBC1EC",
+                                          "thermometerstorageA03733C7",
                                           "Arn"
                                         ]
                                       },
@@ -771,19 +1519,19 @@
                     },
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
-                      "version": "2.17.0"
+                      "version": "2.26.0"
                     }
                   }
                 },
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.aws_iam.Policy",
-                  "version": "2.17.0"
+                  "version": "2.26.0"
                 }
               }
             },
             "constructInfo": {
               "fqn": "aws-cdk-lib.aws_iam.Role",
-              "version": "2.17.0"
+              "version": "2.26.0"
             }
           },
           "crawlerRoleArn": {
@@ -791,7 +1539,7 @@
             "path": "CdkIotStack/crawlerRoleArn",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnOutput",
-              "version": "2.17.0"
+              "version": "2.26.0"
             }
           },
           "TranslateRecords": {
@@ -815,7 +1563,7 @@
                           [
                             "s3://",
                             {
-                              "Ref": "themometerCCBBC1EC"
+                              "Ref": "thermometerstorageA03733C7"
                             },
                             "/themometer"
                           ]
@@ -833,7 +1581,7 @@
             },
             "constructInfo": {
               "fqn": "aws-cdk-lib.aws_glue.CfnCrawler",
-              "version": "2.17.0"
+              "version": "2.26.0"
             }
           },
           "TranslationRole": {
@@ -869,7 +1617,7 @@
                 },
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.aws_iam.CfnRole",
-                  "version": "2.17.0"
+                  "version": "2.26.0"
                 }
               },
               "DefaultPolicy": {
@@ -897,7 +1645,7 @@
                               "Resource": [
                                 {
                                   "Fn::GetAtt": [
-                                    "themometerCCBBC1EC",
+                                    "thermometerstorageA03733C7",
                                     "Arn"
                                   ]
                                 },
@@ -907,7 +1655,7 @@
                                     [
                                       {
                                         "Fn::GetAtt": [
-                                          "themometerCCBBC1EC",
+                                          "thermometerstorageA03733C7",
                                           "Arn"
                                         ]
                                       },
@@ -919,8 +1667,8 @@
                             },
                             {
                               "Action": [
-                                "lambda:InvokeFunction",
-                                "lambda:GetFunctionConfiguration"
+                                "lambda:GetFunctionConfiguration",
+                                "lambda:InvokeFunction"
                               ],
                               "Effect": "Allow",
                               "Resource": [
@@ -968,19 +1716,19 @@
                     },
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
-                      "version": "2.17.0"
+                      "version": "2.26.0"
                     }
                   }
                 },
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.aws_iam.Policy",
-                  "version": "2.17.0"
+                  "version": "2.26.0"
                 }
               }
             },
             "constructInfo": {
               "fqn": "aws-cdk-lib.aws_iam.Role",
-              "version": "2.17.0"
+              "version": "2.26.0"
             }
           },
           "FirehoseDeliveryStream": {
@@ -993,7 +1741,7 @@
                 "extendedS3DestinationConfiguration": {
                   "bucketArn": {
                     "Fn::GetAtt": [
-                      "themometerCCBBC1EC",
+                      "thermometerstorageA03733C7",
                       "Arn"
                     ]
                   },
@@ -1064,7 +1812,7 @@
             },
             "constructInfo": {
               "fqn": "aws-cdk-lib.aws_kinesisfirehose.CfnDeliveryStream",
-              "version": "2.17.0"
+              "version": "2.26.0"
             }
           },
           "analytics-athena-workgroup": {
@@ -1085,7 +1833,7 @@
                         [
                           "s3://",
                           {
-                            "Ref": "themometerCCBBC1EC"
+                            "Ref": "thermometerstorageA03733C7"
                           }
                         ]
                       ]
@@ -1096,7 +1844,7 @@
             },
             "constructInfo": {
               "fqn": "aws-cdk-lib.aws_athena.CfnWorkGroup",
-              "version": "2.17.0"
+              "version": "2.26.0"
             }
           },
           "workgroupArn": {
@@ -1104,7 +1852,7 @@
             "path": "CdkIotStack/workgroupArn",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnOutput",
-              "version": "2.17.0"
+              "version": "2.26.0"
             }
           },
           "athenaRole": {
@@ -1135,7 +1883,7 @@
                 },
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.aws_iam.CfnRole",
-                  "version": "2.17.0"
+                  "version": "2.26.0"
                 }
               },
               "DefaultPolicy": {
@@ -1152,22 +1900,22 @@
                           "Statement": [
                             {
                               "Action": [
-                                "athena:StartQueryExecution",
                                 "athena:BatchGetQueryExecution",
+                                "athena:GetDataCatalog",
+                                "athena:GetDatabase",
                                 "athena:GetQueryExecution",
                                 "athena:GetQueryResults",
                                 "athena:GetQueryResultsStream",
-                                "athena:ListQueryExecutions",
-                                "athena:StopQueryExecution",
-                                "athena:ListWorkGroups",
-                                "athena:ListEngineVersions",
-                                "athena:GetWorkGroup",
-                                "athena:GetDataCatalog",
-                                "athena:GetDatabase",
                                 "athena:GetTableMetadata",
+                                "athena:GetWorkGroup",
                                 "athena:ListDataCatalogs",
                                 "athena:ListDatabases",
-                                "athena:ListTableMetadata"
+                                "athena:ListEngineVersions",
+                                "athena:ListQueryExecutions",
+                                "athena:ListTableMetadata",
+                                "athena:ListWorkGroups",
+                                "athena:StartQueryExecution",
+                                "athena:StopQueryExecution"
                               ],
                               "Effect": "Allow",
                               "Resource": [
@@ -1207,30 +1955,30 @@
                             },
                             {
                               "Action": [
-                                "glue:GetTable",
                                 "glue:GetDatabase",
-                                "glue:GetPartitions"
+                                "glue:GetPartitions",
+                                "glue:GetTable"
                               ],
                               "Effect": "Allow",
                               "Resource": "*"
                             },
                             {
                               "Action": [
+                                "s3:AbortMultipartUpload",
+                                "s3:CreateBucket",
                                 "s3:GetBucketLocation",
                                 "s3:GetObject",
                                 "s3:ListBucket",
                                 "s3:ListBucketMultipartUploads",
                                 "s3:ListMultipartUploadParts",
-                                "s3:AbortMultipartUpload",
-                                "s3:CreateBucket",
-                                "s3:PutObject",
-                                "s3:PutBucketPublicAccessBlock"
+                                "s3:PutBucketPublicAccessBlock",
+                                "s3:PutObject"
                               ],
                               "Effect": "Allow",
                               "Resource": [
                                 {
                                   "Fn::GetAtt": [
-                                    "themometerCCBBC1EC",
+                                    "thermometerstorageA03733C7",
                                     "Arn"
                                   ]
                                 },
@@ -1240,7 +1988,7 @@
                                     [
                                       {
                                         "Fn::GetAtt": [
-                                          "themometerCCBBC1EC",
+                                          "thermometerstorageA03733C7",
                                           "Arn"
                                         ]
                                       },
@@ -1253,29 +2001,6 @@
                             {
                               "Action": [
                                 "logs:CreateLogGroup",
-                                "logs:CreateLogStream",
-                                "logs:PutLogEvents"
-                              ],
-                              "Effect": "Allow",
-                              "Resource": {
-                                "Fn::Join": [
-                                  "",
-                                  [
-                                    "arn:aws:logs:",
-                                    {
-                                      "Ref": "AWS::Region"
-                                    },
-                                    ":",
-                                    {
-                                      "Ref": "AWS::AccountId"
-                                    },
-                                    ":*"
-                                  ]
-                                ]
-                              }
-                            },
-                            {
-                              "Action": [
                                 "logs:CreateLogStream",
                                 "logs:PutLogEvents"
                               ],
@@ -1310,19 +2035,19 @@
                     },
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
-                      "version": "2.17.0"
+                      "version": "2.26.0"
                     }
                   }
                 },
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.aws_iam.Policy",
-                  "version": "2.17.0"
+                  "version": "2.26.0"
                 }
               }
             },
             "constructInfo": {
               "fqn": "aws-cdk-lib.aws_iam.Role",
-              "version": "2.17.0"
+              "version": "2.26.0"
             }
           },
           "AthenaRoleArn": {
@@ -1330,7 +2055,7 @@
             "path": "CdkIotStack/AthenaRoleArn",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnOutput",
-              "version": "2.17.0"
+              "version": "2.26.0"
             }
           },
           "LambdaAthena": {
@@ -1346,7 +2071,7 @@
                     "path": "CdkIotStack/LambdaAthena/Code/Stage",
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.AssetStaging",
-                      "version": "2.17.0"
+                      "version": "2.26.0"
                     }
                   },
                   "AssetBucket": {
@@ -1354,13 +2079,13 @@
                     "path": "CdkIotStack/LambdaAthena/Code/AssetBucket",
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.aws_s3.BucketBase",
-                      "version": "2.17.0"
+                      "version": "2.26.0"
                     }
                   }
                 },
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
-                  "version": "2.17.0"
+                  "version": "2.26.0"
                 }
               },
               "Resource": {
@@ -1386,7 +2111,7 @@
                       "variables": {
                         "athenaBucket": {
                           "Fn::GetAtt": [
-                            "themometerCCBBC1EC",
+                            "thermometerstorageA03733C7",
                             "Arn"
                           ]
                         },
@@ -1401,13 +2126,34 @@
                 },
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
-                  "version": "2.17.0"
+                  "version": "2.26.0"
+                }
+              },
+              "InvokeFcyXBRX02EWa52GlF+ECQiCzDt0fdRUDi4mo4foC5aU=": {
+                "id": "InvokeFcyXBRX02EWa52GlF+ECQiCzDt0fdRUDi4mo4foC5aU=",
+                "path": "CdkIotStack/LambdaAthena/InvokeFcyXBRX02EWa52GlF+ECQiCzDt0fdRUDi4mo4foC5aU=",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                  "aws:cdk:cloudformation:props": {
+                    "action": "lambda:InvokeFunction",
+                    "functionName": {
+                      "Fn::GetAtt": [
+                        "LambdaAthenaB5D0C109",
+                        "Arn"
+                      ]
+                    },
+                    "principal": "apigateway.amazonaws.com"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                  "version": "2.26.0"
                 }
               }
             },
             "constructInfo": {
               "fqn": "aws-cdk-lib.aws_lambda.Function",
-              "version": "2.17.0"
+              "version": "2.26.0"
             }
           },
           "LambdaAthenaARN": {
@@ -1415,7 +2161,818 @@
             "path": "CdkIotStack/LambdaAthenaARN",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnOutput",
-              "version": "2.17.0"
+              "version": "2.26.0"
+            }
+          },
+          "AccessLogs": {
+            "id": "AccessLogs",
+            "path": "CdkIotStack/AccessLogs",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "CdkIotStack/AccessLogs/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Logs::LogGroup",
+                  "aws:cdk:cloudformation:props": {
+                    "retentionInDays": 90
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_logs.CfnLogGroup",
+                  "version": "2.26.0"
+                }
+              },
+              "Policy": {
+                "id": "Policy",
+                "path": "CdkIotStack/AccessLogs/Policy",
+                "children": {
+                  "ResourcePolicy": {
+                    "id": "ResourcePolicy",
+                    "path": "CdkIotStack/AccessLogs/Policy/ResourcePolicy",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::Logs::ResourcePolicy",
+                      "aws:cdk:cloudformation:props": {
+                        "policyDocument": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "{\"Statement\":[{\"Action\":[\"logs:CreateLogStream\",\"logs:PutLogEvents\"],\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"apigateway.amazonaws.com\"},\"Resource\":\"",
+                              {
+                                "Fn::GetAtt": [
+                                  "AccessLogs8B620ECA",
+                                  "Arn"
+                                ]
+                              },
+                              "\"}],\"Version\":\"2012-10-17\"}"
+                            ]
+                          ]
+                        },
+                        "policyName": "CdkIotStackAccessLogsPolicy52692585"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_logs.CfnResourcePolicy",
+                      "version": "2.26.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_logs.ResourcePolicy",
+                  "version": "2.26.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_logs.LogGroup",
+              "version": "2.26.0"
+            }
+          },
+          "api-role": {
+            "id": "api-role",
+            "path": "CdkIotStack/api-role",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "CdkIotStack/api-role/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                  "aws:cdk:cloudformation:props": {
+                    "assumeRolePolicyDocument": {
+                      "Statement": [
+                        {
+                          "Action": "sts:AssumeRole",
+                          "Effect": "Allow",
+                          "Principal": {
+                            "Service": "apigateway.amazonaws.com"
+                          }
+                        }
+                      ],
+                      "Version": "2012-10-17"
+                    },
+                    "managedPolicyArns": [
+                      "arn:aws:iam::aws:policy/AWSLambdaExecute"
+                    ],
+                    "roleName": "ApiRole"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                  "version": "2.26.0"
+                }
+              },
+              "DefaultPolicy": {
+                "id": "DefaultPolicy",
+                "path": "CdkIotStack/api-role/DefaultPolicy",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "CdkIotStack/api-role/DefaultPolicy/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                      "aws:cdk:cloudformation:props": {
+                        "policyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "lambda:InvokeFunction",
+                              "Effect": "Allow",
+                              "Resource": "*"
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "policyName": "apiroleDefaultPolicy160A02CD",
+                        "roles": [
+                          {
+                            "Ref": "apirole22477616"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                      "version": "2.26.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Policy",
+                  "version": "2.26.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_iam.Role",
+              "version": "2.26.0"
+            }
+          },
+          "api-thermometer": {
+            "id": "api-thermometer",
+            "path": "CdkIotStack/api-thermometer",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "CdkIotStack/api-thermometer/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::RestApi",
+                  "aws:cdk:cloudformation:props": {
+                    "description": "API Gateway",
+                    "endpointConfiguration": {
+                      "types": [
+                        "REGIONAL"
+                      ]
+                    },
+                    "name": "api-thermometer"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.CfnRestApi",
+                  "version": "2.26.0"
+                }
+              },
+              "CloudWatchRole": {
+                "id": "CloudWatchRole",
+                "path": "CdkIotStack/api-thermometer/CloudWatchRole",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "CdkIotStack/api-thermometer/CloudWatchRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "apigateway.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.26.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.26.0"
+                }
+              },
+              "Account": {
+                "id": "Account",
+                "path": "CdkIotStack/api-thermometer/Account",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::Account",
+                  "aws:cdk:cloudformation:props": {
+                    "cloudWatchRoleArn": {
+                      "Fn::GetAtt": [
+                        "apithermometerCloudWatchRoleD43FB1D8",
+                        "Arn"
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.CfnAccount",
+                  "version": "2.26.0"
+                }
+              },
+              "Deployment": {
+                "id": "Deployment",
+                "path": "CdkIotStack/api-thermometer/Deployment",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "CdkIotStack/api-thermometer/Deployment/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Deployment",
+                      "aws:cdk:cloudformation:props": {
+                        "restApiId": {
+                          "Ref": "apithermometer527A2812"
+                        },
+                        "description": "Automatically created by the RestApi construct"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.CfnDeployment",
+                      "version": "2.26.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.Deployment",
+                  "version": "2.26.0"
+                }
+              },
+              "DeploymentStage.dev": {
+                "id": "DeploymentStage.dev",
+                "path": "CdkIotStack/api-thermometer/DeploymentStage.dev",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "CdkIotStack/api-thermometer/DeploymentStage.dev/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Stage",
+                      "aws:cdk:cloudformation:props": {
+                        "restApiId": {
+                          "Ref": "apithermometer527A2812"
+                        },
+                        "accessLogSetting": {
+                          "destinationArn": {
+                            "Fn::GetAtt": [
+                              "AccessLogs8B620ECA",
+                              "Arn"
+                            ]
+                          },
+                          "format": "{\"requestId\":\"$context.requestId\",\"ip\":\"$context.identity.sourceIp\",\"user\":\"$context.identity.user\",\"requestTime\":\"$context.requestTime\",\"httpMethod\":\"$context.httpMethod\",\"resourcePath\":\"$context.resourcePath\",\"status\":\"$context.status\",\"protocol\":\"$context.protocol\",\"responseLength\":\"$context.responseLength\"}"
+                        },
+                        "deploymentId": {
+                          "Ref": "apithermometerDeploymentCAEACC8C0a28eede64f77af3c5fcd9dcb41834e1"
+                        },
+                        "stageName": "dev"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.CfnStage",
+                      "version": "2.26.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.Stage",
+                  "version": "2.26.0"
+                }
+              },
+              "Endpoint": {
+                "id": "Endpoint",
+                "path": "CdkIotStack/api-thermometer/Endpoint",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnOutput",
+                  "version": "2.26.0"
+                }
+              },
+              "Default": {
+                "id": "Default",
+                "path": "CdkIotStack/api-thermometer/Default",
+                "children": {
+                  "status": {
+                    "id": "status",
+                    "path": "CdkIotStack/api-thermometer/Default/status",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "CdkIotStack/api-thermometer/Default/status/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
+                          "aws:cdk:cloudformation:props": {
+                            "parentId": {
+                              "Fn::GetAtt": [
+                                "apithermometer527A2812",
+                                "RootResourceId"
+                              ]
+                            },
+                            "pathPart": "status",
+                            "restApiId": {
+                              "Ref": "apithermometer527A2812"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.CfnResource",
+                          "version": "2.26.0"
+                        }
+                      },
+                      "GET": {
+                        "id": "GET",
+                        "path": "CdkIotStack/api-thermometer/Default/status/GET",
+                        "children": {
+                          "ApiPermission.CdkIotStackapithermometer186F9691.GET..status": {
+                            "id": "ApiPermission.CdkIotStackapithermometer186F9691.GET..status",
+                            "path": "CdkIotStack/api-thermometer/Default/status/GET/ApiPermission.CdkIotStackapithermometer186F9691.GET..status",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "LambdaAthenaB5D0C109",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:",
+                                      {
+                                        "Ref": "AWS::Region"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "apithermometer527A2812"
+                                      },
+                                      "/",
+                                      {
+                                        "Ref": "apithermometerDeploymentStagedevF8B8FDAF"
+                                      },
+                                      "/GET/status"
+                                    ]
+                                  ]
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                              "version": "2.26.0"
+                            }
+                          },
+                          "ApiPermission.Test.CdkIotStackapithermometer186F9691.GET..status": {
+                            "id": "ApiPermission.Test.CdkIotStackapithermometer186F9691.GET..status",
+                            "path": "CdkIotStack/api-thermometer/Default/status/GET/ApiPermission.Test.CdkIotStackapithermometer186F9691.GET..status",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "LambdaAthenaB5D0C109",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:",
+                                      {
+                                        "Ref": "AWS::Region"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "apithermometer527A2812"
+                                      },
+                                      "/test-invoke-stage/GET/status"
+                                    ]
+                                  ]
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                              "version": "2.26.0"
+                            }
+                          },
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "CdkIotStack/api-thermometer/Default/status/GET/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                              "aws:cdk:cloudformation:props": {
+                                "httpMethod": "GET",
+                                "resourceId": {
+                                  "Ref": "apithermometerstatus9A4FEE8E"
+                                },
+                                "restApiId": {
+                                  "Ref": "apithermometer527A2812"
+                                },
+                                "authorizationType": "NONE",
+                                "integration": {
+                                  "type": "AWS",
+                                  "uri": {
+                                    "Fn::Join": [
+                                      "",
+                                      [
+                                        "arn:",
+                                        {
+                                          "Ref": "AWS::Partition"
+                                        },
+                                        ":apigateway:",
+                                        {
+                                          "Ref": "AWS::Region"
+                                        },
+                                        ":lambda:path/2015-03-31/functions/",
+                                        {
+                                          "Fn::GetAtt": [
+                                            "LambdaAthenaB5D0C109",
+                                            "Arn"
+                                          ]
+                                        },
+                                        "/invocations"
+                                      ]
+                                    ]
+                                  },
+                                  "integrationHttpMethod": "POST",
+                                  "passthroughBehavior": "WHEN_NO_TEMPLATES",
+                                  "integrationResponses": [
+                                    {
+                                      "statusCode": "200"
+                                    }
+                                  ],
+                                  "credentials": {
+                                    "Fn::GetAtt": [
+                                      "apirole22477616",
+                                      "Arn"
+                                    ]
+                                  }
+                                },
+                                "methodResponses": [
+                                  {
+                                    "statusCode": "200",
+                                    "responseModels": {
+                                      "application/json": "Empty"
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                              "version": "2.26.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                          "version": "2.26.0"
+                        }
+                      },
+                      "OPTIONS": {
+                        "id": "OPTIONS",
+                        "path": "CdkIotStack/api-thermometer/Default/status/OPTIONS",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "CdkIotStack/api-thermometer/Default/status/OPTIONS/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                              "aws:cdk:cloudformation:props": {
+                                "httpMethod": "OPTIONS",
+                                "resourceId": {
+                                  "Ref": "apithermometerstatus9A4FEE8E"
+                                },
+                                "restApiId": {
+                                  "Ref": "apithermometer527A2812"
+                                },
+                                "authorizationType": "NONE",
+                                "integration": {
+                                  "type": "MOCK",
+                                  "requestTemplates": {
+                                    "application/json": "{ \"statusCode\": 200 }"
+                                  },
+                                  "passthroughBehavior": "WHEN_NO_MATCH",
+                                  "integrationResponses": [
+                                    {
+                                      "statusCode": "200",
+                                      "responseParameters": {
+                                        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                                        "method.response.header.Access-Control-Allow-Origin": "'*'",
+                                        "method.response.header.Access-Control-Allow-Credentials": "'false'",
+                                        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE'"
+                                      }
+                                    }
+                                  ]
+                                },
+                                "methodResponses": [
+                                  {
+                                    "statusCode": "200",
+                                    "responseParameters": {
+                                      "method.response.header.Access-Control-Allow-Headers": true,
+                                      "method.response.header.Access-Control-Allow-Methods": true,
+                                      "method.response.header.Access-Control-Allow-Credentials": true,
+                                      "method.response.header.Access-Control-Allow-Origin": true
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                              "version": "2.26.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                          "version": "2.26.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.Resource",
+                      "version": "2.26.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.ResourceBase",
+                  "version": "2.26.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_apigateway.RestApi",
+              "version": "2.26.0"
+            }
+          },
+          "apiUrl": {
+            "id": "apiUrl",
+            "path": "CdkIotStack/apiUrl",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
+              "version": "2.26.0"
+            }
+          },
+          "cloudfront": {
+            "id": "cloudfront",
+            "path": "CdkIotStack/cloudfront",
+            "children": {
+              "Origin1": {
+                "id": "Origin1",
+                "path": "CdkIotStack/cloudfront/Origin1",
+                "children": {
+                  "S3Origin": {
+                    "id": "S3Origin",
+                    "path": "CdkIotStack/cloudfront/Origin1/S3Origin",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "CdkIotStack/cloudfront/Origin1/S3Origin/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::CloudFront::CloudFrontOriginAccessIdentity",
+                          "aws:cdk:cloudformation:props": {
+                            "cloudFrontOriginAccessIdentityConfig": {
+                              "comment": "Identity for CdkIotStackcloudfrontOrigin10852A449"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_cloudfront.CfnCloudFrontOriginAccessIdentity",
+                          "version": "2.26.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_cloudfront.OriginAccessIdentity",
+                      "version": "2.26.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "constructs.Construct",
+                  "version": "10.1.24"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "CdkIotStack/cloudfront/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::CloudFront::Distribution",
+                  "aws:cdk:cloudformation:props": {
+                    "distributionConfig": {
+                      "enabled": true,
+                      "origins": [
+                        {
+                          "domainName": {
+                            "Fn::GetAtt": [
+                              "themometerwebA10CBA95",
+                              "RegionalDomainName"
+                            ]
+                          },
+                          "id": "CdkIotStackcloudfrontOrigin10852A449",
+                          "s3OriginConfig": {
+                            "originAccessIdentity": {
+                              "Fn::Join": [
+                                "",
+                                [
+                                  "origin-access-identity/cloudfront/",
+                                  {
+                                    "Ref": "cloudfrontOrigin1S3Origin57D92FB4"
+                                  }
+                                ]
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "domainName": {
+                            "Fn::Select": [
+                              2,
+                              {
+                                "Fn::Split": [
+                                  "/",
+                                  {
+                                    "Fn::Join": [
+                                      "",
+                                      [
+                                        "https://",
+                                        {
+                                          "Ref": "apithermometer527A2812"
+                                        },
+                                        ".execute-api.",
+                                        {
+                                          "Ref": "AWS::Region"
+                                        },
+                                        ".",
+                                        {
+                                          "Ref": "AWS::URLSuffix"
+                                        },
+                                        "/",
+                                        {
+                                          "Ref": "apithermometerDeploymentStagedevF8B8FDAF"
+                                        },
+                                        "/"
+                                      ]
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          "id": "CdkIotStackcloudfrontOrigin223C036B8",
+                          "originPath": {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "/",
+                                {
+                                  "Fn::Select": [
+                                    3,
+                                    {
+                                      "Fn::Split": [
+                                        "/",
+                                        {
+                                          "Fn::Join": [
+                                            "",
+                                            [
+                                              "https://",
+                                              {
+                                                "Ref": "apithermometer527A2812"
+                                              },
+                                              ".execute-api.",
+                                              {
+                                                "Ref": "AWS::Region"
+                                              },
+                                              ".",
+                                              {
+                                                "Ref": "AWS::URLSuffix"
+                                              },
+                                              "/",
+                                              {
+                                                "Ref": "apithermometerDeploymentStagedevF8B8FDAF"
+                                              },
+                                              "/"
+                                            ]
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            ]
+                          },
+                          "customOriginConfig": {
+                            "originSslProtocols": [
+                              "TLSv1.2"
+                            ],
+                            "originProtocolPolicy": "https-only"
+                          }
+                        }
+                      ],
+                      "defaultCacheBehavior": {
+                        "pathPattern": "*",
+                        "targetOriginId": "CdkIotStackcloudfrontOrigin10852A449",
+                        "allowedMethods": [
+                          "GET",
+                          "HEAD",
+                          "OPTIONS",
+                          "PUT",
+                          "PATCH",
+                          "POST",
+                          "DELETE"
+                        ],
+                        "cachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+                        "compress": true,
+                        "viewerProtocolPolicy": "redirect-to-https"
+                      },
+                      "cacheBehaviors": [
+                        {
+                          "pathPattern": "/status",
+                          "targetOriginId": "CdkIotStackcloudfrontOrigin223C036B8",
+                          "cachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+                          "compress": true,
+                          "viewerProtocolPolicy": "redirect-to-https"
+                        }
+                      ],
+                      "httpVersion": "http2",
+                      "ipv6Enabled": true,
+                      "priceClass": "PriceClass_200"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_cloudfront.CfnDistribution",
+                  "version": "2.26.0"
+                }
+              },
+              "Origin2": {
+                "id": "Origin2",
+                "path": "CdkIotStack/cloudfront/Origin2",
+                "constructInfo": {
+                  "fqn": "constructs.Construct",
+                  "version": "10.1.24"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_cloudfront.Distribution",
+              "version": "2.26.0"
+            }
+          },
+          "distributionDomainName": {
+            "id": "distributionDomainName",
+            "path": "CdkIotStack/distributionDomainName",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
+              "version": "2.26.0"
             }
           },
           "CDKMetadata": {
@@ -1427,7 +2984,7 @@
                 "path": "CdkIotStack/CDKMetadata/Default",
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.CfnResource",
-                  "version": "2.17.0"
+                  "version": "2.26.0"
                 }
               },
               "Condition": {
@@ -1435,25 +2992,25 @@
                 "path": "CdkIotStack/CDKMetadata/Condition",
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.CfnCondition",
-                  "version": "2.17.0"
+                  "version": "2.26.0"
                 }
               }
             },
             "constructInfo": {
               "fqn": "constructs.Construct",
-              "version": "10.1.18"
+              "version": "10.1.24"
             }
           }
         },
         "constructInfo": {
           "fqn": "aws-cdk-lib.Stack",
-          "version": "2.17.0"
+          "version": "2.26.0"
         }
       }
     },
     "constructInfo": {
       "fqn": "aws-cdk-lib.App",
-      "version": "2.17.0"
+      "version": "2.26.0"
     }
   }
 }

@@ -4,7 +4,6 @@ import { Construct } from 'constructs';
 import * as cdk from 'aws-cdk-lib';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as s3 from 'aws-cdk-lib/aws-s3';
-
 import * as s3Deploy from "aws-cdk-lib/aws-s3-deployment"
 import * as events from 'aws-cdk-lib/aws-events';
 import * as targets from 'aws-cdk-lib/aws-events-targets';
@@ -26,23 +25,21 @@ import { IResource, LambdaIntegration, MockIntegration, PassthroughBehavior, Res
 import * as cloudFront from 'aws-cdk-lib/aws-cloudfront';
 import * as origins from 'aws-cdk-lib/aws-cloudfront-origins';
 
-import { CloudFrontToApiGateway } from '@aws-solutions-constructs/aws-cloudfront-apigateway';
-
 
 export class CdkIotStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
     // S3
-    const s3Bucket = new s3.Bucket(this, "themometer",{
-      bucketName: "storage-themometer",
+    const s3Bucket = new s3.Bucket(this, "thermometer-storage",{
+      bucketName: "s3-themometer-storage",
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
       autoDeleteObjects: true,
       publicReadAccess: false,
       versioned: false,
     });
-    new cdk.CfnOutput(this, 'bucketName', {
+    new cdk.CfnOutput(this, 'StorageBucketName', {
       value: s3Bucket.bucketName,
       description: 'The nmae of bucket',
     });
@@ -55,26 +52,24 @@ export class CdkIotStack extends Stack {
       description: 'The path of s3',
     });
 
+    // S3
+    const s3Web = new s3.Bucket(this, "themometer-web",{
+      bucketName: "s3-themometer-web",
+      blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
+      autoDeleteObjects: true,
+      publicReadAccess: false,
+      versioned: false,
+    });
+    new cdk.CfnOutput(this, 'WebBucketName', {
+      value: s3Web.bucketName,
+      description: 'The nmae of bucket',
+    });
+    
     new s3Deploy.BucketDeployment(this, "DeployReactApp", {
-      sources: [s3Deploy.Source.asset("../webcliet")],
-      destinationBucket: s3Bucket,
+      sources: [s3Deploy.Source.asset("../webclient")],
+      destinationBucket: s3Web,
     })
-
-    // cloudfront
-    const distribution = new cloudFront.Distribution(this, 'themometer', {
-      defaultBehavior: {
-        origin: new origins.S3Origin(s3Bucket),
-        allowedMethods: cloudFront.AllowedMethods.ALLOW_ALL,        
-        viewerProtocolPolicy: cloudFront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,        
-      },
-      priceClass: cloudFront.PriceClass.PRICE_CLASS_200,  
-      enableLogging: true,
-    //  description: 'cdk cloudFront',
-    });
-    new cdk.CfnOutput(this, 'distributionDomainName', {
-      value: distribution.domainName,
-      description: 'The domain name of the Distribution',
-    });
     
     // kinesis data stream
     const streamName = 'themometer';
@@ -459,11 +454,14 @@ export class CdkIotStack extends Stack {
     const api = new apiGateway.RestApi(this, 'api-thermometer', {
       description: 'API Gateway',
       endpointTypes: [apiGateway.EndpointType.REGIONAL],
+      defaultMethodOptions: {
+        authorizationType: apiGateway.AuthorizationType.NONE
+      },
     /*  defaultCorsPreflightOptions: {
         allowOrigins: apiGateway.Cors.ALL_ORIGINS,
         allowMethods: apiGateway.Cors.ALL_METHODS // this is also the default
       }, */
-      binaryMediaTypes: ['*/*'], 
+    //  binaryMediaTypes: ['*/*'], 
       deployOptions: {
         stageName: stage,
         accessLogDestination: new apiGateway.LogGroupLogDestination(logGroup),
@@ -535,12 +533,12 @@ export class CdkIotStack extends Stack {
       "image/png" : templateString
     }
     
-    const status = api.root.addResource('upload');
+    const status = api.root.addResource('status');
 
-    status.addMethod('POST', new apiGateway.LambdaIntegration(lambdaAthena, {
+    status.addMethod('GET', new apiGateway.LambdaIntegration(lambdaAthena, {
       passthroughBehavior: apiGateway.PassthroughBehavior.WHEN_NO_TEMPLATES,  // options: NEVER
       credentialsRole: role,
-      requestTemplates: requestTemplates,
+    //  requestTemplates: requestTemplates,
       integrationResponses: [{
         statusCode: '200',
       }], 
@@ -563,6 +561,23 @@ export class CdkIotStack extends Stack {
       description: 'The url of API Gateway',
     });
 
+    // cloudfront
+    const distribution = new cloudFront.Distribution(this, 'cloudfront', {
+      defaultBehavior: {
+        origin: new origins.S3Origin(s3Web),
+        allowedMethods: cloudFront.AllowedMethods.ALLOW_ALL,
+        viewerProtocolPolicy: cloudFront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
+      },
+      priceClass: cloudFront.PriceClass.PRICE_CLASS_200,  
+    });
+    distribution.addBehavior("/status", new origins.RestApiOrigin(api), {
+      viewerProtocolPolicy: cloudFront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
+    });    
+
+    new cdk.CfnOutput(this, 'distributionDomainName', {
+      value: distribution.domainName,
+      description: 'The domain name of the Distribution',
+    }); 
 
   /*  const apiGateway2 = new apiGateway.LambdaRestApi(this, 'LambdaRestApi', {
       handler: lambdaAthena,

@@ -23,7 +23,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/1d6e1d5d1abacd0c0f8db74e99f236bb4655b857696c230e3d4e6a683b0b94e9.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/6da28d9effb8248858bf375769167d276957030fcb8ea88555848757d015851a.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -396,7 +396,7 @@
         "/CdkIotStack/api-thermometer/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "apithermometerDeploymentCAEACC8C0a28eede64f77af3c5fcd9dcb41834e1"
+            "data": "apithermometerDeploymentCAEACC8C36ac89907123929172cc43b6cb02158a"
           }
         ],
         "/CdkIotStack/api-thermometer/DeploymentStage.dev/Resource": [
@@ -433,12 +433,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "apithermometerstatusGET6028E375"
-          }
-        ],
-        "/CdkIotStack/api-thermometer/Default/status/OPTIONS/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "apithermometerstatusOPTIONS3EF8E05E"
           }
         ],
         "/CdkIotStack/apiUrl": [

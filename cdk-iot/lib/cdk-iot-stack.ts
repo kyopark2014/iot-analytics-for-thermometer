@@ -5,8 +5,6 @@ import * as cdk from 'aws-cdk-lib';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import * as s3Deploy from "aws-cdk-lib/aws-s3-deployment"
-import * as events from 'aws-cdk-lib/aws-events';
-import * as targets from 'aws-cdk-lib/aws-events-targets';
 import * as kinesisstream from 'aws-cdk-lib/aws-kinesis';
 import * as kinesisfirehose from 'aws-cdk-lib/aws-kinesisfirehose';
 import {SnsEventSource} from 'aws-cdk-lib/aws-lambda-event-sources'
@@ -15,16 +13,13 @@ import * as subscriptions from 'aws-cdk-lib/aws-sns-subscriptions';
 
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as lambdaEventSources from 'aws-cdk-lib/aws-lambda-event-sources';
-import * as cfn from 'aws-cdk-lib/aws-cloudformation';
 import * as logs from 'aws-cdk-lib/aws-logs';
 import * as glue from 'aws-cdk-lib/aws-glue'
 import * as athena from 'aws-cdk-lib/aws-athena'
 import * as iot from 'aws-cdk-lib/aws-iot';
 import * as apiGateway from 'aws-cdk-lib/aws-apigateway';
-import { IResource, LambdaIntegration, MockIntegration, PassthroughBehavior, RestApi } from 'aws-cdk-lib/aws-apigateway';
 import * as cloudFront from 'aws-cdk-lib/aws-cloudfront';
 import * as origins from 'aws-cdk-lib/aws-cloudfront-origins';
-
 
 export class CdkIotStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -147,7 +142,7 @@ export class CdkIotStack extends Stack {
       description: 'The arn of RuleRole for IoT',
     });
 
-    // defile Rule for IoT
+    // Rule for IoT
     new iot.CfnTopicRule(this, "TopicRule", {
       topicRulePayload: {
         actions: [
@@ -428,6 +423,8 @@ export class CdkIotStack extends Stack {
       description: 'The arn of lambda for athena',
     });
 
+    lambdaAthena.grantInvoke(new iam.ServicePrincipal('apigateway.amazonaws.com'));
+    
     // API GATEWAY
     const stage = "dev";
 
@@ -457,11 +454,7 @@ export class CdkIotStack extends Stack {
       defaultMethodOptions: {
         authorizationType: apiGateway.AuthorizationType.NONE
       },
-    /*  defaultCorsPreflightOptions: {
-        allowOrigins: apiGateway.Cors.ALL_ORIGINS,
-        allowMethods: apiGateway.Cors.ALL_METHODS // this is also the default
-      }, */
-    //  binaryMediaTypes: ['*/*'], 
+      binaryMediaTypes: ['*/*'], 
       deployOptions: {
         stageName: stage,
         accessLogDestination: new apiGateway.LogGroupLogDestination(logGroup),
@@ -480,65 +473,11 @@ export class CdkIotStack extends Stack {
     //  proxy: false
     });   
 
-    lambdaAthena.grantInvoke(new iam.ServicePrincipal('apigateway.amazonaws.com'));
-
-    const templateString: string = `##  See http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html
-    ##  This template will pass through all parameters including path, querystring, header, stage variables, and context through to the integration endpoint via the body/payload
-    #set($allParams = $input.params())
-    {
-    "body-json" : $input.json('$'),
-    "params" : {
-    #foreach($type in $allParams.keySet())
-        #set($params = $allParams.get($type))
-    "$type" : {
-        #foreach($paramName in $params.keySet())
-        "$paramName" : "$util.escapeJavaScript($params.get($paramName))"
-            #if($foreach.hasNext),#end
-        #end
-    }
-        #if($foreach.hasNext),#end
-    #end
-    },
-    "stage-variables" : {
-    #foreach($key in $stageVariables.keySet())
-    "$key" : "$util.escapeJavaScript($stageVariables.get($key))"
-        #if($foreach.hasNext),#end
-    #end
-    },
-    "context" : {
-        "account-id" : "$context.identity.accountId",
-        "api-id" : "$context.apiId",
-        "api-key" : "$context.identity.apiKey",
-        "authorizer-principal-id" : "$context.authorizer.principalId",
-        "caller" : "$context.identity.caller",
-        "cognito-authentication-provider" : "$context.identity.cognitoAuthenticationProvider",
-        "cognito-authentication-type" : "$context.identity.cognitoAuthenticationType",
-        "cognito-identity-id" : "$context.identity.cognitoIdentityId",
-        "cognito-identity-pool-id" : "$context.identity.cognitoIdentityPoolId",
-        "http-method" : "$context.httpMethod",
-        "stage" : "$context.stage",
-        "source-ip" : "$context.identity.sourceIp",
-        "user" : "$context.identity.user",
-        "user-agent" : "$context.identity.userAgent",
-        "user-arn" : "$context.identity.userArn",
-        "request-id" : "$context.requestId",
-        "resource-id" : "$context.resourceId",
-        "resource-path" : "$context.resourcePath"
-        }
-    }`    
-    const requestTemplates = { // path through
-      "image/jpeg": templateString,
-      "image/jpg": templateString,
-      "application/octet-stream": templateString,
-      "image/png" : templateString
-    }
-    
     const status = api.root.addResource('status');
 
     status.addMethod('GET', new apiGateway.LambdaIntegration(lambdaAthena, {
       passthroughBehavior: apiGateway.PassthroughBehavior.WHEN_NO_TEMPLATES,  // options: NEVER
       credentialsRole: role,
-    //  requestTemplates: requestTemplates,
       integrationResponses: [{
         statusCode: '200',
       }], 
@@ -552,16 +491,13 @@ export class CdkIotStack extends Stack {
           }, 
         }
       ]
-    }); 
-
-    addCorsOptions(status);
-    
+    });    
     new cdk.CfnOutput(this, 'apiUrl', {
       value: api.url,
       description: 'The url of API Gateway',
     });
 
-    // cloudfront
+    // cloudfront distribution for s3
     const distribution = new cloudFront.Distribution(this, 'cloudfront', {
       defaultBehavior: {
         origin: new origins.S3Origin(s3Web),
@@ -570,6 +506,8 @@ export class CdkIotStack extends Stack {
       },
       priceClass: cloudFront.PriceClass.PRICE_CLASS_200,  
     });
+
+    // cloudfront distribution for api gateway
     distribution.addBehavior("/status", new origins.RestApiOrigin(api), {
       viewerProtocolPolicy: cloudFront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
     });    
@@ -578,50 +516,5 @@ export class CdkIotStack extends Stack {
       value: distribution.domainName,
       description: 'The domain name of the Distribution',
     }); 
-
-  /*  const apiGateway2 = new apiGateway.LambdaRestApi(this, 'LambdaRestApi', {
-      handler: lambdaAthena,
-      endpointConfiguration: {
-        types: [apiGateway.EndpointType.REGIONAL]
-      },
-      defaultMethodOptions: {
-        authorizationType: apiGateway.AuthorizationType.NONE
-      }
-    });
-    new CloudFrontToApiGateway(this, 'test-cloudfront-apigateway', {
-      existingApiGatewayObj: apiGateway2
-    }); */
   }
 }
-
-export function addCorsOptions(apiResouce: IResource) {
-  // CORS
-  apiResouce.addMethod('OPTIONS', new MockIntegration({
-    integrationResponses: [{ 
-      statusCode: '200',
-        responseParameters: {
-          'method.response.header.Access-Control-Allow-Headers': "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
-          'method.response.header.Access-Control-Allow-Origin': "'*'",
-          'method.response.header.Access-Control-Allow-Credentials': "'false'",
-          'method.response.header.Access-Control-Allow-Methods': "'OPTIONS,GET,PUT,POST,DELETE'",
-        }
-      },
-    ],
-    passthroughBehavior: apiGateway.PassthroughBehavior.WHEN_NO_MATCH,
-    requestTemplates: {
-      'application/json': '{ "statusCode": 200 }',
-    },
-  }), {
-    methodResponses: [{ 
-        statusCode: '200',
-        responseParameters: {
-          'method.response.header.Access-Control-Allow-Headers': true,
-          'method.response.header.Access-Control-Allow-Methods': true,
-          'method.response.header.Access-Control-Allow-Credentials': true,
-          'method.response.header.Access-Control-Allow-Origin': true,
-        }, 
-      },
-    ],
-  });   
-}
-

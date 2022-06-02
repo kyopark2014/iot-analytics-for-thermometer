@@ -105,7 +105,7 @@
         }
       }
     },
-    "1d6e1d5d1abacd0c0f8db74e99f236bb4655b857696c230e3d4e6a683b0b94e9": {
+    "6da28d9effb8248858bf375769167d276957030fcb8ea88555848757d015851a": {
       "source": {
         "path": "CdkIotStack.template.json",
         "packaging": "file"
@@ -113,7 +113,7 @@
       "destinations": {
         "current_account-current_region": {
           "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
-          "objectKey": "1d6e1d5d1abacd0c0f8db74e99f236bb4655b857696c230e3d4e6a683b0b94e9.json",
+          "objectKey": "6da28d9effb8248858bf375769167d276957030fcb8ea88555848757d015851a.json",
           "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
         }
       }

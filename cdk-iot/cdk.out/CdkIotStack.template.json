@@ -1563,6 +1563,9 @@
   "apithermometer527A2812": {
    "Type": "AWS::ApiGateway::RestApi",
    "Properties": {
+    "BinaryMediaTypes": [
+     "*/*"
+    ],
     "Description": "API Gateway",
     "EndpointConfiguration": {
      "Types": [
@@ -1626,7 +1629,7 @@
     "aws:cdk:path": "CdkIotStack/api-thermometer/Account"
    }
   },
-  "apithermometerDeploymentCAEACC8C0a28eede64f77af3c5fcd9dcb41834e1": {
+  "apithermometerDeploymentCAEACC8C36ac89907123929172cc43b6cb02158a": {
    "Type": "AWS::ApiGateway::Deployment",
    "Properties": {
     "RestApiId": {
@@ -1636,7 +1639,6 @@
    },
    "DependsOn": [
     "apithermometerstatusGET6028E375",
-    "apithermometerstatusOPTIONS3EF8E05E",
     "apithermometerstatus9A4FEE8E"
    ],
    "Metadata": {
@@ -1659,7 +1661,7 @@
      "Format": "{\"requestId\":\"$context.requestId\",\"ip\":\"$context.identity.sourceIp\",\"user\":\"$context.identity.user\",\"requestTime\":\"$context.requestTime\",\"httpMethod\":\"$context.httpMethod\",\"resourcePath\":\"$context.resourcePath\",\"status\":\"$context.status\",\"protocol\":\"$context.protocol\",\"responseLength\":\"$context.responseLength\"}"
     },
     "DeploymentId": {
-     "Ref": "apithermometerDeploymentCAEACC8C0a28eede64f77af3c5fcd9dcb41834e1"
+     "Ref": "apithermometerDeploymentCAEACC8C36ac89907123929172cc43b6cb02158a"
     },
     "StageName": "dev"
    },
@@ -1833,51 +1835,6 @@
    },
    "Metadata": {
     "aws:cdk:path": "CdkIotStack/api-thermometer/Default/status/GET/Resource"
-   }
-  },
-  "apithermometerstatusOPTIONS3EF8E05E": {
-   "Type": "AWS::ApiGateway::Method",
-   "Properties": {
-    "HttpMethod": "OPTIONS",
-    "ResourceId": {
-     "Ref": "apithermometerstatus9A4FEE8E"
-    },
-    "RestApiId": {
-     "Ref": "apithermometer527A2812"
-    },
-    "AuthorizationType": "NONE",
-    "Integration": {
-     "IntegrationResponses": [
-      {
-       "ResponseParameters": {
-        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
-        "method.response.header.Access-Control-Allow-Origin": "'*'",
-        "method.response.header.Access-Control-Allow-Credentials": "'false'",
-        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE'"
-       },
-       "StatusCode": "200"
-      }
-     ],
-     "PassthroughBehavior": "WHEN_NO_MATCH",
-     "RequestTemplates": {
-      "application/json": "{ \"statusCode\": 200 }"
-     },
-     "Type": "MOCK"
-    },
-    "MethodResponses": [
-     {
-      "ResponseParameters": {
-       "method.response.header.Access-Control-Allow-Headers": true,
-       "method.response.header.Access-Control-Allow-Methods": true,
-       "method.response.header.Access-Control-Allow-Credentials": true,
-       "method.response.header.Access-Control-Allow-Origin": true
-      },
-      "StatusCode": "200"
-     }
-    ]
-   },
-   "Metadata": {
-    "aws:cdk:path": "CdkIotStack/api-thermometer/Default/status/OPTIONS/Resource"
    }
   },
   "cloudfrontOrigin1S3Origin57D92FB4": {

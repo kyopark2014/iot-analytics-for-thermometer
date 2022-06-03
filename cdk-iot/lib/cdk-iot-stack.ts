@@ -5,6 +5,8 @@ import * as cdk from 'aws-cdk-lib';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import * as s3Deploy from "aws-cdk-lib/aws-s3-deployment"
+import * as events from 'aws-cdk-lib/aws-events';
+import * as targets from 'aws-cdk-lib/aws-events-targets';
 import * as kinesisstream from 'aws-cdk-lib/aws-kinesis';
 import * as kinesisfirehose from 'aws-cdk-lib/aws-kinesisfirehose';
 import {SnsEventSource} from 'aws-cdk-lib/aws-lambda-event-sources'
@@ -13,13 +15,17 @@ import * as subscriptions from 'aws-cdk-lib/aws-sns-subscriptions';
 
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as lambdaEventSources from 'aws-cdk-lib/aws-lambda-event-sources';
+import * as cfn from 'aws-cdk-lib/aws-cloudformation';
 import * as logs from 'aws-cdk-lib/aws-logs';
 import * as glue from 'aws-cdk-lib/aws-glue'
 import * as athena from 'aws-cdk-lib/aws-athena'
 import * as iot from 'aws-cdk-lib/aws-iot';
 import * as apiGateway from 'aws-cdk-lib/aws-apigateway';
+import { IResource, LambdaIntegration, MockIntegration, PassthroughBehavior, RestApi } from 'aws-cdk-lib/aws-apigateway';
 import * as cloudFront from 'aws-cdk-lib/aws-cloudfront';
 import * as origins from 'aws-cdk-lib/aws-cloudfront-origins';
+import { ServicePrincipal } from 'aws-cdk-lib/aws-iam';
+
 
 export class CdkIotStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -142,7 +148,7 @@ export class CdkIotStack extends Stack {
       description: 'The arn of RuleRole for IoT',
     });
 
-    // Rule for IoT
+    // defile Rule for IoT
     new iot.CfnTopicRule(this, "TopicRule", {
       topicRulePayload: {
         actions: [
@@ -423,8 +429,12 @@ export class CdkIotStack extends Stack {
       description: 'The arn of lambda for athena',
     });
 
-    lambdaAthena.grantInvoke(new iam.ServicePrincipal('apigateway.amazonaws.com'));
+    lambdaAthena.addPermission('allInvocation', {
+      principal: new ServicePrincipal('apigateway.amazonaws.com')
+    })
+    lambdaAthena.grantInvoke(new ServicePrincipal('apigateway.amazonaws.com'));
     
+
     // API GATEWAY
     const stage = "dev";
 
@@ -470,14 +480,24 @@ export class CdkIotStack extends Stack {
           user: true
         }),
       },
-    //  proxy: false
     });   
 
+    // define template
+    const templateString: string = `#set($inputRoot = $input.path('$'))
+    {
+        "deviceid": "$input.params('deviceid')"
+    }`;
+
+    const requestTemplates = { // path through
+      'application/json': templateString,
+    };
+        
     const status = api.root.addResource('status');
 
     status.addMethod('GET', new apiGateway.LambdaIntegration(lambdaAthena, {
       passthroughBehavior: apiGateway.PassthroughBehavior.WHEN_NO_TEMPLATES,  // options: NEVER
       credentialsRole: role,
+    //  requestTemplates: requestTemplates,
       integrationResponses: [{
         statusCode: '200',
       }], 
@@ -491,13 +511,14 @@ export class CdkIotStack extends Stack {
           }, 
         }
       ]
-    });    
+    });
+    
     new cdk.CfnOutput(this, 'apiUrl', {
       value: api.url,
       description: 'The url of API Gateway',
     });
 
-    // cloudfront distribution for s3
+    // cloudfront
     const distribution = new cloudFront.Distribution(this, 'cloudfront', {
       defaultBehavior: {
         origin: new origins.S3Origin(s3Web),
@@ -506,9 +527,7 @@ export class CdkIotStack extends Stack {
       },
       priceClass: cloudFront.PriceClass.PRICE_CLASS_200,  
     });
-
-    // cloudfront distribution for api gateway
-    distribution.addBehavior("/status", new origins.RestApiOrigin(api), {
+    distribution.addBehavior("/status*", new origins.RestApiOrigin(api), {
       viewerProtocolPolicy: cloudFront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
     });    
 
@@ -518,3 +537,4 @@ export class CdkIotStack extends Stack {
     }); 
   }
 }
+

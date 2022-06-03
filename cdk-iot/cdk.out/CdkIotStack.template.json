@@ -1461,6 +1461,22 @@
     "aws:asset:property": "Code"
    }
   },
+  "LambdaAthenaallInvocation9F76F673": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "LambdaAthenaB5D0C109",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com"
+   },
+   "Metadata": {
+    "aws:cdk:path": "CdkIotStack/LambdaAthena/allInvocation"
+   }
+  },
   "LambdaAthenaInvokeFcyXBRX02EWa52GlFECQiCzDt0fdRUDi4mo4foC5aU5EFA156A": {
    "Type": "AWS::Lambda::Permission",
    "Properties": {
@@ -1629,7 +1645,7 @@
     "aws:cdk:path": "CdkIotStack/api-thermometer/Account"
    }
   },
-  "apithermometerDeploymentCAEACC8C36ac89907123929172cc43b6cb02158a": {
+  "apithermometerDeploymentCAEACC8C41c58fbaae7cd957d0bae7acd9573468": {
    "Type": "AWS::ApiGateway::Deployment",
    "Properties": {
     "RestApiId": {
@@ -1639,6 +1655,7 @@
    },
    "DependsOn": [
     "apithermometerstatusGET6028E375",
+    "apithermometerstatusPOSTA6F0E44E",
     "apithermometerstatus9A4FEE8E"
    ],
    "Metadata": {
@@ -1661,7 +1678,7 @@
      "Format": "{\"requestId\":\"$context.requestId\",\"ip\":\"$context.identity.sourceIp\",\"user\":\"$context.identity.user\",\"requestTime\":\"$context.requestTime\",\"httpMethod\":\"$context.httpMethod\",\"resourcePath\":\"$context.resourcePath\",\"status\":\"$context.status\",\"protocol\":\"$context.protocol\",\"responseLength\":\"$context.responseLength\"}"
     },
     "DeploymentId": {
-     "Ref": "apithermometerDeploymentCAEACC8C36ac89907123929172cc43b6cb02158a"
+     "Ref": "apithermometerDeploymentCAEACC8C41c58fbaae7cd957d0bae7acd9573468"
     },
     "StageName": "dev"
    },
@@ -1688,6 +1705,153 @@
    },
    "Metadata": {
     "aws:cdk:path": "CdkIotStack/api-thermometer/Default/status/Resource"
+   }
+  },
+  "apithermometerstatusPOSTApiPermissionCdkIotStackapithermometer186F9691POSTstatus5EE12281": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "LambdaAthenaB5D0C109",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "apithermometer527A2812"
+       },
+       "/",
+       {
+        "Ref": "apithermometerDeploymentStagedevF8B8FDAF"
+       },
+       "/POST/status"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "CdkIotStack/api-thermometer/Default/status/POST/ApiPermission.CdkIotStackapithermometer186F9691.POST..status"
+   }
+  },
+  "apithermometerstatusPOSTApiPermissionTestCdkIotStackapithermometer186F9691POSTstatus1D68AFDF": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "LambdaAthenaB5D0C109",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "apithermometer527A2812"
+       },
+       "/test-invoke-stage/POST/status"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "CdkIotStack/api-thermometer/Default/status/POST/ApiPermission.Test.CdkIotStackapithermometer186F9691.POST..status"
+   }
+  },
+  "apithermometerstatusPOSTA6F0E44E": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "HttpMethod": "POST",
+    "ResourceId": {
+     "Ref": "apithermometerstatus9A4FEE8E"
+    },
+    "RestApiId": {
+     "Ref": "apithermometer527A2812"
+    },
+    "AuthorizationType": "NONE",
+    "Integration": {
+     "Credentials": {
+      "Fn::GetAtt": [
+       "apirole22477616",
+       "Arn"
+      ]
+     },
+     "IntegrationHttpMethod": "POST",
+     "IntegrationResponses": [
+      {
+       "StatusCode": "200"
+      }
+     ],
+     "PassthroughBehavior": "WHEN_NO_TEMPLATES",
+     "Type": "AWS",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:",
+        {
+         "Ref": "AWS::Region"
+        },
+        ":lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "LambdaAthenaB5D0C109",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "MethodResponses": [
+     {
+      "ResponseModels": {
+       "application/json": "Empty"
+      },
+      "StatusCode": "200"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "CdkIotStack/api-thermometer/Default/status/POST/Resource"
    }
   },
   "apithermometerstatusGETApiPermissionCdkIotStackapithermometer186F9691GETstatusD64102B0": {
@@ -1856,7 +2020,7 @@
       {
        "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
        "Compress": true,
-       "PathPattern": "/status",
+       "PathPattern": "/status*",
        "TargetOriginId": "CdkIotStackcloudfrontOrigin223C036B8",
        "ViewerProtocolPolicy": "redirect-to-https"
       }

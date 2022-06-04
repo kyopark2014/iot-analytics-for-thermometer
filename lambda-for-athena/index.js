@@ -20,8 +20,11 @@ exports.handler = async (event) => {
     console.log('event: '+JSON.stringify((event)));
     let isCompleted = false;
 
+    let current = new Date()*1.0;
+    let startTime = current - 24*3600*1000;
+
     let deviceid = '0123501CB56E162101';
-    let sqlStatement = "SELECT * FROM themometer where deviceid = '"+deviceid+"' order by timestamp limit 1000";
+    let sqlStatement = "SELECT * FROM themometer where deviceid = '"+deviceid+"' and timestamp > "+startTime+" order by timestamp limit 5000";
     console.log('sql: '+sqlStatement);
 
     var output = [];

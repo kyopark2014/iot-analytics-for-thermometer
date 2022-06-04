@@ -31,12 +31,9 @@ function loadTemperature() {
 	let temperatureValue = [];
 	xmlHttp.onreadystatechange = function() {
 		if (xmlHttp.readyState == XMLHttpRequest.DONE && xmlHttp.status == 200 ) {
-		  	console.log('response: '+xmlHttp.responseText);
-	
-		  	let res = JSON.parse(xmlHttp.responseText);
-	
+		  	let res = JSON.parse(xmlHttp.responseText);	
 		  	console.log('statusCode: '+res.statusCode);
-		  	console.log('body: '+res.body);	
+		//  	console.log('body: '+res.body);	
 
 			let items = JSON.parse(res.body);
 		  

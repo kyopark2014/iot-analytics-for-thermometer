@@ -1574,8 +1574,12 @@
                 },
                 "databaseName": "themometerDb",
                 "name": "translate-records",
+                "schedule": {
+                  "scheduleExpression": "cron(15 * * * ? *)"
+                },
                 "schemaChangePolicy": {
-                  "deleteBehavior": "DELETE_FROM_DATABASE"
+                  "deleteBehavior": "DELETE_FROM_DATABASE",
+                  "updateBehavior": "UPDATE_IN_DATABASE"
                 }
               }
             },
@@ -2098,7 +2102,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "7d8d7a9b7f16be3423d477a6368feee96422e1e9dd1ab40b0535c5c55a07416e.zip"
+                      "s3Key": "abf9862c02aa3c1caffb9632b308ef86477264152715cf10d4cd97e9af8b90ef.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [

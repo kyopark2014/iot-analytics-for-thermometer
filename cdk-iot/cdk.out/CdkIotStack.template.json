@@ -327,7 +327,7 @@
      }
     ],
     "SourceObjectKeys": [
-     "0a562a269a7cb555c3e4e8b00cf8993da2a542e83d1dfdfb8863c06e4161f949.zip"
+     "5957b65e5be654741a6c72941a53388ee29dabc1649548d1411d9a97397966f7.zip"
     ],
     "DestinationBucketName": {
      "Ref": "themometerwebA10CBA95"
@@ -1022,8 +1022,12 @@
     },
     "DatabaseName": "themometerDb",
     "Name": "translate-records",
+    "Schedule": {
+     "ScheduleExpression": "cron(15 * * * ? *)"
+    },
     "SchemaChangePolicy": {
-     "DeleteBehavior": "DELETE_FROM_DATABASE"
+     "DeleteBehavior": "DELETE_FROM_DATABASE",
+     "UpdateBehavior": "UPDATE_IN_DATABASE"
     }
    },
    "Metadata": {
@@ -1425,7 +1429,7 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "7d8d7a9b7f16be3423d477a6368feee96422e1e9dd1ab40b0535c5c55a07416e.zip"
+     "S3Key": "abf9862c02aa3c1caffb9632b308ef86477264152715cf10d4cd97e9af8b90ef.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -1456,7 +1460,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "CdkIotStack/LambdaAthena/Resource",
-    "aws:asset:path": "asset.7d8d7a9b7f16be3423d477a6368feee96422e1e9dd1ab40b0535c5c55a07416e",
+    "aws:asset:path": "asset.abf9862c02aa3c1caffb9632b308ef86477264152715cf10d4cd97e9af8b90ef",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }

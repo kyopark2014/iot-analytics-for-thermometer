@@ -222,8 +222,12 @@ export class CdkIotStack extends Stack {
       },
       databaseName: glueDatabaseName,
       schemaChangePolicy: {
-          deleteBehavior: 'DELETE_FROM_DATABASE'
+          deleteBehavior: 'DELETE_FROM_DATABASE',
+          updateBehavior: 'UPDATE_IN_DATABASE'
       },      
+      schedule: {
+        scheduleExpression: 'cron(15 * * * ? *)',  // At 15 minutes past the hour
+      },
     });
 
     // Traslation Role

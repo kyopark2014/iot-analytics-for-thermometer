@@ -23,7 +23,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/9a24e36d93375e0fc9dea0da4dbba0939c7d922612cc31173e71d62cf62b0c21.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/71614356cb74ece6744224da374e8cb9cb7eed72083a8a6ce364a173ce99085f.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -402,7 +402,7 @@
         "/CdkIotStack/api-thermometer/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "apithermometerDeploymentCAEACC8C41c58fbaae7cd957d0bae7acd9573468"
+            "data": "apithermometerDeploymentCAEACC8C36ac89907123929172cc43b6cb02158a"
           }
         ],
         "/CdkIotStack/api-thermometer/DeploymentStage.dev/Resource": [
@@ -421,24 +421,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "apithermometerstatus9A4FEE8E"
-          }
-        ],
-        "/CdkIotStack/api-thermometer/Default/status/POST/ApiPermission.CdkIotStackapithermometer186F9691.POST..status": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "apithermometerstatusPOSTApiPermissionCdkIotStackapithermometer186F9691POSTstatus5EE12281"
-          }
-        ],
-        "/CdkIotStack/api-thermometer/Default/status/POST/ApiPermission.Test.CdkIotStackapithermometer186F9691.POST..status": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "apithermometerstatusPOSTApiPermissionTestCdkIotStackapithermometer186F9691POSTstatus1D68AFDF"
-          }
-        ],
-        "/CdkIotStack/api-thermometer/Default/status/POST/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "apithermometerstatusPOSTA6F0E44E"
           }
         ],
         "/CdkIotStack/api-thermometer/Default/status/GET/ApiPermission.CdkIotStackapithermometer186F9691.GET..status": [

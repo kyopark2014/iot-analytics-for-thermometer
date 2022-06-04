@@ -522,12 +522,14 @@ export class CdkIotStack extends Stack {
     const distribution = new cloudFront.Distribution(this, 'cloudfront', {
       defaultBehavior: {
         origin: new origins.S3Origin(s3Web),
+        cachePolicy: cloudFront.CachePolicy.CACHING_DISABLED,  // temparary set 
         allowedMethods: cloudFront.AllowedMethods.ALLOW_ALL,
         viewerProtocolPolicy: cloudFront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
       },
       priceClass: cloudFront.PriceClass.PRICE_CLASS_200,  
     });
     distribution.addBehavior("/status*", new origins.RestApiOrigin(api), {
+      cachePolicy: cloudFront.CachePolicy.CACHING_DISABLED,
       viewerProtocolPolicy: cloudFront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
     });    
 

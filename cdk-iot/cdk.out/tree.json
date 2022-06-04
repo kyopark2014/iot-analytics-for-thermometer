@@ -2098,7 +2098,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "bc2507feea207e126a8e8603098cdcb459910cb7e1ef634bf66625ce8986b067.zip"
+                      "s3Key": "7d8d7a9b7f16be3423d477a6368feee96422e1e9dd1ab40b0535c5c55a07416e.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -2471,7 +2471,7 @@
                           "format": "{\"requestId\":\"$context.requestId\",\"ip\":\"$context.identity.sourceIp\",\"user\":\"$context.identity.user\",\"requestTime\":\"$context.requestTime\",\"httpMethod\":\"$context.httpMethod\",\"resourcePath\":\"$context.resourcePath\",\"status\":\"$context.status\",\"protocol\":\"$context.protocol\",\"responseLength\":\"$context.responseLength\"}"
                         },
                         "deploymentId": {
-                          "Ref": "apithermometerDeploymentCAEACC8C41c58fbaae7cd957d0bae7acd9573468"
+                          "Ref": "apithermometerDeploymentCAEACC8C36ac89907123929172cc43b6cb02158a"
                         },
                         "stageName": "dev"
                       }
@@ -2523,178 +2523,6 @@
                         },
                         "constructInfo": {
                           "fqn": "aws-cdk-lib.aws_apigateway.CfnResource",
-                          "version": "2.26.0"
-                        }
-                      },
-                      "POST": {
-                        "id": "POST",
-                        "path": "CdkIotStack/api-thermometer/Default/status/POST",
-                        "children": {
-                          "ApiPermission.CdkIotStackapithermometer186F9691.POST..status": {
-                            "id": "ApiPermission.CdkIotStackapithermometer186F9691.POST..status",
-                            "path": "CdkIotStack/api-thermometer/Default/status/POST/ApiPermission.CdkIotStackapithermometer186F9691.POST..status",
-                            "attributes": {
-                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
-                              "aws:cdk:cloudformation:props": {
-                                "action": "lambda:InvokeFunction",
-                                "functionName": {
-                                  "Fn::GetAtt": [
-                                    "LambdaAthenaB5D0C109",
-                                    "Arn"
-                                  ]
-                                },
-                                "principal": "apigateway.amazonaws.com",
-                                "sourceArn": {
-                                  "Fn::Join": [
-                                    "",
-                                    [
-                                      "arn:",
-                                      {
-                                        "Ref": "AWS::Partition"
-                                      },
-                                      ":execute-api:",
-                                      {
-                                        "Ref": "AWS::Region"
-                                      },
-                                      ":",
-                                      {
-                                        "Ref": "AWS::AccountId"
-                                      },
-                                      ":",
-                                      {
-                                        "Ref": "apithermometer527A2812"
-                                      },
-                                      "/",
-                                      {
-                                        "Ref": "apithermometerDeploymentStagedevF8B8FDAF"
-                                      },
-                                      "/POST/status"
-                                    ]
-                                  ]
-                                }
-                              }
-                            },
-                            "constructInfo": {
-                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
-                              "version": "2.26.0"
-                            }
-                          },
-                          "ApiPermission.Test.CdkIotStackapithermometer186F9691.POST..status": {
-                            "id": "ApiPermission.Test.CdkIotStackapithermometer186F9691.POST..status",
-                            "path": "CdkIotStack/api-thermometer/Default/status/POST/ApiPermission.Test.CdkIotStackapithermometer186F9691.POST..status",
-                            "attributes": {
-                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
-                              "aws:cdk:cloudformation:props": {
-                                "action": "lambda:InvokeFunction",
-                                "functionName": {
-                                  "Fn::GetAtt": [
-                                    "LambdaAthenaB5D0C109",
-                                    "Arn"
-                                  ]
-                                },
-                                "principal": "apigateway.amazonaws.com",
-                                "sourceArn": {
-                                  "Fn::Join": [
-                                    "",
-                                    [
-                                      "arn:",
-                                      {
-                                        "Ref": "AWS::Partition"
-                                      },
-                                      ":execute-api:",
-                                      {
-                                        "Ref": "AWS::Region"
-                                      },
-                                      ":",
-                                      {
-                                        "Ref": "AWS::AccountId"
-                                      },
-                                      ":",
-                                      {
-                                        "Ref": "apithermometer527A2812"
-                                      },
-                                      "/test-invoke-stage/POST/status"
-                                    ]
-                                  ]
-                                }
-                              }
-                            },
-                            "constructInfo": {
-                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
-                              "version": "2.26.0"
-                            }
-                          },
-                          "Resource": {
-                            "id": "Resource",
-                            "path": "CdkIotStack/api-thermometer/Default/status/POST/Resource",
-                            "attributes": {
-                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
-                              "aws:cdk:cloudformation:props": {
-                                "httpMethod": "POST",
-                                "resourceId": {
-                                  "Ref": "apithermometerstatus9A4FEE8E"
-                                },
-                                "restApiId": {
-                                  "Ref": "apithermometer527A2812"
-                                },
-                                "authorizationType": "NONE",
-                                "integration": {
-                                  "type": "AWS",
-                                  "uri": {
-                                    "Fn::Join": [
-                                      "",
-                                      [
-                                        "arn:",
-                                        {
-                                          "Ref": "AWS::Partition"
-                                        },
-                                        ":apigateway:",
-                                        {
-                                          "Ref": "AWS::Region"
-                                        },
-                                        ":lambda:path/2015-03-31/functions/",
-                                        {
-                                          "Fn::GetAtt": [
-                                            "LambdaAthenaB5D0C109",
-                                            "Arn"
-                                          ]
-                                        },
-                                        "/invocations"
-                                      ]
-                                    ]
-                                  },
-                                  "integrationHttpMethod": "POST",
-                                  "passthroughBehavior": "WHEN_NO_TEMPLATES",
-                                  "integrationResponses": [
-                                    {
-                                      "statusCode": "200"
-                                    }
-                                  ],
-                                  "credentials": {
-                                    "Fn::GetAtt": [
-                                      "apirole22477616",
-                                      "Arn"
-                                    ]
-                                  }
-                                },
-                                "methodResponses": [
-                                  {
-                                    "statusCode": "200",
-                                    "responseModels": {
-                                      "application/json": "Empty"
-                                    }
-                                  }
-                                ]
-                              }
-                            },
-                            "constructInfo": {
-                              "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
-                              "version": "2.26.0"
-                            }
-                          }
-                        },
-                        "constructInfo": {
-                          "fqn": "aws-cdk-lib.aws_apigateway.Method",
                           "version": "2.26.0"
                         }
                       },
@@ -3065,7 +2893,7 @@
                           "POST",
                           "DELETE"
                         ],
-                        "cachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+                        "cachePolicyId": "4135ea2d-6df8-44a3-9df3-4b5a84be39ad",
                         "compress": true,
                         "viewerProtocolPolicy": "redirect-to-https"
                       },
@@ -3073,7 +2901,7 @@
                         {
                           "pathPattern": "/status*",
                           "targetOriginId": "CdkIotStackcloudfrontOrigin223C036B8",
-                          "cachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+                          "cachePolicyId": "4135ea2d-6df8-44a3-9df3-4b5a84be39ad",
                           "compress": true,
                           "viewerProtocolPolicy": "redirect-to-https"
                         }

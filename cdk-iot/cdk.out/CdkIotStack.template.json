@@ -327,7 +327,7 @@
      }
     ],
     "SourceObjectKeys": [
-     "2afbc49946bb959a06d3ac7549edae1986d3dfacb683dddd73057a04d73b52be.zip"
+     "fdbe8444f490c39ac334b32f4926d782738bb0e047408aed36d1a705301e9567.zip"
     ],
     "DestinationBucketName": {
      "Ref": "themometerwebA10CBA95"
@@ -1429,7 +1429,7 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "df02794ed34f7addb30c3347b77d3d8625966e0d228707542e91f7c935d6fe70.zip"
+     "S3Key": "c3275cd0e2c6f4a8c17c74f993fca5b943cd770c12680cff7f6f8e674495aae5.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -1460,7 +1460,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "CdkIotStack/LambdaAthena/Resource",
-    "aws:asset:path": "asset.df02794ed34f7addb30c3347b77d3d8625966e0d228707542e91f7c935d6fe70",
+    "aws:asset:path": "asset.c3275cd0e2c6f4a8c17c74f993fca5b943cd770c12680cff7f6f8e674495aae5",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }
@@ -1532,7 +1532,7 @@
     "aws:cdk:path": "CdkIotStack/AccessLogs/Policy/ResourcePolicy"
    }
   },
-  "temperatureapirole177D4DBD": {
+  "apiroletemperature39AF1085": {
    "Type": "AWS::IAM::Role",
    "Properties": {
     "AssumeRolePolicyDocument": {
@@ -1550,13 +1550,13 @@
     "ManagedPolicyArns": [
      "arn:aws:iam::aws:policy/AWSLambdaExecute"
     ],
-    "RoleName": "TemperatureApiRole"
+    "RoleName": "ApiRoleTemperature"
    },
    "Metadata": {
-    "aws:cdk:path": "CdkIotStack/temperature-api-role/Resource"
+    "aws:cdk:path": "CdkIotStack/api-role-temperature/Resource"
    }
   },
-  "temperatureapiroleDefaultPolicyE68CE1EB": {
+  "apiroletemperatureDefaultPolicyE01E30A8": {
    "Type": "AWS::IAM::Policy",
    "Properties": {
     "PolicyDocument": {
@@ -1569,15 +1569,15 @@
      ],
      "Version": "2012-10-17"
     },
-    "PolicyName": "temperatureapiroleDefaultPolicyE68CE1EB",
+    "PolicyName": "apiroletemperatureDefaultPolicyE01E30A8",
     "Roles": [
      {
-      "Ref": "temperatureapirole177D4DBD"
+      "Ref": "apiroletemperature39AF1085"
      }
     ]
    },
    "Metadata": {
-    "aws:cdk:path": "CdkIotStack/temperature-api-role/DefaultPolicy/Resource"
+    "aws:cdk:path": "CdkIotStack/api-role-temperature/DefaultPolicy/Resource"
    }
   },
   "ApiThermometerE79D55B8": {
@@ -1646,7 +1646,7 @@
     "aws:cdk:path": "CdkIotStack/ApiThermometer/Account"
    }
   },
-  "ApiThermometerDeploymentCDF45838bf30d0681402aaf78fb56dd448ecf1a4": {
+  "ApiThermometerDeploymentCDF45838c9d6629c446e27eddf1d1c9d0c6e0b4b": {
    "Type": "AWS::ApiGateway::Deployment",
    "Properties": {
     "RestApiId": {
@@ -1678,7 +1678,7 @@
      "Format": "{\"requestId\":\"$context.requestId\",\"ip\":\"$context.identity.sourceIp\",\"user\":\"$context.identity.user\",\"requestTime\":\"$context.requestTime\",\"httpMethod\":\"$context.httpMethod\",\"resourcePath\":\"$context.resourcePath\",\"status\":\"$context.status\",\"protocol\":\"$context.protocol\",\"responseLength\":\"$context.responseLength\"}"
     },
     "DeploymentId": {
-     "Ref": "ApiThermometerDeploymentCDF45838bf30d0681402aaf78fb56dd448ecf1a4"
+     "Ref": "ApiThermometerDeploymentCDF45838c9d6629c446e27eddf1d1c9d0c6e0b4b"
     },
     "StageName": "dev"
    },
@@ -1805,7 +1805,7 @@
     "Integration": {
      "Credentials": {
       "Fn::GetAtt": [
-       "temperatureapirole177D4DBD",
+       "apiroletemperature39AF1085",
        "Arn"
       ]
      },
@@ -1860,6 +1860,30 @@
     "aws:cdk:path": "CdkIotStack/ApiThermometer/Default/status/GET/Resource"
    }
   },
+  "OriginRequestPolicyThermometer93676A4F": {
+   "Type": "AWS::CloudFront::OriginRequestPolicy",
+   "Properties": {
+    "OriginRequestPolicyConfig": {
+     "Comment": "Query string policy for thermometer",
+     "CookiesConfig": {
+      "CookieBehavior": "none"
+     },
+     "HeadersConfig": {
+      "HeaderBehavior": "none"
+     },
+     "Name": "QueryStringPolicyThermometer",
+     "QueryStringsConfig": {
+      "QueryStringBehavior": "whitelist",
+      "QueryStrings": [
+       "deviceid"
+      ]
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "CdkIotStack/OriginRequestPolicyThermometer/Resource"
+   }
+  },
   "cloudfrontOrigin1S3Origin57D92FB4": {
    "Type": "AWS::CloudFront::CloudFrontOriginAccessIdentity",
    "Properties": {
@@ -1879,7 +1903,10 @@
       {
        "CachePolicyId": "4135ea2d-6df8-44a3-9df3-4b5a84be39ad",
        "Compress": true,
-       "PathPattern": "/status*",
+       "OriginRequestPolicyId": {
+        "Ref": "OriginRequestPolicyThermometer93676A4F"
+       },
+       "PathPattern": "/status",
        "TargetOriginId": "CdkIotStackcloudfrontOrigin223C036B8",
        "ViewerProtocolPolicy": "redirect-to-https"
       }
@@ -2021,7 +2048,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/3VTTW/bMAz9LbsrWtcCw65psg4DWjRIhu0YKDLjsJZFQ5QSGIb/+yTLdlKgPfHxkeK37uX9d3n3RV14oYtqYfAgu51XuhKR2nf8ILvHoCvwYnW0I8piQwZ1e6VHPSuPiqEX/LDvCmgMtTVYL7NpPRNCMYNnuUyiF0bVh0LJLkZ8Vi24v+AYyYod2tKAJ/sUrPaJmUF0nfHPcwy5o+A0vKimiY+S+WN2A65GTtF7gaqW3ZYMJMMgr51l1IsKLTByGo0DVSdTRrFHG+k/1KBObAa7cGDtsJlqvNVjQvJyct2GmK80ARKzcupiwE3ZjujgRDyY1mDwDK4d8yt/AquS4R+56pej0AhDZazkmcqspilOeAs8TODa2HumF6rBUnm4qDbOAtgvGxzdJrjUmkLc2c36hrpmLV5NCXkyCUwZ0iXMym1q8QL+REWiMuqFNhSKo6N4K90a2Ts8hGGGrw5LTCUA8+8iZkM/tLFKD57Sg888bsP0vVgF9lR/WM5708bRGYu4jOE4U0vj6bwG3wQ/HuvepEPdx6+iDcrlhVcGh9sdiiNbYF65pQLkG389f/sh7+J3e2PEhYvjxBrkNsv/AEMB9YoDAAA="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/3VTwW7bMAz9lt0VrWuBYtfUWYcBLRokw3YMFJlx2MiSK0oJDMP/PsqykxTITnp8pMkn6vle3j/Kuy/qRDNdHmYGt7JbB6UPgqlNRw+ye4r6AEEUOzuifCydQd1e6DHOwZMi6AU9bLoSGuPaGmyQObU4E0IRQSA5T0cvjKq3pZIdd3xRLfg/4AmdFWu0lYHg7HO0OiTmDLj0jH8cueXaRa/hVTUNf5TSt9kl+Bopde8Fqlp2K2cgJYbzcrOMenFAC4SUVuNB1SmVEd/RMv3bNagTm8E6bkl7bCaN1zEPdEFOpavI8yoTITGFVycDfpq2Qw97R0NqAQaP4Ntxvgp7sCol/jp/+OldbIRxFSt5cVUO0xYnvAIaNnC52GemF6rBSgU4qZZ3ARTmDY5lE5xr7SK/2dXzDbrOEbumgryZBKYJyQnn4Hq0eIWwd2WiMuqFNi6WO+/YK92bxwq5+COyhovwW/QCKXjcxmHduYDVAtGvkoVhGD4sUu/n1Pt/Fddt+l4UkYKrbyr/nFp6d8SS323wcbr96LK3GJoYRl9vTPL0hv8qbVDOT1QYHGw+iHO2xOwO60qQ7/T1+O27vOM/850QZ543jzXIVT7/Ab2py2u1AwAA"
    },
    "Metadata": {
     "aws:cdk:path": "CdkIotStack/CDKMetadata/Default"
@@ -2170,8 +2197,8 @@
     ]
    }
   },
-  "apiUrl": {
-   "Description": "The url of API Gateway",
+  "EndpointUrl": {
+   "Description": "The endpoint of API Gateway",
    "Value": {
     "Fn::Join": [
      "",

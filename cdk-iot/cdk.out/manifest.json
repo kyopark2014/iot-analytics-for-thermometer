@@ -23,7 +23,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/0988636739278f0c097639820b43905f45fb755b09dcc467ef87b7f31d3c7bcf.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/ea1844d7898d6cac89aebb0b929d00046051bed30c06513d6d719d69ddc132b6.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -369,16 +369,16 @@
             "data": "AccessLogsPolicyResourcePolicyA1E3EF94"
           }
         ],
-        "/CdkIotStack/temperature-api-role/Resource": [
+        "/CdkIotStack/api-role-temperature/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "temperatureapirole177D4DBD"
+            "data": "apiroletemperature39AF1085"
           }
         ],
-        "/CdkIotStack/temperature-api-role/DefaultPolicy/Resource": [
+        "/CdkIotStack/api-role-temperature/DefaultPolicy/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "temperatureapiroleDefaultPolicyE68CE1EB"
+            "data": "apiroletemperatureDefaultPolicyE01E30A8"
           }
         ],
         "/CdkIotStack/ApiThermometer/Resource": [
@@ -402,7 +402,7 @@
         "/CdkIotStack/ApiThermometer/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "ApiThermometerDeploymentCDF45838bf30d0681402aaf78fb56dd448ecf1a4"
+            "data": "ApiThermometerDeploymentCDF45838c9d6629c446e27eddf1d1c9d0c6e0b4b"
           }
         ],
         "/CdkIotStack/ApiThermometer/DeploymentStage.dev/Resource": [
@@ -441,10 +441,16 @@
             "data": "ApiThermometerstatusGETC7FC38ED"
           }
         ],
-        "/CdkIotStack/apiUrl": [
+        "/CdkIotStack/EndpointUrl": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "apiUrl"
+            "data": "EndpointUrl"
+          }
+        ],
+        "/CdkIotStack/OriginRequestPolicyThermometer/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "OriginRequestPolicyThermometer93676A4F"
           }
         ],
         "/CdkIotStack/cloudfront/Origin1/S3Origin/Resource": [

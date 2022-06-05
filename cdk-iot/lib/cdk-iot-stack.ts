@@ -449,8 +449,8 @@ export class CdkIotStack extends Stack {
     logGroup.grantWrite(new iam.ServicePrincipal('apigateway.amazonaws.com')); 
 
     // api-role
-    const role = new iam.Role(this, "temperature-api-role", {
-      roleName: "TemperatureApiRole",
+    const role = new iam.Role(this, "api-role-temperature", {
+      roleName: "ApiRoleTemperature",
       assumedBy: new iam.ServicePrincipal("apigateway.amazonaws.com")
     });
     role.addToPolicy(new iam.PolicyStatement({
@@ -462,7 +462,7 @@ export class CdkIotStack extends Stack {
     }); 
 
     // define api gateway
-    const api = new apiGateway.RestApi(this, 'ApiThermometer', {
+    const apigw = new apiGateway.RestApi(this, 'ApiThermometer', {
       description: 'API Gateway for themometer',
       endpointTypes: [apiGateway.EndpointType.REGIONAL],
       defaultMethodOptions: {
@@ -496,7 +496,8 @@ export class CdkIotStack extends Stack {
       'application/json': templateString,
     };
         
-    const status = api.root.addResource('status');
+    // define method
+    const status = apigw.root.addResource('status');
 
     status.addMethod('GET', new apiGateway.LambdaIntegration(lambdaAthena, {
       passthroughBehavior: apiGateway.PassthroughBehavior.WHEN_NO_TEMPLATES,  // options: NEVER
@@ -521,11 +522,19 @@ export class CdkIotStack extends Stack {
     });
     
     new cdk.CfnOutput(this, 'EndpointUrl', {
-      value: api.url,
+      value: apigw.url,
       description: 'The endpoint of API Gateway',
     });
 
     // cloudfront
+    const myOriginRequestPolicy = new cloudFront.OriginRequestPolicy(this, 'OriginRequestPolicyThermometer', {
+      originRequestPolicyName: 'QueryStringPolicyThermometer',
+      comment: 'Query string policy for thermometer',
+      cookieBehavior: cloudFront.OriginRequestCookieBehavior.none(),
+      headerBehavior: cloudFront.OriginRequestHeaderBehavior.none(),
+      queryStringBehavior: cloudFront.OriginRequestQueryStringBehavior.allowList('deviceid'),
+    });
+
     const distribution = new cloudFront.Distribution(this, 'cloudfront', {
       defaultBehavior: {
         origin: new origins.S3Origin(s3Web),
@@ -535,8 +544,9 @@ export class CdkIotStack extends Stack {
       },
       priceClass: cloudFront.PriceClass.PRICE_CLASS_200,  
     });
-    distribution.addBehavior("/status*", new origins.RestApiOrigin(api), {
+    distribution.addBehavior("/status", new origins.RestApiOrigin(apigw), {
       cachePolicy: cloudFront.CachePolicy.CACHING_DISABLED,
+      originRequestPolicy: myOriginRequestPolicy,
       viewerProtocolPolicy: cloudFront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
     });    
 

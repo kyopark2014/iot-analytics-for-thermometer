@@ -2102,7 +2102,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "df02794ed34f7addb30c3347b77d3d8625966e0d228707542e91f7c935d6fe70.zip"
+                      "s3Key": "c3275cd0e2c6f4a8c17c74f993fca5b943cd770c12680cff7f6f8e674495aae5.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -2252,13 +2252,13 @@
               "version": "2.26.0"
             }
           },
-          "temperature-api-role": {
-            "id": "temperature-api-role",
-            "path": "CdkIotStack/temperature-api-role",
+          "api-role-temperature": {
+            "id": "api-role-temperature",
+            "path": "CdkIotStack/api-role-temperature",
             "children": {
               "Resource": {
                 "id": "Resource",
-                "path": "CdkIotStack/temperature-api-role/Resource",
+                "path": "CdkIotStack/api-role-temperature/Resource",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::IAM::Role",
                   "aws:cdk:cloudformation:props": {
@@ -2277,7 +2277,7 @@
                     "managedPolicyArns": [
                       "arn:aws:iam::aws:policy/AWSLambdaExecute"
                     ],
-                    "roleName": "TemperatureApiRole"
+                    "roleName": "ApiRoleTemperature"
                   }
                 },
                 "constructInfo": {
@@ -2287,11 +2287,11 @@
               },
               "DefaultPolicy": {
                 "id": "DefaultPolicy",
-                "path": "CdkIotStack/temperature-api-role/DefaultPolicy",
+                "path": "CdkIotStack/api-role-temperature/DefaultPolicy",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "CdkIotStack/temperature-api-role/DefaultPolicy/Resource",
+                    "path": "CdkIotStack/api-role-temperature/DefaultPolicy/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
                       "aws:cdk:cloudformation:props": {
@@ -2305,10 +2305,10 @@
                           ],
                           "Version": "2012-10-17"
                         },
-                        "policyName": "temperatureapiroleDefaultPolicyE68CE1EB",
+                        "policyName": "apiroletemperatureDefaultPolicyE01E30A8",
                         "roles": [
                           {
-                            "Ref": "temperatureapirole177D4DBD"
+                            "Ref": "apiroletemperature39AF1085"
                           }
                         ]
                       }
@@ -2472,7 +2472,7 @@
                           "format": "{\"requestId\":\"$context.requestId\",\"ip\":\"$context.identity.sourceIp\",\"user\":\"$context.identity.user\",\"requestTime\":\"$context.requestTime\",\"httpMethod\":\"$context.httpMethod\",\"resourcePath\":\"$context.resourcePath\",\"status\":\"$context.status\",\"protocol\":\"$context.protocol\",\"responseLength\":\"$context.responseLength\"}"
                         },
                         "deploymentId": {
-                          "Ref": "ApiThermometerDeploymentCDF45838bf30d0681402aaf78fb56dd448ecf1a4"
+                          "Ref": "ApiThermometerDeploymentCDF45838c9d6629c446e27eddf1d1c9d0c6e0b4b"
                         },
                         "stageName": "dev"
                       }
@@ -2676,7 +2676,7 @@
                                   ],
                                   "credentials": {
                                     "Fn::GetAtt": [
-                                      "temperatureapirole177D4DBD",
+                                      "apiroletemperature39AF1085",
                                       "Arn"
                                     ]
                                   }
@@ -2723,11 +2723,50 @@
               "version": "2.26.0"
             }
           },
-          "apiUrl": {
-            "id": "apiUrl",
-            "path": "CdkIotStack/apiUrl",
+          "EndpointUrl": {
+            "id": "EndpointUrl",
+            "path": "CdkIotStack/EndpointUrl",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnOutput",
+              "version": "2.26.0"
+            }
+          },
+          "OriginRequestPolicyThermometer": {
+            "id": "OriginRequestPolicyThermometer",
+            "path": "CdkIotStack/OriginRequestPolicyThermometer",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "CdkIotStack/OriginRequestPolicyThermometer/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::CloudFront::OriginRequestPolicy",
+                  "aws:cdk:cloudformation:props": {
+                    "originRequestPolicyConfig": {
+                      "name": "QueryStringPolicyThermometer",
+                      "comment": "Query string policy for thermometer",
+                      "cookiesConfig": {
+                        "cookieBehavior": "none"
+                      },
+                      "headersConfig": {
+                        "headerBehavior": "none"
+                      },
+                      "queryStringsConfig": {
+                        "queryStringBehavior": "whitelist",
+                        "queryStrings": [
+                          "deviceid"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_cloudfront.CfnOriginRequestPolicy",
+                  "version": "2.26.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_cloudfront.OriginRequestPolicy",
               "version": "2.26.0"
             }
           },
@@ -2906,10 +2945,13 @@
                       },
                       "cacheBehaviors": [
                         {
-                          "pathPattern": "/status*",
+                          "pathPattern": "/status",
                           "targetOriginId": "CdkIotStackcloudfrontOrigin223C036B8",
                           "cachePolicyId": "4135ea2d-6df8-44a3-9df3-4b5a84be39ad",
                           "compress": true,
+                          "originRequestPolicyId": {
+                            "Ref": "OriginRequestPolicyThermometer93676A4F"
+                          },
                           "viewerProtocolPolicy": "redirect-to-https"
                         }
                       ],

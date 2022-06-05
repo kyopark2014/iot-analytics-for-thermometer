@@ -2,6 +2,9 @@
 
 Thermometer가 MQTT를 이용해 IoT Core로 전송되면 이를 저장하는 S3를 아래와 같이 정의 합니다. 
 
+
+## Basic Components
+
 ```java
     const s3Bucket = new s3.Bucket(this, "thermometer-storage",{
       bucketName: "s3-themometer-storage",
@@ -12,6 +15,9 @@ Thermometer가 MQTT를 이용해 IoT Core로 전송되면 이를 저장하는 S3
       versioned: false,
     });
 ```    
+
+
+## Kinesiss Stream 
 
 브라우저에서 구동되는 Web Client의 resource들을 저장하는 S3를 선언합니다.
 
@@ -86,7 +92,7 @@ SNS에서 event를 받아서 slack으로 전달하는 lambda for slack을 정의
     lambdaSlack.addEventSource(new SnsEventSource(topic));    
 ```
 
-## IoT 
+## IoT Rule
 
 IoT Rule에서 사용할 IAM Role을 정의 합니다.
 

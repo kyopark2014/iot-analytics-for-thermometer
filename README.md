@@ -50,10 +50,11 @@ $ cdk deploy
 
 3) [Athena로 IoT 데이터 조회](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/athena.md)처럼 IoT device를 통해 들어오는 온도데이터를 AWS Anlytics를 통해 수집해서 Athena를 통화 조회 할 수 있습니다. 
 
-## 3) Webclient를 이용한 온도 모니터링 및 Slack Alarm 수신 
-
+## 3) Slack Alarm 수신 
 
 ### Slack Alarm 수신 
+
+## 4) Webclient를 이용한 온도 모니터링 
 
 
 ### Webclient를 이용한 모니터링 

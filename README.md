@@ -48,7 +48,18 @@ $ cdk deploy
 
 2) [AWS Glue에서 Table 생성](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/crawler.md)에 따라 AWS Glue Data catalog의 Crawler를 이용하여 Schema 생성을 위한 Table을 생성합니다. 
 
-3) [Athena로 IoT 데이터 조회](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/athena.md)처럼 IoT device를 통해 들어오는 온도데이터를 AWS Anlytics를 통해 수집해서 Athena를 통화 조회 할 수 있습니다. 
+3) Slack Alarm을 받기 위한 token 등록
+
+Lambda console에서 Slack을 위한 Lambda로 진입하여 아래와 같이 [Configuration] - [Environment variables]에 가면 [AWS CDK](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/cdk-iot/lib/cdk-iot-stack.ts)에서 입력한 임의 token이 아래처럼 들어가 있는것을 확인 할 수 있습니다. [Edit]를 선태하여 수정화면으로 이동합니다.
+
+![noname](https://user-images.githubusercontent.com/52392004/172056487-c2855bc6-9a27-40dc-b619-82df7a3c0c2c.png)
+
+아래처럼 실제 token을 입력합니다. 
+
+![noname](https://user-images.githubusercontent.com/52392004/172056376-88aaa644-95fb-4112-a5b2-91ab602436bf.png)
+
+
+4) [Athena로 IoT 데이터 조회](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/athena.md)처럼 IoT device를 통해 들어오는 온도데이터를 AWS Anlytics를 통해 수집해서 Athena를 통화 조회 할 수 있습니다. 
 
 ## 3) Slack Alarm 수신 
 

@@ -878,6 +878,13 @@
                                       "Arn"
                                     ]
                                   }
+                                },
+                                {
+                                  "Action": "sns:Publish",
+                                  "Effect": "Allow",
+                                  "Resource": {
+                                    "Ref": "snsiot647BE6CE"
+                                  }
                                 }
                               ],
                               "Version": "2012-10-17"
@@ -943,7 +950,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "1f237f8bdc1f8621b653c2bc69442cb55d3ca433fabc7b6eee1dada665967e82.zip"
+                      "s3Key": "bfc884ba4ed94e1e37eab192ce2bc194c853e9f9964e6685bd394addae8103d5.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [

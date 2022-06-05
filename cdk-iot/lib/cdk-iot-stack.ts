@@ -116,6 +116,9 @@ export class CdkIotStack extends Stack {
     });
     lambdaStream.addEventSource(eventSource);  
 
+    // permission for topic 
+    topic.grantPublish(lambdaStream);
+
     // Lambda - Slack
     const lambdaSlack = new lambda.Function(this, "LambdaSlack", {
       runtime: lambda.Runtime.NODEJS_14_X, 

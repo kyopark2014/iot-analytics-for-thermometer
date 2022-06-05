@@ -86,3 +86,91 @@ SNS에서 event를 받아서 slack으로 전달하는 lambda for slack을 정의
     lambdaSlack.addEventSource(new SnsEventSource(topic));    
 ```
 
+## IoT 
+
+IoT Rule에서 사용할 IAM Role을 정의 합니다.
+
+```java
+    // Rule Role for IoT
+    const ruleRole = new iam.Role(this, "ruleRole", {
+      roleName: 'RuleRole',
+      assumedBy: new iam.ServicePrincipal("iot.amazonaws.com"),
+      description: "Role of Rule for IoT",
+    });
+    ruleRole.addToPolicy(new iam.PolicyStatement({
+      effect: iam.Effect.ALLOW,
+      actions: [
+        "kinesis:PutRecord",
+      ],
+      resources: [
+        stream.streamArn,
+      ],
+    }));
+```
+
+Kinesis data stream으로 '/shadow/update'에 대한 record를 수집하도록 Rule을 정의 합니다. 
+
+```java
+    // defile Rule for IoT
+    new iot.CfnTopicRule(this, "TopicRule", {
+      topicRulePayload: {
+        actions: [
+          {
+            kinesis: {
+              streamName: streamName,
+              roleArn: ruleRole.roleArn,   
+              partitionKey: '${clientToken}',
+            },
+          },
+        ],
+        sql: "SELECT * FROM '$aws/things/+/shadow/update'",
+        ruleDisabled: false,
+      },
+      ruleName: "themometer",
+    }); 
+```
+
+"lambda for firehose"를 정의 합니다.
+
+```java
+    const lambdaFirehose = new lambda.Function(this, "LambdaKinesisFirehose", {
+      description: 'update event sources',
+      runtime: lambda.Runtime.NODEJS_14_X, 
+      code: lambda.Code.fromAsset("../lambda-for-firehose"), 
+      handler: "index.handler", 
+      timeout: cdk.Duration.seconds(3),
+      environment: {
+      }
+    }); 
+```
+
+crawler에 대한 IAM Role을 정의 합니다.
+
+```java
+// crawler role 
+    const crawlerRole = new iam.Role(this, "crawlerRole", {
+      roleName: 'CrawlerRole',
+      assumedBy: new iam.ServicePrincipal("glue.amazonaws.com"),
+      description: "Role for crawler",
+    });
+    crawlerRole.addManagedPolicy({
+      managedPolicyArn: 'arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole',
+    });  
+    crawlerRole.addToPolicy(new iam.PolicyStatement({
+      effect: iam.Effect.ALLOW,
+      actions: [
+        "s3:AbortMultipartUpload",
+        "s3:GetBucketLocation",
+        "s3:GetObject",
+        "s3:ListBucket",
+        "s3:ListBucketMultipartUploads",
+        "s3:PutObject"
+      ],
+      resources: [
+        s3Bucket.bucketArn,
+        s3Bucket.bucketArn + "/*"
+      ],
+    }));
+```
+
+    

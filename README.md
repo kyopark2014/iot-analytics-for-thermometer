@@ -62,7 +62,7 @@ $ cdk deploy
 
 ### Slack Alarm 수신 
 
-아래와 같이 Slack으로 센서 Temperature와 관련된 Alarm을 받을 수 있습니다. 여기에서는 메시지 수신 확인을 위해 threshold temperature를 10도로 설정후에 테스트 하였고, 정상적으로 메시지를 수신하는것을 확인 할 수 있습니다. 
+아래와 같이 Slack으로 센서 Temperature와 관련된 Alarm을 받을 수 있습니다. 여기에서는 메시지 수신 확인을 위해 threshold temperature를 10도로 설정후에 테스트 하였고(실제는 30도로 운영), 정상적으로 메시지를 수신하는것을 확인 할 수 있습니다. 
 
 ![noname](https://user-images.githubusercontent.com/52392004/172061333-175e9f06-a0c6-4aef-99c4-7eb6ff62870e.png)
 

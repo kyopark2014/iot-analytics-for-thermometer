@@ -3,7 +3,7 @@
 Thermometer가 MQTT를 이용해 IoT Core로 전송되면 이를 저장하는 S3를 아래와 같이 정의 합니다. 
 
 
-## Basic Components
+## S3
 
 ```java
     const s3Bucket = new s3.Bucket(this, "thermometer-storage",{

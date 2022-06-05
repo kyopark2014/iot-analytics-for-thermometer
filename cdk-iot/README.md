@@ -3,7 +3,7 @@
 Thermometer가 MQTT를 이용해 IoT Core로 전송되면 이를 저장하는 S3를 아래와 같이 정의 합니다. 
 
 
-## Basic Components
+## S3
 
 ```java
     const s3Bucket = new s3.Bucket(this, "thermometer-storage",{
@@ -17,7 +17,7 @@ Thermometer가 MQTT를 이용해 IoT Core로 전송되면 이를 저장하는 S3
 ```    
 
 
-## Kinesiss Stream 
+## Kinesiss Data Stream 
 
 브라우저에서 구동되는 Web Client의 resource들을 저장하는 S3를 선언합니다.
 
@@ -150,6 +150,8 @@ Kinesis data stream으로 '/shadow/update'에 대한 record를 수집하도록 R
     }); 
 ```
 
+## Glue Crawler 
+
 crawler에 대한 IAM Role을 정의 합니다.
 
 ```java
@@ -203,6 +205,8 @@ AWS Glue Crawler로 1시간마다 S3에 저장딘 데이터의 Table을 생성�
     });
 ``` 
 
+## Kinesis Data Firehose
+
 Kinesis data firhose를 정의 합니다.
 
 ```java
@@ -226,6 +230,8 @@ Kinesis data firhose를 정의 합니다.
       },
     });
 ```    
+
+## Amazon Athena
 
 Amazon Athena에서 사용할 work group을 지정합니다.
 
@@ -263,6 +269,8 @@ Amazon Athena에서 사용할 work group을 지정합니다.
       }
     }); 
 ```
+
+## API Gateway
 
 API Gateway의 IAM Role을 정의 합니다. 
 
@@ -305,6 +313,8 @@ API Gateway를 정의 합니다.
       },
     });   
 ```    
+
+## API 설정 
 
 querystring을 처리할 template를 정의 합니다.
 
@@ -351,7 +361,33 @@ querystring을 처리할 template를 정의 합니다.
     });
 ```    
 
+## CloudFront 
 
-cloudfront에서 querystring이 origin에 전달될 수 있도록 myOriginRequestPolicy을 정의하고, cloudfront에서 s3 Origin을 위한 API와 API Gateway를 target으로 하는 organization을 생성합니다. 여기서 myOriginRequestPolicy은 API Gateway에서 distribution을 참조하기 위한 2가지 api를 설명하고자 합니다.
+cloudfront에서 querystring이 origin에 전달될 수 있도록 myOriginRequestPolicy을 아래처럼 정의 합니다. 이후에 CloudFront에서 S3 Origin을 위한 API와 API Gateway를 target으로 하는 organization을 생성합니다. 
 
+```java
 
+    // cloudfront
+    const myOriginRequestPolicy = new cloudFront.OriginRequestPolicy(this, 'OriginRequestPolicyCloudfront', {
+      originRequestPolicyName: 'QueryStringPolicyCloudfront',
+      comment: 'Query string policy for cloudfront',
+      cookieBehavior: cloudFront.OriginRequestCookieBehavior.none(),
+      headerBehavior: cloudFront.OriginRequestHeaderBehavior.none(),
+      queryStringBehavior: cloudFront.OriginRequestQueryStringBehavior.allowList('deviceid'),
+    });
+
+    const distribution = new cloudFront.Distribution(this, 'cloudfront', {
+      defaultBehavior: {
+        origin: new origins.S3Origin(s3Bucket),
+        allowedMethods: cloudFront.AllowedMethods.ALLOW_ALL,
+        cachePolicy: cloudFront.CachePolicy.CACHING_DISABLED,
+        viewerProtocolPolicy: cloudFront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
+      },
+      priceClass: cloudFront.PriceClass.PRICE_CLASS_200,  
+    });
+    distribution.addBehavior("/status", new origins.RestApiOrigin(apigw), {
+      cachePolicy: cloudFront.CachePolicy.CACHING_DISABLED,
+      originRequestPolicy: myOriginRequestPolicy,
+      viewerProtocolPolicy: cloudFront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
+    });  
+```    

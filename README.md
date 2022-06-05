@@ -4,17 +4,16 @@
 
 ## 문제 정의
 
-"우리집 베란다의 온도 변화를 그래프로 보고, 온도가 너무 높으면 알람을 받을 수는 없을까?"
+"우리집 베란다에는 제가 아까는 제라늄 화분이 여럿 있습니다. 제라늄은 일년 내내 꽃이 피고 애뻐서, 키우는 재미가 있지만, 여름 고온에 쉽게 물러버릴수 있어서 잘 관리하여야 합니다. 특히 30도 이상의 고온이 되지 않도록 주의가 필요한데, 하루 또는 일정주기의 온도 변화를 알고 싶고, 온도가 너무 높을때는 시원한 곳으로 옮길 수 있도록 알람을 받고 싶습니다." 
 
-우리집 베란다에는 제가 아까는 제라늄 화분이 여럿 있습니다. 제라늄은 일년 내내 꽃이 피고 애뻐서, 키우는 재미가 있지만, 여름 고온에 매우 약해서 잘 관리하여야 합니다. 특히 30도 이상의 고온이 되지 않도록 주의가 필요한데, 다행히 저희집은 한여름에 온도가 높지는 않지만, 오전에는 꽤 햇볓이 잘들어서 온도 변화를 알고 싶었고, 온도가 너무 높을때는 시원한 곳으로 옮기고 싶었습니다.
+![image](https://user-images.githubusercontent.com/52392004/172074437-37999798-9384-4247-a7dd-e941b4314d7b.png)
 
-이러한 소소한(?) 바램을 아래와 같이 구현해보고자 합니다. 
 
 ## Architecture 구성 
 
 전체적인 Architecture는 아래와 같습니다. 
 
-- [AWS Edukit](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/m5stack.md)은 M5Stack의 AWS 버전으로 온도센서를 비롯한 다양한 센서를 가지고 있습니다. 여기에서는 M5Stack에 WiFi, Temperature, MQTT를 활성화 해서, Temperature변화를 [MQTT](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/mqtt.md) 프로토콜을 이용해 AWS IoT Core로 전송합니다. 
+- [AWS Edukit](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/m5stack.md)은 M5Stack의 AWS 버전으로서, 온도센서를 비롯한 다양한 센서를 가지고 있습니다. 여기에서는 M5Stack에 WiFi, Temperature, MQTT를 활성화 해서, Temperature변화를 [MQTT](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/mqtt.md) 프로토콜을 이용해 AWS IoT Core로 전송합니다. 
 
 - [MQTT](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/mqtt.md)로 전달되는 온도 데이터는 Amazon Kinesis Data Streams을 통해 수집됩니다. 이러한 구조는 다수의 Temperature 센서들로부터 수많은 트래픽을 효과적으로 처리해야 하는 경우에 유용합니다. 
 
@@ -63,7 +62,12 @@ $ cdk deploy
 
 ### Slack Alarm 수신 
 
-아래와 같이 Slack으로 센서 Temperature와 관련된 Alarm을 받을 수 있습니다. 
+아래와 같이 Slack으로 센서 Temperature와 관련된 Alarm을 받을 수 있습니다. 여기에서는 메시지 수신 확인을 위해 threshold temperature를 10도로 설정후에 테스트 하였고(실제는 30도로 운영), 정상적으로 메시지를 수신하는것을 확인 할 수 있습니다. 
+
+![noname](https://user-images.githubusercontent.com/52392004/172061333-175e9f06-a0c6-4aef-99c4-7eb6ff62870e.png)
+
+
+
 
 ### Webclient를 이용한 모니터링 
 

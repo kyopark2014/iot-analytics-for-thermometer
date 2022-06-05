@@ -10,8 +10,6 @@ exports.handler = async (event) => {
   console.log("msg: "+message);
 
   const web = new WebClient(token);
-  // The current date
-  const currentTime = new Date().toTimeString();
   
   var isCompleted = false, statusCode = 200;
   (async () => {
@@ -19,7 +17,7 @@ exports.handler = async (event) => {
       // Use the `chat.postMessage` method to send a message from this app
       let result = await web.chat.postMessage({
         channel: 'storytime',
-        text: currentTime+'\n'+message,
+        text: message,
       });
       
       console.log('response: '+ JSON.stringify(result));

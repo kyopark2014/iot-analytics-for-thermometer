@@ -23,7 +23,9 @@ exports.handler = async (event) => {
     let current = new Date()*1.0;
     let startTime = current - 24*3600*1000;
 
-    let deviceid = '0123501CB56E162101';
+    let deviceid = event.deviceid;
+    console.log('deviceid: '+deviceid);
+    
     let sqlStatement = "SELECT * FROM themometer where deviceid = '"+deviceid+"' and timestamp > "+startTime+" order by timestamp limit 5000";
     console.log('sql: '+sqlStatement);
 

@@ -327,7 +327,7 @@
      }
     ],
     "SourceObjectKeys": [
-     "5957b65e5be654741a6c72941a53388ee29dabc1649548d1411d9a97397966f7.zip"
+     "2afbc49946bb959a06d3ac7549edae1986d3dfacb683dddd73057a04d73b52be.zip"
     ],
     "DestinationBucketName": {
      "Ref": "themometerwebA10CBA95"
@@ -1429,7 +1429,7 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "abf9862c02aa3c1caffb9632b308ef86477264152715cf10d4cd97e9af8b90ef.zip"
+     "S3Key": "df02794ed34f7addb30c3347b77d3d8625966e0d228707542e91f7c935d6fe70.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -1460,7 +1460,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "CdkIotStack/LambdaAthena/Resource",
-    "aws:asset:path": "asset.abf9862c02aa3c1caffb9632b308ef86477264152715cf10d4cd97e9af8b90ef",
+    "aws:asset:path": "asset.df02794ed34f7addb30c3347b77d3d8625966e0d228707542e91f7c935d6fe70",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }
@@ -1532,7 +1532,7 @@
     "aws:cdk:path": "CdkIotStack/AccessLogs/Policy/ResourcePolicy"
    }
   },
-  "apirole22477616": {
+  "temperatureapirole177D4DBD": {
    "Type": "AWS::IAM::Role",
    "Properties": {
     "AssumeRolePolicyDocument": {
@@ -1550,13 +1550,13 @@
     "ManagedPolicyArns": [
      "arn:aws:iam::aws:policy/AWSLambdaExecute"
     ],
-    "RoleName": "ApiRole"
+    "RoleName": "TemperatureApiRole"
    },
    "Metadata": {
-    "aws:cdk:path": "CdkIotStack/api-role/Resource"
+    "aws:cdk:path": "CdkIotStack/temperature-api-role/Resource"
    }
   },
-  "apiroleDefaultPolicy160A02CD": {
+  "temperatureapiroleDefaultPolicyE68CE1EB": {
    "Type": "AWS::IAM::Policy",
    "Properties": {
     "PolicyDocument": {
@@ -1569,36 +1569,33 @@
      ],
      "Version": "2012-10-17"
     },
-    "PolicyName": "apiroleDefaultPolicy160A02CD",
+    "PolicyName": "temperatureapiroleDefaultPolicyE68CE1EB",
     "Roles": [
      {
-      "Ref": "apirole22477616"
+      "Ref": "temperatureapirole177D4DBD"
      }
     ]
    },
    "Metadata": {
-    "aws:cdk:path": "CdkIotStack/api-role/DefaultPolicy/Resource"
+    "aws:cdk:path": "CdkIotStack/temperature-api-role/DefaultPolicy/Resource"
    }
   },
-  "apithermometer527A2812": {
+  "ApiThermometerE79D55B8": {
    "Type": "AWS::ApiGateway::RestApi",
    "Properties": {
-    "BinaryMediaTypes": [
-     "*/*"
-    ],
-    "Description": "API Gateway",
+    "Description": "API Gateway for themometer",
     "EndpointConfiguration": {
      "Types": [
       "REGIONAL"
      ]
     },
-    "Name": "api-thermometer"
+    "Name": "ApiThermometer"
    },
    "Metadata": {
-    "aws:cdk:path": "CdkIotStack/api-thermometer/Resource"
+    "aws:cdk:path": "CdkIotStack/ApiThermometer/Resource"
    }
   },
-  "apithermometerCloudWatchRoleD43FB1D8": {
+  "ApiThermometerCloudWatchRole54ECCD47": {
    "Type": "AWS::IAM::Role",
    "Properties": {
     "AssumeRolePolicyDocument": {
@@ -1629,47 +1626,47 @@
     ]
    },
    "Metadata": {
-    "aws:cdk:path": "CdkIotStack/api-thermometer/CloudWatchRole/Resource"
+    "aws:cdk:path": "CdkIotStack/ApiThermometer/CloudWatchRole/Resource"
    }
   },
-  "apithermometerAccount473ADE2F": {
+  "ApiThermometerAccount99C5A95C": {
    "Type": "AWS::ApiGateway::Account",
    "Properties": {
     "CloudWatchRoleArn": {
      "Fn::GetAtt": [
-      "apithermometerCloudWatchRoleD43FB1D8",
+      "ApiThermometerCloudWatchRole54ECCD47",
       "Arn"
      ]
     }
    },
    "DependsOn": [
-    "apithermometer527A2812"
+    "ApiThermometerE79D55B8"
    ],
    "Metadata": {
-    "aws:cdk:path": "CdkIotStack/api-thermometer/Account"
+    "aws:cdk:path": "CdkIotStack/ApiThermometer/Account"
    }
   },
-  "apithermometerDeploymentCAEACC8C36ac89907123929172cc43b6cb02158a": {
+  "ApiThermometerDeploymentCDF45838bf30d0681402aaf78fb56dd448ecf1a4": {
    "Type": "AWS::ApiGateway::Deployment",
    "Properties": {
     "RestApiId": {
-     "Ref": "apithermometer527A2812"
+     "Ref": "ApiThermometerE79D55B8"
     },
     "Description": "Automatically created by the RestApi construct"
    },
    "DependsOn": [
-    "apithermometerstatusGET6028E375",
-    "apithermometerstatus9A4FEE8E"
+    "ApiThermometerstatusGETC7FC38ED",
+    "ApiThermometerstatusE6B56D73"
    ],
    "Metadata": {
-    "aws:cdk:path": "CdkIotStack/api-thermometer/Deployment/Resource"
+    "aws:cdk:path": "CdkIotStack/ApiThermometer/Deployment/Resource"
    }
   },
-  "apithermometerDeploymentStagedevF8B8FDAF": {
+  "ApiThermometerDeploymentStagedevEF2750BC": {
    "Type": "AWS::ApiGateway::Stage",
    "Properties": {
     "RestApiId": {
-     "Ref": "apithermometer527A2812"
+     "Ref": "ApiThermometerE79D55B8"
     },
     "AccessLogSetting": {
      "DestinationArn": {
@@ -1681,36 +1678,36 @@
      "Format": "{\"requestId\":\"$context.requestId\",\"ip\":\"$context.identity.sourceIp\",\"user\":\"$context.identity.user\",\"requestTime\":\"$context.requestTime\",\"httpMethod\":\"$context.httpMethod\",\"resourcePath\":\"$context.resourcePath\",\"status\":\"$context.status\",\"protocol\":\"$context.protocol\",\"responseLength\":\"$context.responseLength\"}"
     },
     "DeploymentId": {
-     "Ref": "apithermometerDeploymentCAEACC8C36ac89907123929172cc43b6cb02158a"
+     "Ref": "ApiThermometerDeploymentCDF45838bf30d0681402aaf78fb56dd448ecf1a4"
     },
     "StageName": "dev"
    },
    "DependsOn": [
-    "apithermometerAccount473ADE2F"
+    "ApiThermometerAccount99C5A95C"
    ],
    "Metadata": {
-    "aws:cdk:path": "CdkIotStack/api-thermometer/DeploymentStage.dev/Resource"
+    "aws:cdk:path": "CdkIotStack/ApiThermometer/DeploymentStage.dev/Resource"
    }
   },
-  "apithermometerstatus9A4FEE8E": {
+  "ApiThermometerstatusE6B56D73": {
    "Type": "AWS::ApiGateway::Resource",
    "Properties": {
     "ParentId": {
      "Fn::GetAtt": [
-      "apithermometer527A2812",
+      "ApiThermometerE79D55B8",
       "RootResourceId"
      ]
     },
     "PathPart": "status",
     "RestApiId": {
-     "Ref": "apithermometer527A2812"
+     "Ref": "ApiThermometerE79D55B8"
     }
    },
    "Metadata": {
-    "aws:cdk:path": "CdkIotStack/api-thermometer/Default/status/Resource"
+    "aws:cdk:path": "CdkIotStack/ApiThermometer/Default/status/Resource"
    }
   },
-  "apithermometerstatusGETApiPermissionCdkIotStackapithermometer186F9691GETstatusD64102B0": {
+  "ApiThermometerstatusGETApiPermissionCdkIotStackApiThermometer95DA6389GETstatus06A86596": {
    "Type": "AWS::Lambda::Permission",
    "Properties": {
     "Action": "lambda:InvokeFunction",
@@ -1739,11 +1736,11 @@
        },
        ":",
        {
-        "Ref": "apithermometer527A2812"
+        "Ref": "ApiThermometerE79D55B8"
        },
        "/",
        {
-        "Ref": "apithermometerDeploymentStagedevF8B8FDAF"
+        "Ref": "ApiThermometerDeploymentStagedevEF2750BC"
        },
        "/GET/status"
       ]
@@ -1751,10 +1748,10 @@
     }
    },
    "Metadata": {
-    "aws:cdk:path": "CdkIotStack/api-thermometer/Default/status/GET/ApiPermission.CdkIotStackapithermometer186F9691.GET..status"
+    "aws:cdk:path": "CdkIotStack/ApiThermometer/Default/status/GET/ApiPermission.CdkIotStackApiThermometer95DA6389.GET..status"
    }
   },
-  "apithermometerstatusGETApiPermissionTestCdkIotStackapithermometer186F9691GETstatus38927CE7": {
+  "ApiThermometerstatusGETApiPermissionTestCdkIotStackApiThermometer95DA6389GETstatus9686169D": {
    "Type": "AWS::Lambda::Permission",
    "Properties": {
     "Action": "lambda:InvokeFunction",
@@ -1783,7 +1780,7 @@
        },
        ":",
        {
-        "Ref": "apithermometer527A2812"
+        "Ref": "ApiThermometerE79D55B8"
        },
        "/test-invoke-stage/GET/status"
       ]
@@ -1791,24 +1788,24 @@
     }
    },
    "Metadata": {
-    "aws:cdk:path": "CdkIotStack/api-thermometer/Default/status/GET/ApiPermission.Test.CdkIotStackapithermometer186F9691.GET..status"
+    "aws:cdk:path": "CdkIotStack/ApiThermometer/Default/status/GET/ApiPermission.Test.CdkIotStackApiThermometer95DA6389.GET..status"
    }
   },
-  "apithermometerstatusGET6028E375": {
+  "ApiThermometerstatusGETC7FC38ED": {
    "Type": "AWS::ApiGateway::Method",
    "Properties": {
     "HttpMethod": "GET",
     "ResourceId": {
-     "Ref": "apithermometerstatus9A4FEE8E"
+     "Ref": "ApiThermometerstatusE6B56D73"
     },
     "RestApiId": {
-     "Ref": "apithermometer527A2812"
+     "Ref": "ApiThermometerE79D55B8"
     },
     "AuthorizationType": "NONE",
     "Integration": {
      "Credentials": {
       "Fn::GetAtt": [
-       "apirole22477616",
+       "temperatureapirole177D4DBD",
        "Arn"
       ]
      },
@@ -1819,6 +1816,9 @@
       }
      ],
      "PassthroughBehavior": "WHEN_NO_TEMPLATES",
+     "RequestTemplates": {
+      "application/json": "#set($inputRoot = $input.path('$'))\n    {\n        \"deviceid\": \"$input.params('deviceid')\"\n    }"
+     },
      "Type": "AWS",
      "Uri": {
       "Fn::Join": [
@@ -1851,10 +1851,13 @@
       },
       "StatusCode": "200"
      }
-    ]
+    ],
+    "RequestParameters": {
+     "method.request.querystring.deviceid": true
+    }
    },
    "Metadata": {
-    "aws:cdk:path": "CdkIotStack/api-thermometer/Default/status/GET/Resource"
+    "aws:cdk:path": "CdkIotStack/ApiThermometer/Default/status/GET/Resource"
    }
   },
   "cloudfrontOrigin1S3Origin57D92FB4": {
@@ -1941,7 +1944,7 @@
              [
               "https://",
               {
-               "Ref": "apithermometer527A2812"
+               "Ref": "ApiThermometerE79D55B8"
               },
               ".execute-api.",
               {
@@ -1953,7 +1956,7 @@
               },
               "/",
               {
-               "Ref": "apithermometerDeploymentStagedevF8B8FDAF"
+               "Ref": "ApiThermometerDeploymentStagedevEF2750BC"
               },
               "/"
              ]
@@ -1981,7 +1984,7 @@
                 [
                  "https://",
                  {
-                  "Ref": "apithermometer527A2812"
+                  "Ref": "ApiThermometerE79D55B8"
                  },
                  ".execute-api.",
                  {
@@ -1993,7 +1996,7 @@
                  },
                  "/",
                  {
-                  "Ref": "apithermometerDeploymentStagedevF8B8FDAF"
+                  "Ref": "ApiThermometerDeploymentStagedevEF2750BC"
                  },
                  "/"
                 ]
@@ -2141,14 +2144,14 @@
     ]
    }
   },
-  "apithermometerEndpoint270F7E09": {
+  "ApiThermometerEndpoint46003B1A": {
    "Value": {
     "Fn::Join": [
      "",
      [
       "https://",
       {
-       "Ref": "apithermometer527A2812"
+       "Ref": "ApiThermometerE79D55B8"
       },
       ".execute-api.",
       {
@@ -2160,7 +2163,7 @@
       },
       "/",
       {
-       "Ref": "apithermometerDeploymentStagedevF8B8FDAF"
+       "Ref": "ApiThermometerDeploymentStagedevEF2750BC"
       },
       "/"
      ]
@@ -2175,7 +2178,7 @@
      [
       "https://",
       {
-       "Ref": "apithermometer527A2812"
+       "Ref": "ApiThermometerE79D55B8"
       },
       ".execute-api.",
       {
@@ -2187,7 +2190,7 @@
       },
       "/",
       {
-       "Ref": "apithermometerDeploymentStagedevF8B8FDAF"
+       "Ref": "ApiThermometerDeploymentStagedevEF2750BC"
       },
       "/"
      ]

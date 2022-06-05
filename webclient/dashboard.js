@@ -22,8 +22,9 @@ function DrawIoTChart() {
     drawTemperature(temperatureValue);   
 }
 
-function loadTemperature() { 
-	let url = '/status';
+function loadTemperature() {
+    let deviceid = '0123501CB56E162101'
+	let url = '/status?deviceid='+deviceid;
 
 	var xmlHttp = new XMLHttpRequest();	
     xmlHttp.open( "GET", url, false);     
@@ -60,7 +61,7 @@ function drawTemperature(temperatureValue) {
       vAxis: {
         title: 'Temperature (degree)',
 		scaleType: 'linear',   // log
-		ticks: [-10, 0, 10, 20, 30, 40]
+		ticks: [0, 10, 20, 30, 40]
       },
       legend:'none'
     };

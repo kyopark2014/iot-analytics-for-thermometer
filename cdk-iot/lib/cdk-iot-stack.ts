@@ -449,8 +449,8 @@ export class CdkIotStack extends Stack {
     logGroup.grantWrite(new iam.ServicePrincipal('apigateway.amazonaws.com')); 
 
     // api-role
-    const role = new iam.Role(this, "api-role", {
-      roleName: "ApiRole",
+    const role = new iam.Role(this, "temperature-api-role", {
+      roleName: "TemperatureApiRole",
       assumedBy: new iam.ServicePrincipal("apigateway.amazonaws.com")
     });
     role.addToPolicy(new iam.PolicyStatement({
@@ -462,13 +462,13 @@ export class CdkIotStack extends Stack {
     }); 
 
     // define api gateway
-    const api = new apiGateway.RestApi(this, 'api-thermometer', {
-      description: 'API Gateway',
+    const api = new apiGateway.RestApi(this, 'ApiThermometer', {
+      description: 'API Gateway for themometer',
       endpointTypes: [apiGateway.EndpointType.REGIONAL],
       defaultMethodOptions: {
         authorizationType: apiGateway.AuthorizationType.NONE
       },
-      binaryMediaTypes: ['*/*'], 
+      // binaryMediaTypes: ['*/*'], 
       deployOptions: {
         stageName: stage,
         accessLogDestination: new apiGateway.LogGroupLogDestination(logGroup),
@@ -501,12 +501,15 @@ export class CdkIotStack extends Stack {
     status.addMethod('GET', new apiGateway.LambdaIntegration(lambdaAthena, {
       passthroughBehavior: apiGateway.PassthroughBehavior.WHEN_NO_TEMPLATES,  // options: NEVER
       credentialsRole: role,
-    //  requestTemplates: requestTemplates,
+      requestTemplates: requestTemplates,
       integrationResponses: [{
         statusCode: '200',
       }], 
       proxy:false, 
     }), {
+      requestParameters: {
+        'method.request.querystring.deviceid': true,
+      },
       methodResponses: [   // API Gateway sends to the client that called a method.
         {
           statusCode: '200',
@@ -517,9 +520,9 @@ export class CdkIotStack extends Stack {
       ]
     });
     
-    new cdk.CfnOutput(this, 'apiUrl', {
+    new cdk.CfnOutput(this, 'EndpointUrl', {
       value: api.url,
-      description: 'The url of API Gateway',
+      description: 'The endpoint of API Gateway',
     });
 
     // cloudfront

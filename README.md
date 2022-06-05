@@ -50,6 +50,7 @@ $ cdk deploy
 
 3) Slack Alarm을 받기 위한 token 등록
 
+[Slack token 등록](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/slack-token.md)에 따라 token 값을 입력합니다.
 
 
 

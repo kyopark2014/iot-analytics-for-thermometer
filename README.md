@@ -59,14 +59,17 @@ Lambda console에서 Slack을 위한 Lambda로 진입하여 아래와 같이 [Co
 ![noname](https://user-images.githubusercontent.com/52392004/172056376-88aaa644-95fb-4112-a5b2-91ab602436bf.png)
 
 
-4) [Athena로 IoT 데이터 조회](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/athena.md)처럼 IoT device를 통해 들어오는 온도데이터를 AWS Anlytics를 통해 수집해서 Athena를 통화 조회 할 수 있습니다. 
 
-## 3) Slack Alarm 수신 
+## 3) 결과 확인 
+
+### Athena에서 데이터 조회 
+
+[Athena로 IoT 데이터 조회](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/athena.md)처럼 IoT device를 통해 들어오는 온도데이터를 AWS Anlytics를 통해 수집해서 Athena를 통화 조회 할 수 있습니다. 
+
 
 ### Slack Alarm 수신 
 
-## 4) Webclient를 이용한 온도 모니터링 
-
+아래와 같이 Slack으로 센서 Temperature와 관련된 Alarm을 받을 수 있습니다. 
 
 ### Webclient를 이용한 모니터링 
 

@@ -1,4 +1,4 @@
-## Slack에서 Alarm을 받기 위한 Token 등록
+## Slack으로 메시지를 보내기 위해 필요한 Token 등록 방법
 
 Slack의 Token은 민감한 정보이므로 github등을 통해 공유되지 않도록 주의하여야 합니다.
 

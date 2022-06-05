@@ -173,4 +173,179 @@ crawler에 대한 IAM Role을 정의 합니다.
     }));
 ```
 
+AWS Glue Crawler로 1시간마다 S3에 저장딘 데이터의 Table을 생성하도록 설정합니다.
+
+```java
+// crawler to generate a table
+    const glueDatabaseName = "themometerDb";
+    new glue.CfnCrawler(this, "TranslateRecords", {
+      name: "translate-records",
+      role: crawlerRole.roleArn,
+      targets: {
+          s3Targets: [
+              {path: 's3://'+s3Bucket.bucketName+'/themometer'}, 
+          ]
+      },
+      databaseName: glueDatabaseName,
+      schemaChangePolicy: {
+          deleteBehavior: 'DELETE_FROM_DATABASE',
+          updateBehavior: 'UPDATE_IN_DATABASE'
+      },      
+      schedule: {
+        scheduleExpression: 'cron(15 * * * ? *)',  // At 15 minutes past the hour
+      },
+    });
+``` 
+
+Kinesis data firhose를 정의 합니다.
+
+```java
+// crawler to generate a table
+    const glueDatabaseName = "themometerDb";
+    new glue.CfnCrawler(this, "TranslateRecords", {
+      name: "translate-records",
+      role: crawlerRole.roleArn,
+      targets: {
+          s3Targets: [
+              {path: 's3://'+s3Bucket.bucketName+'/themometer'}, 
+          ]
+      },
+      databaseName: glueDatabaseName,
+      schemaChangePolicy: {
+          deleteBehavior: 'DELETE_FROM_DATABASE',
+          updateBehavior: 'UPDATE_IN_DATABASE'
+      },      
+      schedule: {
+        scheduleExpression: 'cron(15 * * * ? *)',  // At 15 minutes past the hour
+      },
+    });
+```    
+
+Amazon Athena에서 사용할 work group을 지정합니다.
+
+```java
+// athena workgroup
+    let workGroupName = 'themometer-workgroup';
+    const workgroup = new athena.CfnWorkGroup(this, 'analytics-athena-workgroup', {
+      name: workGroupName,
+      description: 'athena working group',
+      recursiveDeleteOption: true,
+      state: 'ENABLED',
+      workGroupConfiguration: {
+        resultConfiguration: {
+          outputLocation: `s3://${s3Bucket.bucketName}`,
+        },
+      },
+    }) 
+```    
+
+
+"lambda-for-athena"에 대해 정의합니다.
+
+```java
+    const lambdaAthena = new lambda.Function(this, "LambdaAthena", {
+      description: 'query athena',
+      runtime: lambda.Runtime.NODEJS_14_X, 
+      code: lambda.Code.fromAsset("../lambda-for-athena"), 
+      role: athenaRole,
+      handler: "index.handler", 
+      timeout: cdk.Duration.seconds(20),
+      environment: {
+        athenaBucket: s3Bucket.bucketArn,
+        dbName: glueDatabaseName,
+        workGroup: workGroupName
+      }
+    }); 
+```
+
+API Gateway의 IAM Role을 정의 합니다. 
+
+```java
+    // api-role
+    const role = new iam.Role(this, "api-role-temperature", {
+      roleName: "ApiRoleTemperature",
+      assumedBy: new iam.ServicePrincipal("apigateway.amazonaws.com")
+    });
+    role.addToPolicy(new iam.PolicyStatement({
+      resources: ['*'],
+      actions: ['lambda:InvokeFunction']
+    }));
+```
+
+API Gateway를 정의 합니다. 
+```java
+// define api gateway
+    const apigw = new apiGateway.RestApi(this, 'ApiThermometer', {
+      description: 'API Gateway for themometer',
+      endpointTypes: [apiGateway.EndpointType.REGIONAL],
+      defaultMethodOptions: {
+        authorizationType: apiGateway.AuthorizationType.NONE
+      },
+      // binaryMediaTypes: ['*/*'], 
+      deployOptions: {
+        stageName: stage,
+        accessLogDestination: new apiGateway.LogGroupLogDestination(logGroup),
+        accessLogFormat: apiGateway.AccessLogFormat.jsonWithStandardFields({
+          caller: false,
+          httpMethod: true,
+          ip: true,
+          protocol: true,
+          requestTime: true,
+          resourcePath: true,
+          responseLength: true,
+          status: true,
+          user: true
+        }),
+      },
+    });   
+```    
+
+querystring을 처리할 template를 정의 합니다.
+
+```java
+    // define template
+    const templateString: string = `#set($inputRoot = $input.path('$'))
+    {
+        "deviceid": "$input.params('deviceid')"
+    }`;
+
+    const requestTemplates = { // path through
+      'application/json': templateString,
+    };
     
+```    
+
+"/status" API를 GET method로 아래와 같이 정의합니다. 여기서 "method.request.querystring.deviceid"는 querystring이 사용하는 devicei에 대한 정보입니다. 
+
+
+```java
+    // define method
+    const status = apigw.root.addResource('status');
+
+    status.addMethod('GET', new apiGateway.LambdaIntegration(lambdaAthena, {
+      passthroughBehavior: apiGateway.PassthroughBehavior.WHEN_NO_TEMPLATES,  // options: NEVER
+      credentialsRole: role,
+      requestTemplates: requestTemplates,
+      integrationResponses: [{
+        statusCode: '200',
+      }], 
+      proxy:false, 
+    }), {
+      requestParameters: {
+        'method.request.querystring.deviceid': true,
+      },
+      methodResponses: [   // API Gateway sends to the client that called a method.
+        {
+          statusCode: '200',
+          responseModels: {
+            'application/json': apiGateway.Model.EMPTY_MODEL,
+          }, 
+        }
+      ]
+    });
+```    
+
+
+cloudfront에서 querystring이 origin에 전달될 수 있도록 myOriginRequestPolicy을 정의하고, cloudfront에서 s3 Origin을 위한 API와 API Gateway를 target으로 하는 organization을 생성합니다. 여기서 myOriginRequestPolicy은 API Gateway에서 distribution을 참조하기 위한 2가지 api를 설명하고자 합니다.
+
+

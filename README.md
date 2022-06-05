@@ -36,7 +36,7 @@
 
 
 
-## 2) AWS CDK를 이용한 인프라 생성  
+## 2) AWS CDK를 이용한 Anlytics Infra Structure 생성  
 
 1) 아래와 같이 [AWS CDK](https://github.com/kyopark2014/technical-summary/blob/main/cdk-introduction.md)을 이용하여 [M5Stack에서 전달된 온도 데이터](https://github.com/kyopark2014/iot-analytics/tree/main/aws-iot-thermometer)를 저장하고 분석하는 infra structure를 생성합니다. 
 
@@ -48,11 +48,24 @@ $ cdk deploy
 
 2) [AWS Glue에서 Table 생성](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/crawler.md)에 따라 AWS Glue Data catalog의 Crawler를 이용하여 Schema 생성을 위한 Table을 생성합니다. 
 
-3) [Athena로 IoT 데이터 조회](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/athena.md)처럼 IoT device를 통해 들어오는 온도데이터를 AWS Anlytics를 통해 수집해서 Athena를 통화 조회 할 수 있습니다. 
+3) Slack Alarm을 받기 위한 token 등록
+
+[Slack으로 메시지를 보내기 위해 필요한 Token 등록 방법](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/slack-token.md)에 따라 token 값을 입력합니다.
 
 
 
-## 동작시험 결과
+## 3) 결과 확인 
+
+### Athena에서 데이터 조회 
+
+[Athena로 IoT 데이터 조회](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/athena.md)처럼 IoT device를 통해 들어오는 온도데이터를 AWS Anlytics를 통해 수집해서 Athena를 통화 조회 할 수 있습니다. 
+
+
+### Slack Alarm 수신 
+
+아래와 같이 Slack으로 센서 Temperature와 관련된 Alarm을 받을 수 있습니다. 
+
+### Webclient를 이용한 모니터링 
 
 아래와 같이 1일 동안의 온도변화를 브라우저에서 확인 할 수 있습니다. 
 

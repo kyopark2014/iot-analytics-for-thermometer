@@ -19,6 +19,12 @@ Kinesis Data Stream을 통해 수집된 데이터는 하나 또는 여러개의 
         let deviceId = clientToken.substr(0, clientToken.indexOf('-'));
 ```        
 
+온도가 30도 이상인 경우에는 Amazon SNS를 이용해 Alarm을 생성합니다. 
+
+```java
+ if(temperature>30) {
+```
+
 timestamp를 시간으로 아래처럼 변환합니다. timestamp는 timezone이 GMT 기준이므로 KST로 변환하기 위하여 '+9'을 더하여 시간을 구합니다. hour, minute, second를 화면에 표시하기 좋게 한자리수인 경우에는 '0'을 추가한 문자열로 변환합니다. 
 
 ```java

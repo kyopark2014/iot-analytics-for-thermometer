@@ -59,8 +59,3 @@ $ cdk deploy
 ![image](https://user-images.githubusercontent.com/52392004/172013628-b91d02a1-9f86-4387-9819-4edf74695269.png)
 
 
-
-## Reference
-
-[Visualization - Google Charts](https://developers.google.com/chart/interactive/docs/gallery/areachart) 
-

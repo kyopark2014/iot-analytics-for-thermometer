@@ -38,7 +38,51 @@ Queue처럼 IoT Core를 통해 인입되는 데이터를 저장하는 Kinesis da
       streamMode: kinesisstream.StreamMode.ON_DEMAND
     });
 ```    
-``
+
+Lambda for stream 통해 alarm등이 발생하면 이를 처리하는 Amazon SNS을 정의 합니다.
+
+```java
     const topic = new sns.Topic(this, 'sns-iot', {
       topicName: 'sns-iot'
     });
+```    
+
+"lambda for stream"은 입력되는 값들을 확인후 필요에 따라 alarm을 발생 할 수 있습니다.
+
+```java
+    const lambdaStream = new lambda.Function(this, "LambdaKinesisStream", {
+      description: 'get eventinfo from kinesis data stream',
+      runtime: lambda.Runtime.NODEJS_14_X, 
+      code: lambda.Code.fromAsset("../lambda-for-stream"), 
+      handler: "index.handler", 
+      timeout: cdk.Duration.seconds(3),
+      environment: {
+        topicArn: topic.topicArn
+      }
+    }); 
+```
+
+Kinesis data stream의 fan out이 lambda for stream으로 인입되도록 Event Source를 등록합니다.
+
+```java
+    const eventSource = new lambdaEventSources.KinesisEventSource(stream, {
+      startingPosition: lambda.StartingPosition.TRIM_HORIZON,
+    });
+    lambdaStream.addEventSource(eventSource);  
+```
+
+SNS에서 event를 받아서 slack으로 전달하는 lambda for slack을 정의 합니다. 
+
+```java
+    const lambdaSlack = new lambda.Function(this, "LambdaSlack", {
+      runtime: lambda.Runtime.NODEJS_14_X, 
+      code: lambda.Code.fromAsset("../lambda-for-slack"), 
+      handler: "index.handler", 
+      timeout: cdk.Duration.seconds(10),
+      environment: {
+        token: "sample-3205298473938-3233090599600-5Kr8k7W8dieUwoL5d7GekmpJ"
+      }
+    });    
+    lambdaSlack.addEventSource(new SnsEventSource(topic));    
+```
+

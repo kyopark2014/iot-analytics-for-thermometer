@@ -15,18 +15,54 @@ function DrawIoTChart() {
 	console.log("start at " + new Date(currentTime));
 	console.log(currentTime*1.0);
 	
-	symbol = document.getElementById("symbol").value;
+	period = document.getElementById("period").value;
 
-	const temperatureValue = loadTemperature(); 
+    let deviceid = document.getElementById("deviceid").defaultValue;
+	console.log('deviceid: '+deviceid);
+
+	// load temperature using deviceid
+	const temperatureValue = loadTemperature(deviceid); 
 
     drawTemperature(temperatureValue);   
 }
 
-function loadTemperature() {
-    let deviceid = '0123501CB56E162101'
-	let url = '/status?deviceid='+deviceid;
+function loadTemperature(deviceid) {
+	let period = document.getElementById("period").value;
 
-	var xmlHttp = new XMLHttpRequest();	
+	let timegap = 0;
+	if(period == '1 day') {
+		timegap =  24*3600*1000;
+	}
+	else if(period == '2 day') {
+		timegap =  2*24*3600*1000;
+	}
+	else if(period == '1 week') {
+		timegap =  7*24*3600*1000;
+	}
+	else if(period == '2 weeks') {
+		timegap =  14*24*3600*1000;
+	}
+	else if(period == '1 hour') {
+		timegap =  1*3600*1000;
+	}
+	else if(period == '3 hours') {
+		timegap =  3*3600*1000;
+	}
+	else if(period == '6 hours') {
+		timegap =  6*3600*1000;
+	}
+	else if(period == '12 hours') {
+		timegap =  12*3600*1000;
+	}
+
+	let currentTimestamp = new Date()*1.0;
+	let startTimestamp = currentTimestamp-timegap;
+	console.log('startTimestamp: '+startTimestamp);
+
+	let url = '/status?deviceid='+deviceid+'&startTimestamp='+startTimestamp;
+	console.log('url: '+url);
+
+	let xmlHttp = new XMLHttpRequest();	
     xmlHttp.open( "GET", url, false);     
 
 	let temperatureValue = [];

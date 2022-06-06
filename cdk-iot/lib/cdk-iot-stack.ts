@@ -492,7 +492,8 @@ export class CdkIotStack extends Stack {
     // define template
     const templateString: string = `#set($inputRoot = $input.path('$'))
     {
-        "deviceid": "$input.params('deviceid')"
+        "deviceid": "$input.params('deviceid')",
+        "startTimestamp": "$input.params('startTimestamp')"
     }`;
 
     const requestTemplates = { // path through
@@ -513,6 +514,7 @@ export class CdkIotStack extends Stack {
     }), {
       requestParameters: {
         'method.request.querystring.deviceid': true,
+        'method.request.querystring.startTimestamp': true,
       },
       methodResponses: [   // API Gateway sends to the client that called a method.
         {
@@ -535,7 +537,7 @@ export class CdkIotStack extends Stack {
       comment: 'Query string policy for thermometer',
       cookieBehavior: cloudFront.OriginRequestCookieBehavior.none(),
       headerBehavior: cloudFront.OriginRequestHeaderBehavior.none(),
-      queryStringBehavior: cloudFront.OriginRequestQueryStringBehavior.allowList('deviceid'),
+      queryStringBehavior: cloudFront.OriginRequestQueryStringBehavior.allowList('deviceid', 'startTimestamp'),
     });
 
     const distribution = new cloudFront.Distribution(this, 'cloudfront', {

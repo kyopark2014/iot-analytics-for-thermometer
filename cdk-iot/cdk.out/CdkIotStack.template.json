@@ -327,7 +327,7 @@
      }
     ],
     "SourceObjectKeys": [
-     "fdbe8444f490c39ac334b32f4926d782738bb0e047408aed36d1a705301e9567.zip"
+     "8d4f3b43dcfbe59b11df2421546bb03fb034a19914703937616284a399eb1cc7.zip"
     ],
     "DestinationBucketName": {
      "Ref": "themometerwebA10CBA95"
@@ -626,7 +626,7 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "bfc884ba4ed94e1e37eab192ce2bc194c853e9f9964e6685bd394addae8103d5.zip"
+     "S3Key": "9b81c763a105fb25f2f1c8eaec7ac3375cfadeb5d159e8d556764be31059323e.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -652,7 +652,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "CdkIotStack/LambdaKinesisStream/Resource",
-    "aws:asset:path": "asset.bfc884ba4ed94e1e37eab192ce2bc194c853e9f9964e6685bd394addae8103d5",
+    "aws:asset:path": "asset.9b81c763a105fb25f2f1c8eaec7ac3375cfadeb5d159e8d556764be31059323e",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }
@@ -717,7 +717,7 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "93d1e254d55666854a1de90fd23697cfb9ef716a73c87bcc084acea6dbada78d.zip"
+     "S3Key": "bccb5d89aaba9c8ed7316674db419d1e43d013f2b4c7a1e8ba911fcd7d924af8.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -739,7 +739,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "CdkIotStack/LambdaSlack/Resource",
-    "aws:asset:path": "asset.93d1e254d55666854a1de90fd23697cfb9ef716a73c87bcc084acea6dbada78d",
+    "aws:asset:path": "asset.bccb5d89aaba9c8ed7316674db419d1e43d013f2b4c7a1e8ba911fcd7d924af8",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }
@@ -900,7 +900,7 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "f5041f2882fb03cc46765bb1f56c90eb20c389ad2c6f99e7bf1a9dc020c67344.zip"
+     "S3Key": "02507a03a502e6922bc8f6f694314464aa2fabb96fb159795eb5c5ca222f27e7.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -918,7 +918,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "CdkIotStack/LambdaKinesisFirehose/Resource",
-    "aws:asset:path": "asset.f5041f2882fb03cc46765bb1f56c90eb20c389ad2c6f99e7bf1a9dc020c67344",
+    "aws:asset:path": "asset.02507a03a502e6922bc8f6f694314464aa2fabb96fb159795eb5c5ca222f27e7",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }
@@ -1653,7 +1653,7 @@
     "aws:cdk:path": "CdkIotStack/ApiThermometer/Account"
    }
   },
-  "ApiThermometerDeploymentCDF45838c9d6629c446e27eddf1d1c9d0c6e0b4b": {
+  "ApiThermometerDeploymentCDF45838b2373a9d1c5c122f030d2ab5f02a5822": {
    "Type": "AWS::ApiGateway::Deployment",
    "Properties": {
     "RestApiId": {
@@ -1685,7 +1685,7 @@
      "Format": "{\"requestId\":\"$context.requestId\",\"ip\":\"$context.identity.sourceIp\",\"user\":\"$context.identity.user\",\"requestTime\":\"$context.requestTime\",\"httpMethod\":\"$context.httpMethod\",\"resourcePath\":\"$context.resourcePath\",\"status\":\"$context.status\",\"protocol\":\"$context.protocol\",\"responseLength\":\"$context.responseLength\"}"
     },
     "DeploymentId": {
-     "Ref": "ApiThermometerDeploymentCDF45838c9d6629c446e27eddf1d1c9d0c6e0b4b"
+     "Ref": "ApiThermometerDeploymentCDF45838b2373a9d1c5c122f030d2ab5f02a5822"
     },
     "StageName": "dev"
    },
@@ -1824,7 +1824,7 @@
      ],
      "PassthroughBehavior": "WHEN_NO_TEMPLATES",
      "RequestTemplates": {
-      "application/json": "#set($inputRoot = $input.path('$'))\n    {\n        \"deviceid\": \"$input.params('deviceid')\"\n    }"
+      "application/json": "#set($inputRoot = $input.path('$'))\n    {\n        \"deviceid\": \"$input.params('deviceid')\",\n        \"startTimestamp\": \"$input.params('startTimestamp')\"\n    }"
      },
      "Type": "AWS",
      "Uri": {
@@ -1860,7 +1860,8 @@
      }
     ],
     "RequestParameters": {
-     "method.request.querystring.deviceid": true
+     "method.request.querystring.deviceid": true,
+     "method.request.querystring.startTimestamp": true
     }
    },
    "Metadata": {
@@ -1882,7 +1883,8 @@
      "QueryStringsConfig": {
       "QueryStringBehavior": "whitelist",
       "QueryStrings": [
-       "deviceid"
+       "deviceid",
+       "startTimestamp"
       ]
      }
     }

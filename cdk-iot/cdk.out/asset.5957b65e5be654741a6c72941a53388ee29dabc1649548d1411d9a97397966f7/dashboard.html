@@ -1,0 +1,31 @@
+<html>
+  <body>	
+    <form id="my-form">
+        <h3>Dashboard - Temperature</h3>
+        <select type="submit" id="symbol">
+            <option value="1 day"> 1 day </option>  
+            <option value="2 day"> 2 day </option>
+            <option value="1 week"> 1 week </option>
+            <option value="2 weeks"> 2 week </option>
+        </select>        
+	    <button onclick="myFunction()" name="start" id="state">START</button>
+
+	    <p id="selectedSymbol"></p>
+	    <p id="status"></p>
+
+      <div id="chart_temperature" style="width: 1500px; height: 400px;"></div>		
+	</form>		
+    
+    <script src="dashboard.js"></script> 
+    <script>
+    function myFunction() {
+        var x = document.getElementById("symbol").value;
+        document.getElementById("selectedSymbol").innerHTML = x;
+      
+        console.log('symbol: '+x);
+    }
+	</script> 
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  </body>	
+</html>
+

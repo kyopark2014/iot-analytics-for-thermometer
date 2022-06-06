@@ -1,0 +1,1428 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "esp-idf/bt/libbt.a"
+		}
+	],
+	"backtrace" : 2,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"idf_component_register",
+			"add_compile_options",
+			"add_c_compile_options",
+			"target_compile_options",
+			"set_property",
+			"__component_set_dependencies",
+			"__component_set_all_dependencies",
+			"include_directories",
+			"target_include_directories",
+			"__component_add_include_dirs"
+		],
+		"files" : 
+		[
+			"/Users/ksdyb/.platformio/packages/framework-espidf/tools/cmake/component.cmake",
+			"/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/CMakeLists.txt",
+			"/Users/ksdyb/.platformio/packages/framework-espidf/tools/cmake/utilities.cmake"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 567,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 468,
+				"parent" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 449,
+				"parent" : 1
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 450,
+				"parent" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 2,
+				"line" : 282,
+				"parent" : 4
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 459,
+				"parent" : 1
+			},
+			{
+				"command" : 4,
+				"file" : 1,
+				"line" : 574,
+				"parent" : 0
+			},
+			{
+				"command" : 7,
+				"file" : 0,
+				"line" : 502,
+				"parent" : 1
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 343,
+				"parent" : 8
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 328,
+				"parent" : 9
+			},
+			{
+				"command" : 8,
+				"file" : 0,
+				"line" : 448,
+				"parent" : 1
+			},
+			{
+				"command" : 10,
+				"file" : 0,
+				"line" : 470,
+				"parent" : 1
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 12
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 12
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 12
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 12
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 12
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 12
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 12
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 12
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 12
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 12
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 12
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 12
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 12
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 12
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 12
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 12
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 12
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 12
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 12
+			},
+			{
+				"command" : 10,
+				"file" : 0,
+				"line" : 471,
+				"parent" : 1
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 32
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 32
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-mlongcalls -Wno-frame-address  "
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-ffunction-sections"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-fdata-sections"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-fstrict-volatile-bitfields"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wall"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Werror=all"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wno-error=unused-function"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wno-error=unused-but-set-variable"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wno-error=unused-variable"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wno-error=deprecated-declarations"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wextra"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wno-unused-parameter"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wno-sign-compare"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-ggdb"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Og"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-std=gnu99"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-Wno-old-style-declaration"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-D_GNU_SOURCE"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-DIDF_VER=\\\"3.40200.210118\\\""
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-DESP_PLATFORM"
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-Wno-implicit-fallthrough"
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-Wno-unused-const-variable"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 10,
+					"define" : "MBEDTLS_CONFIG_FILE=\"mbedtls/esp_config.h\""
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 11,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/.pio/build/core2foraws/config"
+				},
+				{
+					"backtrace" : 13,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/include"
+				},
+				{
+					"backtrace" : 14,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/common/osi/include"
+				},
+				{
+					"backtrace" : 15,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/porting/nimble/include"
+				},
+				{
+					"backtrace" : 16,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/port/include"
+				},
+				{
+					"backtrace" : 17,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/include"
+				},
+				{
+					"backtrace" : 18,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/include"
+				},
+				{
+					"backtrace" : 19,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/ans/include"
+				},
+				{
+					"backtrace" : 20,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/bas/include"
+				},
+				{
+					"backtrace" : 21,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/gap/include"
+				},
+				{
+					"backtrace" : 22,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/gatt/include"
+				},
+				{
+					"backtrace" : 23,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/ias/include"
+				},
+				{
+					"backtrace" : 24,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/ipss/include"
+				},
+				{
+					"backtrace" : 25,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/lls/include"
+				},
+				{
+					"backtrace" : 26,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/tps/include"
+				},
+				{
+					"backtrace" : 27,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/util/include"
+				},
+				{
+					"backtrace" : 28,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/store/ram/include"
+				},
+				{
+					"backtrace" : 29,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/store/config/include"
+				},
+				{
+					"backtrace" : 30,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/porting/npl/freertos/include"
+				},
+				{
+					"backtrace" : 31,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/esp-hci/include"
+				},
+				{
+					"backtrace" : 33,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/common/btc/include"
+				},
+				{
+					"backtrace" : 34,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/common/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/newlib/platform_include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/freertos/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/freertos/xtensa/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/heap/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/log/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/lwip/include/apps"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/lwip/include/apps/sntp"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/lwip/lwip/src/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/lwip/port/esp32/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/lwip/port/esp32/include/arch"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/lwip/port/esp32/tcp_isn"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/soc/src/esp32/."
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/soc/src/esp32/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/soc/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_rom/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_common/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_system/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/xtensa/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/xtensa/esp32/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp32/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/driver/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/driver/esp32/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_ringbuf/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/efuse/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/efuse/esp32/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/espcoredump/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_timer/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_ipc/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/soc/soc/esp32/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/soc/soc/esp32/../include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/soc/soc/esp32/private_include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/vfs/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_wifi/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_wifi/esp32/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_event/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_netif/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_eth/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/tcpip_adapter/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/app_trace/include"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/nvs_flash/include"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/spi_flash/include"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/mbedtls/port/include"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/include"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/mbedtls/esp_crt_bundle/include"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/esp-cryptoauthlib/cryptoauthlib/lib"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/esp-cryptoauthlib/cryptoauthlib/lib/hal"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/esp-cryptoauthlib/cryptoauthlib/app/tng"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/esp-cryptoauthlib/port"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/i2c_bus"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/axp192"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/tft/lvgl"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/tft"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/sk6812"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/atecc608"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/mpu6886"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/microphone"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/bm8563"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/fatfs/diskio"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/fatfs/vfs"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/fatfs/src"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/wear_levelling/include"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/sdmmc/include"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_adc_cal/include"
+				}
+			],
+			"language" : "C",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30,
+				31,
+				32,
+				33,
+				34,
+				35,
+				36,
+				37,
+				38,
+				39,
+				40,
+				41,
+				42,
+				43,
+				44,
+				45,
+				46,
+				47,
+				48,
+				49,
+				50,
+				51,
+				52,
+				53,
+				54,
+				55,
+				56,
+				57,
+				58,
+				59,
+				60,
+				61,
+				62,
+				63,
+				64,
+				65,
+				66,
+				67,
+				68,
+				69,
+				70,
+				71,
+				72,
+				73,
+				74,
+				75,
+				76,
+				77,
+				78,
+				79,
+				80,
+				81,
+				82,
+				83,
+				84,
+				85,
+				86,
+				87
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "__idf_xtensa::@1daaaad7abe597e030f9"
+		}
+	],
+	"id" : "__idf_bt::@0a9ab9982b985d43ed2a",
+	"name" : "__idf_bt",
+	"nameOnDisk" : "libbt.a",
+	"paths" : 
+	{
+		"build" : "esp-idf/bt",
+		"source" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30,
+				31,
+				32,
+				33,
+				34,
+				35,
+				36,
+				37,
+				38,
+				39,
+				40,
+				41,
+				42,
+				43,
+				44,
+				45,
+				46,
+				47,
+				48,
+				49,
+				50,
+				51,
+				52,
+				53,
+				54,
+				55,
+				56,
+				57,
+				58,
+				59,
+				60,
+				61,
+				62,
+				63,
+				64,
+				65,
+				66,
+				67,
+				68,
+				69,
+				70,
+				71,
+				72,
+				73,
+				74,
+				75,
+				76,
+				77,
+				78,
+				79,
+				80,
+				81,
+				82,
+				83,
+				84,
+				85,
+				86,
+				87
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/controller/bt.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/common/btc/core/btc_alarm.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/common/btc/core/btc_manage.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/common/btc/core/btc_task.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/common/osi/alarm.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/common/osi/allocator.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/common/osi/buffer.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/common/osi/config.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/common/osi/fixed_queue.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/common/osi/future.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/common/osi/hash_functions.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/common/osi/hash_map.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/common/osi/list.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/common/osi/mutex.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/common/osi/thread.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/common/osi/osi.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/common/osi/semaphore.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/util/src/addr.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/gatt/src/ble_svc_gatt.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/tps/src/ble_svc_tps.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/ias/src/ble_svc_ias.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/ipss/src/ble_svc_ipss.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/ans/src/ble_svc_ans.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/gap/src/ble_svc_gap.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/bas/src/ble_svc_bas.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/lls/src/ble_svc_lls.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_conn.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_store_util.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_sm.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_shutdown.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_l2cap_sig_cmd.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_hci_cmd.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_id.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_att_svr.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_gatts_lcl.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_ibeacon.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_atomic.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_sm_alg.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_stop.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_hs.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_hci_evt.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_dbg.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_mqueue.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_periodic_sync.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_att.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_gattc.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_store.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_sm_lgcy.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_cfg.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_monitor.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_att_clt.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_l2cap_coc.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_mbuf.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_att_cmd.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_log.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_eddystone.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_startup.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_l2cap_sig.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_gap.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_sm_cmd.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_uuid.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_pvcy.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_flow.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_l2cap.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_sm_sc.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_misc.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_gatts.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_adv.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_hci.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_hci_util.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_resolv.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/store/ram/src/ble_store_ram.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/store/config/src/ble_store_config.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/store/config/src/ble_store_nvs.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/src/ble_util.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/porting/npl/freertos/src/nimble_port_freertos.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/porting/npl/freertos/src/npl_os_freertos.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/porting/nimble/src/endian.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/porting/nimble/src/os_cputime_pwr2.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/porting/nimble/src/hal_timer.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/porting/nimble/src/os_mempool.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/porting/nimble/src/os_msys_init.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/porting/nimble/src/nimble_port.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/porting/nimble/src/mem.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/porting/nimble/src/os_mbuf.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/porting/nimble/src/os_cputime.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/esp-hci/src/esp_nimble_hci.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/port/src/esp_nimble_mem.c",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

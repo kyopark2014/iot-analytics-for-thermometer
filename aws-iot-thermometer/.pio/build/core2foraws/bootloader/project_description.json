@@ -1,0 +1,20 @@
+{
+    "project_name":       "bootloader",
+    "project_path":       "/Users/ksdyb/.platformio/packages/framework-espidf/components/bootloader/subproject",
+    "build_dir":          "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/.pio/build/core2foraws/bootloader",
+    "config_file":        "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/sdkconfig",
+    "config_defaults":    "",
+    "app_elf":            "bootloader.elf",
+    "app_bin":            "bootloader.bin",
+    "git_revision":       "3.40200.210118",
+    "target":             "esp32",
+    "phy_data_partition": "",
+    "monitor_baud" :      "115200",
+    "monitor_toolprefix": "xtensa-esp32-elf-",
+    "config_environment" : {
+        "COMPONENT_KCONFIGS" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/efuse/Kconfig;/Users/ksdyb/.platformio/packages/framework-espidf/components/esp32/Kconfig;/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_common/Kconfig;/Users/ksdyb/.platformio/packages/framework-espidf/components/log/Kconfig;/Users/ksdyb/.platformio/packages/framework-espidf/components/spi_flash/Kconfig",
+        "COMPONENT_KCONFIGS_PROJBUILD" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bootloader/Kconfig.projbuild;/Users/ksdyb/.platformio/packages/framework-espidf/components/esptool_py/Kconfig.projbuild;/Users/ksdyb/.platformio/packages/framework-espidf/components/partition_table/Kconfig.projbuild"
+    },
+    "build_components" : [ "bootloader", "bootloader_support", "efuse", "esp32", "esp_common", "esp_rom", "esptool_py", "log", "main", "micro-ecc", "partition_table", "soc", "spi_flash", "xtensa", "" ],
+    "build_component_paths" : [ "/Users/ksdyb/.platformio/packages/framework-espidf/components/bootloader", "/Users/ksdyb/.platformio/packages/framework-espidf/components/bootloader_support", "/Users/ksdyb/.platformio/packages/framework-espidf/components/efuse", "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp32", "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_common", "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_rom", "/Users/ksdyb/.platformio/packages/framework-espidf/components/esptool_py", "/Users/ksdyb/.platformio/packages/framework-espidf/components/log", "/Users/ksdyb/.platformio/packages/framework-espidf/components/bootloader/subproject/main", "/Users/ksdyb/.platformio/packages/framework-espidf/components/bootloader/subproject/components/micro-ecc", "/Users/ksdyb/.platformio/packages/framework-espidf/components/partition_table", "/Users/ksdyb/.platformio/packages/framework-espidf/components/soc", "/Users/ksdyb/.platformio/packages/framework-espidf/components/spi_flash", "/Users/ksdyb/.platformio/packages/framework-espidf/components/xtensa", "" ]
+}

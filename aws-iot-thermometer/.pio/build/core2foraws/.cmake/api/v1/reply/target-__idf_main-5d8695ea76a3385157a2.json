@@ -1,0 +1,1604 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "esp-idf/main/libmain.a"
+		}
+	],
+	"backtrace" : 3,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"idf_component_register",
+			"register_component",
+			"add_compile_options",
+			"include_directories",
+			"target_include_directories",
+			"__component_add_include_dirs",
+			"add_c_compile_options",
+			"target_sources",
+			"target_add_binary_data"
+		],
+		"files" : 
+		[
+			"/Users/ksdyb/.platformio/packages/framework-espidf/tools/cmake/component.cmake",
+			"main/CMakeLists.txt",
+			"/Users/ksdyb/.platformio/packages/framework-espidf/tools/cmake/utilities.cmake"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 4,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 531,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 468,
+				"parent" : 2
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 449,
+				"parent" : 2
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 459,
+				"parent" : 2
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 448,
+				"parent" : 2
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 470,
+				"parent" : 2
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 7
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 7
+			},
+			{
+				"command" : 7,
+				"file" : 0,
+				"line" : 450,
+				"parent" : 2
+			},
+			{
+				"command" : 3,
+				"file" : 2,
+				"line" : 282,
+				"parent" : 10
+			},
+			{
+				"command" : 9,
+				"file" : 1,
+				"line" : 6,
+				"parent" : 0
+			},
+			{
+				"command" : 8,
+				"file" : 2,
+				"line" : 108,
+				"parent" : 12
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-mlongcalls -Wno-frame-address  "
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-ffunction-sections"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-fdata-sections"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-fstrict-volatile-bitfields"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wall"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Werror=all"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wno-error=unused-function"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wno-error=unused-but-set-variable"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wno-error=unused-variable"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wno-error=deprecated-declarations"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wextra"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wno-unused-parameter"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wno-sign-compare"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-ggdb"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Og"
+				},
+				{
+					"backtrace" : 11,
+					"fragment" : "-std=gnu99"
+				},
+				{
+					"backtrace" : 11,
+					"fragment" : "-Wno-old-style-declaration"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-D_GNU_SOURCE"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-DIDF_VER=\\\"3.40200.210118\\\""
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-DESP_PLATFORM"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 0,
+					"define" : "HAVE_CONFIG_H"
+				},
+				{
+					"backtrace" : 0,
+					"define" : "MBEDTLS_CONFIG_FILE=\"mbedtls/esp_config.h\""
+				},
+				{
+					"backtrace" : 0,
+					"define" : "UNITY_INCLUDE_CONFIG_H"
+				},
+				{
+					"backtrace" : 0,
+					"define" : "WITH_POSIX"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 6,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/.pio/build/core2foraws/config"
+				},
+				{
+					"backtrace" : 8,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/main"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/main/includes"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/newlib/platform_include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/freertos/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/freertos/xtensa/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/heap/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/log/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/lwip/include/apps"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/lwip/include/apps/sntp"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/lwip/lwip/src/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/lwip/port/esp32/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/lwip/port/esp32/include/arch"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/lwip/port/esp32/tcp_isn"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/soc/src/esp32/."
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/soc/src/esp32/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/soc/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_rom/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_common/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_system/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/xtensa/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/xtensa/esp32/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp32/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/driver/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/driver/esp32/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_ringbuf/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/efuse/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/efuse/esp32/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/espcoredump/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_timer/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_ipc/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/soc/soc/esp32/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/soc/soc/esp32/../include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/soc/soc/esp32/private_include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/vfs/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_wifi/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_wifi/esp32/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_event/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_netif/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_eth/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/tcpip_adapter/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/app_trace/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/mbedtls/port/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/mbedtls/esp_crt_bundle/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/esp-cryptoauthlib/cryptoauthlib/lib"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/esp-cryptoauthlib/cryptoauthlib/lib/hal"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/esp-cryptoauthlib/cryptoauthlib/app/tng"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/esp-cryptoauthlib/port"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/i2c_bus"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/axp192"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/tft/lvgl"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/tft"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/sk6812"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/atecc608"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/mpu6886"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/microphone"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/bm8563"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/fatfs/diskio"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/fatfs/vfs"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/fatfs/src"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/wear_levelling/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/spi_flash/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/sdmmc/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_adc_cal/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bootloader_support/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/app_update/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/wpa_supplicant/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/wpa_supplicant/port/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/wpa_supplicant/include/esp_supplicant"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/nvs_flash/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/pthread/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/perfmon/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/asio/asio/asio/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/asio/port/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/common/osi/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/porting/nimble/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/port/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/ans/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/bas/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/gap/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/gatt/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/ias/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/ipss/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/lls/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/tps/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/util/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/store/ram/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/store/config/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/porting/npl/freertos/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/esp-hci/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/cbor/port/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/coap/port/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/coap/port/include/coap"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/coap/libcoap/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/coap/libcoap/include/coap2"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/console"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/nghttp/port/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/nghttp/nghttp2/lib/includes"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp-tls"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_gdbstub/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_hid/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/tcp_transport/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_http_client/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_http_server/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_https_ota/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/protobuf-c/protobuf-c"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/protocomm/include/common"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/protocomm/include/security"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/protocomm/include/transports"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/mdns/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_local_ctrl/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_serial_slave_link/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_websocket_client/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/expat/expat/expat/lib"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/expat/port/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/freemodbus/common/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/idf_test/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/idf_test/include/esp32"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/jsmn/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/json/cJSON"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/libsodium/libsodium/src/libsodium/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/libsodium/port_include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/mqtt/esp-mqtt/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/openssl/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/spiffs/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/ulp/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/unity/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/unity/unity/src"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/wifi_provisioning/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/esp-aws-iot/port/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/esp-aws-iot/aws-iot-device-sdk-embedded-C/include"
+				}
+			],
+			"language" : "C",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3
+			]
+		},
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : " "
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-ffunction-sections"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-fdata-sections"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-fstrict-volatile-bitfields"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wall"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Werror=all"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wno-error=unused-function"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wno-error=unused-but-set-variable"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wno-error=unused-variable"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wno-error=deprecated-declarations"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wextra"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wno-unused-parameter"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wno-sign-compare"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-ggdb"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Og"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-D_GNU_SOURCE"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-DIDF_VER=\\\"3.40200.210118\\\""
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-DESP_PLATFORM"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 0,
+					"define" : "HAVE_CONFIG_H"
+				},
+				{
+					"backtrace" : 0,
+					"define" : "MBEDTLS_CONFIG_FILE=\"mbedtls/esp_config.h\""
+				},
+				{
+					"backtrace" : 0,
+					"define" : "UNITY_INCLUDE_CONFIG_H"
+				},
+				{
+					"backtrace" : 0,
+					"define" : "WITH_POSIX"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 6,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/.pio/build/core2foraws/config"
+				},
+				{
+					"backtrace" : 8,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/main"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/main/includes"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/newlib/platform_include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/freertos/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/freertos/xtensa/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/heap/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/log/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/lwip/include/apps"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/lwip/include/apps/sntp"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/lwip/lwip/src/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/lwip/port/esp32/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/lwip/port/esp32/include/arch"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/lwip/port/esp32/tcp_isn"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/soc/src/esp32/."
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/soc/src/esp32/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/soc/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_rom/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_common/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_system/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/xtensa/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/xtensa/esp32/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp32/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/driver/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/driver/esp32/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_ringbuf/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/efuse/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/efuse/esp32/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/espcoredump/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_timer/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_ipc/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/soc/soc/esp32/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/soc/soc/esp32/../include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/soc/soc/esp32/private_include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/vfs/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_wifi/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_wifi/esp32/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_event/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_netif/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_eth/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/tcpip_adapter/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/app_trace/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/mbedtls/port/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/mbedtls/esp_crt_bundle/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/esp-cryptoauthlib/cryptoauthlib/lib"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/esp-cryptoauthlib/cryptoauthlib/lib/hal"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/esp-cryptoauthlib/cryptoauthlib/app/tng"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/esp-cryptoauthlib/port"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/i2c_bus"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/axp192"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/tft/lvgl"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/tft"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/sk6812"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/atecc608"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/mpu6886"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/microphone"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/bm8563"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/fatfs/diskio"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/fatfs/vfs"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/fatfs/src"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/wear_levelling/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/spi_flash/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/sdmmc/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_adc_cal/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bootloader_support/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/app_update/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/wpa_supplicant/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/wpa_supplicant/port/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/wpa_supplicant/include/esp_supplicant"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/nvs_flash/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/pthread/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/perfmon/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/asio/asio/asio/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/asio/port/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/common/osi/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/porting/nimble/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/port/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/ans/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/bas/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/gap/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/gatt/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/ias/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/ipss/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/lls/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/services/tps/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/util/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/store/ram/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/nimble/host/store/config/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/nimble/porting/npl/freertos/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/bt/host/nimble/esp-hci/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/cbor/port/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/coap/port/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/coap/port/include/coap"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/coap/libcoap/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/coap/libcoap/include/coap2"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/console"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/nghttp/port/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/nghttp/nghttp2/lib/includes"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp-tls"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_gdbstub/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_hid/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/tcp_transport/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_http_client/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_http_server/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_https_ota/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/protobuf-c/protobuf-c"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/protocomm/include/common"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/protocomm/include/security"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/protocomm/include/transports"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/mdns/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_local_ctrl/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_serial_slave_link/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_websocket_client/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/expat/expat/expat/lib"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/expat/port/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/freemodbus/common/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/idf_test/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/idf_test/include/esp32"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/jsmn/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/json/cJSON"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/libsodium/libsodium/src/libsodium/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/libsodium/port_include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/mqtt/esp-mqtt/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/openssl/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/spiffs/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/ulp/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/unity/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/unity/unity/src"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/wifi_provisioning/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/esp-aws-iot/port/include"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/esp-aws-iot/aws-iot-device-sdk-embedded-C/include"
+				}
+			],
+			"language" : "ASM",
+			"sourceIndexes" : 
+			[
+				4
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 3,
+			"id" : "__idf_xtensa::@1daaaad7abe597e030f9"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "__idf_asio::@db1a8833e22596808d70"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "__idf_bt::@0a9ab9982b985d43ed2a"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "__idf_cbor::@54bec30243cbf65f6214"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "__idf_coap::@9ea4196552bc90428972"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "__idf_console::@4311ed8d271cc0ee1422"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "__idf_esp_gdbstub::@377a8c6ee3088554e323"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "__idf_esp_hid::@15df40e16a5d8775dd9b"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "__idf_esp_https_ota::@55ee5ec07370a5473c2b"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "__idf_protobuf-c::@b14513c4bd859268ec22"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "__idf_protocomm::@d76d01c8dec06205e1fc"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "__idf_mdns::@2f076c6da9dadb273cdc"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "__idf_esp_local_ctrl::@d6aad58d2946e56208ef"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "__idf_esp_serial_slave_link::@72a0e15e6ffa3d85517a"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "__idf_esp_websocket_client::@2aa04d350e0c9afab7cd"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "__idf_expat::@af4f74c6fac3f93a3341"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "__idf_freemodbus::@de63ca74a1babc26b29c"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "__idf_jsmn::@88dec008f06e3af609d0"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "__idf_json::@c78a8bdc820334f01148"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "__idf_libsodium::@66e4f5d448f23c9449a2"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "__idf_mqtt::@c1ab2c6a99226d1f4b56"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "__idf_openssl::@e614527ea5fe5ca5f395"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "__idf_spiffs::@df881b71474064c86689"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "__idf_unity::@fec746937506b5690992"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "__idf_wifi_provisioning::@9d7e7ffe1b15746c1098"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "__idf_esp-aws-iot::@14688ae9141834bea8ac"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "__idf___pio_env::@8ed72ffb2edf9d360e6d"
+		}
+	],
+	"id" : "__idf_main::@7368607ed66887415643",
+	"name" : "__idf_main",
+	"nameOnDisk" : "libmain.a",
+	"paths" : 
+	{
+		"build" : "esp-idf/main",
+		"source" : "main"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3
+			]
+		},
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				4,
+				5
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "main/main.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "main/ui.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "main/fft.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "main/wifi.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 13,
+			"compileGroupIndex" : 1,
+			"isGenerated" : true,
+			"path" : ".pio/build/core2foraws/aws-root-ca.pem.S",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"path" : "main/certs/aws-root-ca.pem",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

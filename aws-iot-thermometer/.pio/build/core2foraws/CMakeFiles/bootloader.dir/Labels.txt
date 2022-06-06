@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/.pio/build/core2foraws/CMakeFiles/bootloader
+/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/.pio/build/core2foraws/CMakeFiles/bootloader.rule
+/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/.pio/build/core2foraws/CMakeFiles/bootloader-complete.rule
+/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/.pio/build/core2foraws/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/.pio/build/core2foraws/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/.pio/build/core2foraws/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/.pio/build/core2foraws/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule
+/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/.pio/build/core2foraws/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/.pio/build/core2foraws/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/.pio/build/core2foraws/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule

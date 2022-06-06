@@ -1,0 +1,1539 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "esp-idf/core2forAWS/libcore2forAWS.a"
+		}
+	],
+	"backtrace" : 3,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"idf_component_register",
+			"register_component",
+			"add_compile_options",
+			"add_c_compile_options",
+			"set_property",
+			"__component_set_dependencies",
+			"__component_set_all_dependencies",
+			"include_directories",
+			"target_include_directories",
+			"__component_add_include_dirs"
+		],
+		"files" : 
+		[
+			"/Users/ksdyb/.platformio/packages/framework-espidf/tools/cmake/component.cmake",
+			"components/core2forAWS/CMakeLists.txt",
+			"/Users/ksdyb/.platformio/packages/framework-espidf/tools/cmake/utilities.cmake"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 64,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 531,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 468,
+				"parent" : 2
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 449,
+				"parent" : 2
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 450,
+				"parent" : 2
+			},
+			{
+				"command" : 3,
+				"file" : 2,
+				"line" : 282,
+				"parent" : 5
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 459,
+				"parent" : 2
+			},
+			{
+				"command" : 7,
+				"file" : 0,
+				"line" : 502,
+				"parent" : 2
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 343,
+				"parent" : 8
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 328,
+				"parent" : 9
+			},
+			{
+				"command" : 8,
+				"file" : 0,
+				"line" : 448,
+				"parent" : 2
+			},
+			{
+				"command" : 10,
+				"file" : 0,
+				"line" : 470,
+				"parent" : 2
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 12
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 12
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 12
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 12
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 12
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 12
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 12
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 12
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 12
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 304,
+				"parent" : 12
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-mlongcalls -Wno-frame-address  "
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-ffunction-sections"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-fdata-sections"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-fstrict-volatile-bitfields"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wall"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Werror=all"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wno-error=unused-function"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wno-error=unused-but-set-variable"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wno-error=unused-variable"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wno-error=deprecated-declarations"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wextra"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wno-unused-parameter"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wno-sign-compare"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-ggdb"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Og"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-std=gnu99"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Wno-old-style-declaration"
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-D_GNU_SOURCE"
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-DIDF_VER=\\\"3.40200.210118\\\""
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-DESP_PLATFORM"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 10,
+					"define" : "MBEDTLS_CONFIG_FILE=\"mbedtls/esp_config.h\""
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 11,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/.pio/build/core2foraws/config"
+				},
+				{
+					"backtrace" : 13,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS"
+				},
+				{
+					"backtrace" : 14,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/i2c_bus"
+				},
+				{
+					"backtrace" : 15,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/axp192"
+				},
+				{
+					"backtrace" : 16,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/tft/lvgl"
+				},
+				{
+					"backtrace" : 17,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/tft"
+				},
+				{
+					"backtrace" : 18,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/sk6812"
+				},
+				{
+					"backtrace" : 19,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/atecc608"
+				},
+				{
+					"backtrace" : 20,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/mpu6886"
+				},
+				{
+					"backtrace" : 21,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/microphone"
+				},
+				{
+					"backtrace" : 22,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/core2forAWS/bm8563"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/newlib/platform_include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/freertos/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/freertos/xtensa/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/heap/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/log/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/lwip/include/apps"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/lwip/include/apps/sntp"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/lwip/lwip/src/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/lwip/port/esp32/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/lwip/port/esp32/include/arch"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/lwip/port/esp32/tcp_isn"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/soc/src/esp32/."
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/soc/src/esp32/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/soc/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_rom/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_common/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_system/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/xtensa/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/xtensa/esp32/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp32/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/driver/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/driver/esp32/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_ringbuf/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/efuse/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/efuse/esp32/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/espcoredump/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_timer/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_ipc/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/soc/soc/esp32/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/soc/soc/esp32/../include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/soc/soc/esp32/private_include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/vfs/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_wifi/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_wifi/esp32/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_event/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_netif/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_eth/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/tcpip_adapter/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/app_trace/include"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/mbedtls/port/include"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/include"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/mbedtls/esp_crt_bundle/include"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/esp-cryptoauthlib/cryptoauthlib/lib"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/esp-cryptoauthlib/cryptoauthlib/lib/hal"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/esp-cryptoauthlib/cryptoauthlib/app/tng"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/Documents/iot/iot-analytics-for-thermometer/aws-iot-thermometer/components/esp-cryptoauthlib/port"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/fatfs/diskio"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/fatfs/vfs"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/fatfs/src"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/wear_levelling/include"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/spi_flash/include"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/sdmmc/include"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/ksdyb/.platformio/packages/framework-espidf/components/esp_adc_cal/include"
+				}
+			],
+			"language" : "C",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30,
+				31,
+				32,
+				33,
+				34,
+				35,
+				36,
+				37,
+				38,
+				39,
+				40,
+				41,
+				42,
+				43,
+				44,
+				45,
+				46,
+				47,
+				48,
+				49,
+				50,
+				51,
+				52,
+				53,
+				54,
+				55,
+				56,
+				57,
+				58,
+				59,
+				60,
+				61,
+				62,
+				63,
+				64,
+				65,
+				66,
+				67,
+				68,
+				69,
+				70,
+				71,
+				72,
+				73,
+				74,
+				75,
+				76,
+				77,
+				78,
+				79,
+				80,
+				81,
+				82,
+				83,
+				84,
+				85,
+				86,
+				87,
+				88,
+				89,
+				90,
+				91,
+				92,
+				93,
+				94,
+				95,
+				96,
+				97,
+				98,
+				99,
+				100,
+				101,
+				102,
+				103,
+				104,
+				105,
+				106,
+				107,
+				108,
+				109,
+				110,
+				111,
+				112,
+				113,
+				114,
+				115,
+				116,
+				117,
+				118,
+				119,
+				120,
+				121,
+				122
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"id" : "__idf_esp-cryptoauthlib::@2bf03a1de96e586c7c76"
+		}
+	],
+	"id" : "__idf_core2forAWS::@f179a394572913decb40",
+	"name" : "__idf_core2forAWS",
+	"nameOnDisk" : "libcore2forAWS.a",
+	"paths" : 
+	{
+		"build" : "esp-idf/core2forAWS",
+		"source" : "components/core2forAWS"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30,
+				31,
+				32,
+				33,
+				34,
+				35,
+				36,
+				37,
+				38,
+				39,
+				40,
+				41,
+				42,
+				43,
+				44,
+				45,
+				46,
+				47,
+				48,
+				49,
+				50,
+				51,
+				52,
+				53,
+				54,
+				55,
+				56,
+				57,
+				58,
+				59,
+				60,
+				61,
+				62,
+				63,
+				64,
+				65,
+				66,
+				67,
+				68,
+				69,
+				70,
+				71,
+				72,
+				73,
+				74,
+				75,
+				76,
+				77,
+				78,
+				79,
+				80,
+				81,
+				82,
+				83,
+				84,
+				85,
+				86,
+				87,
+				88,
+				89,
+				90,
+				91,
+				92,
+				93,
+				94,
+				95,
+				96,
+				97,
+				98,
+				99,
+				100,
+				101,
+				102,
+				103,
+				104,
+				105,
+				106,
+				107,
+				108,
+				109,
+				110,
+				111,
+				112,
+				113,
+				114,
+				115,
+				116,
+				117,
+				118,
+				119,
+				120,
+				121,
+				122
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/core2forAWS.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/i2c_bus/i2c_device.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/axp192/axp192.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/axp192/axp192_i2c.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_core/lv_disp.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_core/lv_group.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_core/lv_indev.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_core/lv_obj.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_core/lv_refr.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_core/lv_style.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_draw/lv_draw_arc.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_draw/lv_draw_blend.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_draw/lv_draw_img.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_draw/lv_draw_label.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_draw/lv_draw_line.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_draw/lv_draw_mask.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_draw/lv_draw_rect.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_draw/lv_draw_triangle.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_draw/lv_img_buf.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_draw/lv_img_cache.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_draw/lv_img_decoder.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font_dejavu_16_persian_hebrew.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font_fmt_txt.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font_loader.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font_montserrat_10.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font_montserrat_12.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font_montserrat_12_subpx.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font_montserrat_14.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font_montserrat_16.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font_montserrat_18.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font_montserrat_20.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font_montserrat_22.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font_montserrat_24.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font_montserrat_26.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font_montserrat_28.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font_montserrat_28_compressed.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font_montserrat_30.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font_montserrat_32.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font_montserrat_34.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font_montserrat_36.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font_montserrat_38.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font_montserrat_40.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font_montserrat_42.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font_montserrat_44.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font_montserrat_46.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font_montserrat_48.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font_montserrat_8.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font_simsun_16_cjk.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font_unscii_16.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_font/lv_font_unscii_8.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_gpu/lv_gpu_nxp_pxp.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_gpu/lv_gpu_nxp_pxp_osa.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_gpu/lv_gpu_nxp_vglite.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_gpu/lv_gpu_stm32_dma2d.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_hal/lv_hal_disp.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_hal/lv_hal_indev.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_hal/lv_hal_tick.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_misc/lv_anim.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_misc/lv_area.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_misc/lv_async.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_misc/lv_bidi.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_misc/lv_color.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_misc/lv_debug.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_misc/lv_fs.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_misc/lv_gc.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_misc/lv_ll.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_misc/lv_log.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_misc/lv_math.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_misc/lv_mem.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_misc/lv_printf.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_misc/lv_task.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_misc/lv_templ.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_misc/lv_txt.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_misc/lv_txt_ap.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_misc/lv_utils.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_themes/lv_theme.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_themes/lv_theme_empty.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_themes/lv_theme_material.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_themes/lv_theme_mono.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_themes/lv_theme_template.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_arc.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_bar.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_btn.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_btnmatrix.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_calendar.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_canvas.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_chart.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_checkbox.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_cont.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_cpicker.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_dropdown.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_gauge.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_img.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_imgbtn.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_keyboard.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_label.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_led.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_line.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_linemeter.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_list.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_msgbox.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_objmask.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_objx_templ.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_page.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_roller.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_slider.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_spinbox.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_spinner.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_switch.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_table.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_tabview.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_textarea.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_tileview.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/lvgl/lvgl/src/lv_widgets/lv_win.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/disp_driver.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/disp_spi.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/tft/ili9341.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/sk6812/sk6812.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/atecc608/atecc608.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/mpu6886/mpu6886.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/microphone/microphone.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "components/core2forAWS/bm8563/bm8563.c",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

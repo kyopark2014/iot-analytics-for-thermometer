@@ -11,7 +11,7 @@
 	console.log('url: '+url);
 
 	let xmlHttp = new XMLHttpRequest();	
-  xmlHttp.open( "GET", url, false);   
+  	xmlHttp.open( "GET", url, false);   
 ```
 
 '/status' API를 이용해 로드된 temperature 데이터를 가지고 graph로 화면에 표시합니다. 
@@ -31,7 +31,7 @@
 		  }
 	};
   
-  xmlHttp.send( null );
+  	xmlHttp.send( null );
 ```    
 	
 ## Reference

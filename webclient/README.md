@@ -1,4 +1,4 @@
-## dashboard
+## Dashboard를 위한 Web Client
 
 이전 얼마기간의 데이터를 보고자 하므로 아래와 같이 "startTimestamp"를 계산합니다. URL에는 querystring으로서 deviceid와 startTimestamp가 입력되도록 합니다. 
 

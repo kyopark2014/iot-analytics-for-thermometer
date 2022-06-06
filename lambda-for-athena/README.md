@@ -1,4 +1,4 @@
-# Athena Query를 위한 Lambda
+# Athena Query를 위한 Lambda Function
 
 Restful API로 Athena를 query하는 방법에 대해 소개합니다. 
 

@@ -26,7 +26,7 @@
 - 사용자가 IoT device의 [Temperature data를 조회하고자 하는 경우에 Amazon CloudFront](https://github.com/kyopark2014/aws-routable-cloudfront)를 통해 [Web page를 열고](https://github.com/kyopark2014/iot-analytics-for-thermometer/tree/main/webclient), API Gateway와 [Lambda for athena](https://github.com/kyopark2014/iot-analytics-for-thermometer/tree/main/lambda-for-athena)를 통해 Amazon Athena로 센서 데이터를 조회 합니다. 
 
 
-<img width="961" alt="image" src="https://user-images.githubusercontent.com/52392004/171510985-7385da50-4afe-44a1-9db2-03ff51f2399f.png">
+![image](https://user-images.githubusercontent.com/52392004/172187335-3cb5c892-d1cd-457f-878b-4487c489511f.png)
 
 
 ## 1) AWS Edukit(M5Stack)에서 측정한 Temperature를 IoT Core로 전송

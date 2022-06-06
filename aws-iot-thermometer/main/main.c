@@ -269,7 +269,7 @@ void aws_iot_task(void *param) {
 void app_main()
 {   
     Core2ForAWS_Init();
-    Core2ForAWS_Display_SetBrightness(40);
+    Core2ForAWS_Display_SetBrightness(0); // LCD off
     Core2ForAWS_LED_Enable(1);
 
     ui_init();

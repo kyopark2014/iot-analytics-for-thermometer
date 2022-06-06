@@ -71,8 +71,8 @@ $ cdk deploy
 
 ### Webclient를 이용한 모니터링 
 
-아래와 같이 1일 동안의 온도변화를 브라우저에서 확인 할 수 있습니다. 
+아래와 같이 일정 시간 동안의 온도변화를 브라우저에서 확인 할 수 있습니다. 
 
-![image](https://user-images.githubusercontent.com/52392004/172013628-b91d02a1-9f86-4387-9819-4edf74695269.png)
+<img width="1339" alt="image" src="https://user-images.githubusercontent.com/52392004/172142551-45ff1b0f-f34f-414d-b073-d5083038bf63.png">
 
 

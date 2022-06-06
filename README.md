@@ -19,7 +19,7 @@
 
 - Amazon Kinesis Data Streams로 수집된 온도 데이터는 Amazon Kinesis Data Firehose를 통해 S3에 저장되는데, 이때 Lambda를 통해 적절한 형태로 포맷을 변경합니다. 여기서는 [Lambda for firehose](https://github.com/kyopark2014/iot-analytics-for-thermometer/tree/main/lambda-for-firehose)를 이용해 Stream으로 들어오는 데이터의 변환 작업을 수행합니다. 
 
-- Amazon S3에 저장된 데이터는 Amazon Athena를 통해 SQL로 검색할 수 있는데, json파일의 정규화를 위해서는 변환 Table 생성이 필요합니다. 여기서는 AWS Glue Data Catalog의 Crawler를 이용하여 Table을 생성하고, temperature 데이터 베이스 정보를 Athena로 전달합니다. 
+- Amazon S3에 저장된 데이터는 Amazon Athena를 통해 SQL로 검색할 수 있는데, json파일의 정규화를 위해서는 변환 Table 생성이 필요합니다. 여기서는 [AWS Glue Data Catalog의 Crawler를 이용하여 Table을 생성](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/crawler.md)하고, temperature 데이터 베이스 정보를 Athena로 전달합니다. 
 
 - Temperature가 일정온도 이상인 경우에 Alarm을 생성할 수 있습니다. 이는 Amazon Kinesis Data Streams의 Fanout으로 연결된 [AWS Lambda for stream](https://github.com/kyopark2014/iot-analytics-for-thermometer/tree/main/lambda-for-stream)을 이용해 Alarm event를 생성하고, Amazon SNS를 통해 전달합니다. 이후 [Lambda for slack](https://github.com/kyopark2014/iot-analytics-for-thermometer/tree/main/lambda-for-slack)에서 event를 생성하여 Slack으로 전달합니다. 
 

@@ -23,7 +23,7 @@
 
 - Temperature가 일정온도 이상인 경우에 Alarm을 생성할 수 있습니다. 이는 Amazon Kinesis Data Streams의 Fanout으로 연결된 [AWS Lambda for stream](https://github.com/kyopark2014/iot-analytics-for-thermometer/tree/main/lambda-for-stream)을 이용해 Alarm event를 생성하고, Amazon SNS를 통해 전달합니다. 이후 [Lambda for slack](https://github.com/kyopark2014/iot-analytics-for-thermometer/tree/main/lambda-for-slack)에서 event를 생성하여 Slack으로 전달합니다. 
 
-- 사용자가 IoT device의 [Temperature data를 조회하고자 하는 경우에 Amazon CloudFront를 통해](https://github.com/kyopark2014/aws-routable-cloudfront) [Web page를 열고](https://github.com/kyopark2014/iot-analytics-for-thermometer/tree/main/webclient), API Gateway와 [Lambda for athena](https://github.com/kyopark2014/iot-analytics-for-thermometer/tree/main/lambda-for-athena)를 통해 Amazon Athena로 센서 데이터를 조회 합니다. 
+- 사용자가 IoT device의 [Temperature data를 조회하고자 하는 경우에 Amazon CloudFront](https://github.com/kyopark2014/aws-routable-cloudfront)를 통해 [Web page를 열고](https://github.com/kyopark2014/iot-analytics-for-thermometer/tree/main/webclient), API Gateway와 [Lambda for athena](https://github.com/kyopark2014/iot-analytics-for-thermometer/tree/main/lambda-for-athena)를 통해 Amazon Athena로 센서 데이터를 조회 합니다. 
 
 
 <img width="961" alt="image" src="https://user-images.githubusercontent.com/52392004/171510985-7385da50-4afe-44a1-9db2-03ff51f2399f.png">

@@ -45,9 +45,10 @@ $ cdk synth
 $ cdk deploy
 ```
 
-2) CDK로 배포하면 Amazon S3에 센서 데이터가 저장됩니다. 어느정도 데이터가 준비가 되면, [AWS Glue에서 Table 생성](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/crawler.md)에 따라 AWS Glue Data catalog의 Crawler를 이용하여 Schema 생성을 위한 Table을 생성합니다. 
+2) Slack Alarm을 전달하기 위하여 [Slack으로 메시지를 보내기 위해 필요한 Token 등록 방법](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/slack-token.md)에 따라 token 값을 입력합니다. token 값을 수동으로 lambda의 environment variable에 저장하는것은 실수로 token이 github등을 통해 외부로 공유되는것을 막기 위함입니다.
 
-3) Slack Alarm을 전달하기 위하여 [Slack으로 메시지를 보내기 위해 필요한 Token 등록 방법](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/slack-token.md)에 따라 token 값을 입력합니다.
+3) CDK로 배포하면 Amazon S3에 센서 데이터가 저장됩니다. 수분정도 대기하여 어느정도 데이터가 준비가 되면, [AWS Glue에서 Table 생성](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/crawler.md)에 따라 AWS Glue Data catalog의 Crawler를 이용하여 Schema 생성을 위한 Table을 생성합니다. Table은 1회 생성만하면 이후로 1시간 주기로 refresh 됩니다. 
+
 
 
 

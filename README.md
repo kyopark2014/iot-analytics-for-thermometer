@@ -71,4 +71,5 @@ $ cdk deploy
 
 아래와 같이 일정 시간 동안의 온도변화를 브라우저에서 확인 할 수 있습니다. 
 
-![image](https://user-images.githubusercontent.com/52392004/172186070-98801f39-bde2-4ac7-a5ce-3c20a8cee2c4.png)
+<img width="1073" alt="image" src="https://user-images.githubusercontent.com/52392004/172270154-b7485b24-e215-4cb5-ada9-172d2f60c7e7.png">
+

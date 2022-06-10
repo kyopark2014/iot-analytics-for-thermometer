@@ -19,14 +19,14 @@
 
 - Amazon Kinesis Data Streams로 수집된 온도 데이터는 Amazon Kinesis Data Firehose를 통해 S3에 저장되는데, 이때 Lambda를 통해 적절한 형태로 포맷을 변경합니다. 여기서는 [Lambda for firehose](https://github.com/kyopark2014/iot-analytics-for-thermometer/tree/main/lambda-for-firehose)를 이용해 Stream으로 들어오는 데이터의 변환 작업을 수행합니다. 
 
-- Amazon S3에 저장된 데이터는 Amazon Athena를 통해 SQL로 검색할 수 있는데, json파일의 정규화를 위해서는 변환 Table 생성이 필요합니다. 여기서는 AWS Glue Data Catalog의 Crawler를 이용하여 Table을 생성하고, temperature 데이터 베이스 정보를 Athena로 전달합니다. 
+- Amazon S3에 저장된 데이터는 Amazon Athena를 통해 SQL로 검색할 수 있는데, json파일의 정규화를 위해서는 변환 Table 생성이 필요합니다. 여기서는 [AWS Glue Data Catalog의 Crawler를 이용하여 Table을 생성](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/crawler.md)하고, [Amazon Athena에서 temperature 데이터 베이스 정보를 조회](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/athena.md)할 수 합니다. 
 
 - Temperature가 일정온도 이상인 경우에 Alarm을 생성할 수 있습니다. 이는 Amazon Kinesis Data Streams의 Fanout으로 연결된 [AWS Lambda for stream](https://github.com/kyopark2014/iot-analytics-for-thermometer/tree/main/lambda-for-stream)을 이용해 Alarm event를 생성하고, Amazon SNS를 통해 전달합니다. 이후 [Lambda for slack](https://github.com/kyopark2014/iot-analytics-for-thermometer/tree/main/lambda-for-slack)에서 event를 생성하여 Slack으로 전달합니다. 
 
-- 사용자가 IoT device의 Temperature data를 조회하고자 하는 경우에 Amazon CloudFront를 통해 Web page를 열고, API Gateway와 [Lambda for athena](https://github.com/kyopark2014/iot-analytics-for-thermometer/tree/main/lambda-for-athena)를 통해 Amazon Athena로 센서 데이터를 조회 합니다. 
+- 사용자가 IoT device의 [Temperature data를 조회하고자 하는 경우에 Amazon CloudFront](https://github.com/kyopark2014/aws-routable-cloudfront)를 통해 [Web page를 열고](https://github.com/kyopark2014/iot-analytics-for-thermometer/tree/main/webclient), API Gateway와 [Lambda for athena](https://github.com/kyopark2014/iot-analytics-for-thermometer/tree/main/lambda-for-athena)를 통해 Amazon Athena로 센서 데이터를 조회 합니다. 
 
 
-<img width="961" alt="image" src="https://user-images.githubusercontent.com/52392004/171510985-7385da50-4afe-44a1-9db2-03ff51f2399f.png">
+<img width="966" alt="image" src="https://user-images.githubusercontent.com/52392004/172187505-468f171e-167d-4df7-a937-086f024af329.png">
 
 
 ## 1) AWS Edukit(M5Stack)에서 측정한 Temperature를 IoT Core로 전송
@@ -35,9 +35,9 @@
 
 
 
-## 2) AWS CDK를 이용한 Anlytics Infra Structure 생성  
+## 2) AWS CDK를 이용한 Analytics Infra Structure 생성  
 
-1) 아래와 같이 [AWS CDK](https://github.com/kyopark2014/technical-summary/blob/main/cdk-introduction.md)을 이용하여 [M5Stack에서 전달된 온도 데이터](https://github.com/kyopark2014/iot-analytics/tree/main/aws-iot-thermometer)를 저장하고 분석하는 infra structure를 생성합니다. 
+1) 아래와 같이 [AWS CDK](https://github.com/kyopark2014/technical-summary/blob/main/cdk-introduction.md)을 이용하여 [M5Stack에서 전달된 온도 데이터](https://github.com/kyopark2014/iot-analytics/tree/main/aws-iot-thermometer)를 [저장하고 분석하는 infra structure를 생성](https://github.com/kyopark2014/iot-analytics-for-thermometer/tree/main/cdk-iot)합니다. 
 
 ```c
 $ cd cdk-iot
@@ -45,11 +45,10 @@ $ cdk synth
 $ cdk deploy
 ```
 
-2) [AWS Glue에서 Table 생성](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/crawler.md)에 따라 AWS Glue Data catalog의 Crawler를 이용하여 Schema 생성을 위한 Table을 생성합니다. 
+2) Slack Alarm을 전달하기 위하여 [Slack으로 메시지를 보내기 위해 필요한 Token 등록 방법](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/slack-token.md)에 따라 token 값을 입력합니다. token 값을 수동으로 lambda의 environment variable에 저장하는것은 실수로 token이 github등을 통해 외부로 공유되는것을 막기 위함입니다.
 
-3) Slack Alarm을 받기 위한 token 등록
+3) CDK로 배포하면 Amazon S3에 센서 데이터가 저장됩니다. 수분정도 대기하여 어느정도 데이터가 준비가 되면, [AWS Glue에서 Table 생성](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/crawler.md)에 따라 AWS Glue Data catalog의 Crawler를 이용하여 Schema 생성을 위한 Table을 생성합니다. Table은 1회 생성만하면 이후로 1시간 주기로 refresh 됩니다. 
 
-[Slack으로 메시지를 보내기 위해 필요한 Token 등록 방법](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/slack-token.md)에 따라 token 값을 입력합니다.
 
 
 
@@ -57,7 +56,7 @@ $ cdk deploy
 
 ### Athena에서 데이터 조회 
 
-[Athena로 IoT 데이터 조회](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/athena.md)처럼 IoT device를 통해 들어오는 온도데이터를 AWS Anlytics를 통해 수집해서 Athena를 통화 조회 할 수 있습니다. 
+[Athena로 IoT 데이터 조회](https://github.com/kyopark2014/iot-analytics-for-thermometer/blob/main/athena.md)처럼 IoT device를 통해 들어오는 온도데이터를 AWS Anlytics를 통해 수집해서 Athena를 통해 조회 할 수 있습니다. 
 
 
 ### Slack Alarm 수신 
@@ -71,8 +70,7 @@ $ cdk deploy
 
 ### Webclient를 이용한 모니터링 
 
-아래와 같이 1일 동안의 온도변화를 브라우저에서 확인 할 수 있습니다. 
+아래와 같이 일정 시간 동안의 온도변화를 브라우저에서 확인 할 수 있습니다. 
 
-![image](https://user-images.githubusercontent.com/52392004/172013628-b91d02a1-9f86-4387-9819-4edf74695269.png)
-
+<img width="1073" alt="image" src="https://user-images.githubusercontent.com/52392004/172270154-b7485b24-e215-4cb5-ada9-172d2f60c7e7.png">
 

@@ -1,0 +1,38 @@
+<html>
+  <body>	
+    <form id="my-form">
+        <h3>Dashboard - Temperature</h3>
+        <p id="deviceid">0123501CB56E162101</p>
+        <select type="submit" id="period">
+            <option value="1 day"> 1 day </option>  
+            <option value="2 day"> 2 day </option>
+            <option value="1 week"> 1 week </option>
+            <option value="2 weeks"> 2 week </option>
+            <option value="1 hour"> 1 hour </option>
+            <option value="3 hours"> 3 hours </option>
+            <option value="6 hours"> 6 hours </option>
+            <option value="12 hours"> 12 hours </option>
+        </select>        
+	    <button onclick="myFunction()" name="start" id="state">START</button>
+
+	    <p id="selectedPeriod"></p>
+	    <p id="status"></p>
+
+      <div id="chart_temperature" style="width: 1500px; height: 400px;"></div>		
+	</form>		
+    
+    <script src="dash.js"></script> 
+    <script>
+    function myFunction() {
+        var x = document.getElementById("period").value;
+        document.getElementById("selectedPeriod").innerHTML = x;
+      
+        console.log('period: '+x);
+        document.getElementById("deviceid").defaultValue = "0123501CB56E162101";
+    }
+	</script> 
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js "></script>
+  </body>	
+</html>
+

@@ -1,4 +1,4 @@
-# AWS IoT Edukit 이용한 Themometer Analytic Environment
+# AWS IoT Edukit 이용한 Analytic Environment
 
 여기서는 [AWS Edukit](https://github.com/kyopark2014/IoT-Core-Contents/blob/main/m5stack.md)을 이용하여 AWS IoT Core와 Data Analytics을 이용하여 IoT 센서로부터 데이터를 수집하고, 이를 웹브라우저를 통해 확인하고, 일정 조건에 대한 알람을 생성하는 일련의 과정을 설명합니다. 
 
